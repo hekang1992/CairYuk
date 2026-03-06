@@ -1,3 +1,29 @@
-PODFILE CHECKSUM: 9be9d8b050dae2c16a016867ab7432fedbe19f1c
+PODS:
+  - Alamofire (5.10.2)
+  - FBAEMKit (18.0.1):
+    - FBSDKCoreKit_Basics (= 18.0.1)
+  - FBSDKCoreKit (18.0.1):
+    - FBAEMKit (= 18.0.1)
+    - FBSDKCoreKit_Basics (= 18.0.1)
+  - FBSDKCoreKit_Basics (18.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - FBSDKCoreKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+
+SPEC CHECKSUMS:
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  FBAEMKit: b2ed182002dbcb65d5a60059c9693d322186cd00
+  FBSDKCoreKit: 7f96852f2539bdb88ba8d47e5ab4ae70a6f8d691
+  FBSDKCoreKit_Basics: 22d4c1a509ded4e45116f3bb167a14907550f62e
+
+PODFILE CHECKSUM: fd432d1d2e537967e3caafc149f3a4cdebd30503
 
 COCOAPODS: 1.16.2
