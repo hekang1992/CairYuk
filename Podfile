@@ -6,5 +6,15 @@ target 'CairYuk' do
   use_frameworks!
 
   # Pods for CairYuk
-
+  pod 'SnapKit'
+  pod 'Toast-Swift'
+  pod 'FBSDKCoreKit'
+  pod 'IQKeyboardManagerSwift', '~> 6.5.16'
+  pod 'TYAlertController'
+  pod 'DeviceKit'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'Kingfisher'
+  pod 'Alamofire'
+  pod 'MJRefresh'
 end

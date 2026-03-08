@@ -11,19 +11,56 @@ class BaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tabBar.isTranslucent = false
+        tabBar.backgroundColor = .white
+        self.delegate = self
+        let homeVC = createViewController(
+            viewController: UIViewController(),
+            title: "",
+            defaultImageName: "home_nor_image",
+            selectedImageName: "home_sel_image"
+        )
+        
+        let orderVC = createViewController(
+            viewController: UIViewController(),
+            title: "",
+            defaultImageName: "order_nor_image",
+            selectedImageName: "order_sel_image"
+        )
+        
+        let profileVC = createViewController(
+            viewController: UIViewController(),
+            title: "",
+            defaultImageName: "mine_nor_image",
+            selectedImageName: "mine_sel_image"
+        )
+       
+        viewControllers = [homeVC, orderVC, profileVC]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func createViewController(viewController: UIViewController, title: String, defaultImageName: String, selectedImageName: String) -> UINavigationController {
+        
+        let defaultImage = UIImage(named: defaultImageName) ?? UIImage(systemName: defaultImageName)
+        let selectedImage = UIImage(named: selectedImageName) ?? UIImage(systemName: selectedImageName)
+        
+        viewController.tabBarItem.image = defaultImage?.withRenderingMode(.alwaysOriginal)
+        viewController.tabBarItem.selectedImage = selectedImage?.withRenderingMode(.alwaysOriginal)
+        
+        viewController.tabBarItem.title = nil
+        viewController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        
+        let navController = BaseNavigationController(rootViewController: viewController)
+        navController.navigationBar.isTranslucent = false
+        
+        return navController
     }
-    */
+    
+}
 
+extension BaseTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return true
+    }
 }

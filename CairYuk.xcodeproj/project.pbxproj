@@ -14,6 +14,10 @@
 		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
 		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
 		736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883BB2F5DABFE0068A8DE /* LaunchViewController.swift */; };
+		736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883BD2F5DAC490068A8DE /* HomeViewController.swift */; };
+		736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883BF2F5DAC500068A8DE /* OrderViewController.swift */; };
+		736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C12F5DAC580068A8DE /* CenterViewController.swift */; };
+		736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C32F5DB5C90068A8DE /* SecureUserManager.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +33,10 @@
 		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		736883BB2F5DABFE0068A8DE /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		736883BD2F5DAC490068A8DE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		736883BF2F5DAC500068A8DE /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		736883C12F5DAC580068A8DE /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		736883C32F5DB5C90068A8DE /* SecureUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserManager.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +104,7 @@
 		736883AF2F5DAB0B0068A8DE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				736883C32F5DB5C90068A8DE /* SecureUserManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -103,6 +112,7 @@
 		736883B02F5DAB0D0068A8DE /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				736883BF2F5DAC500068A8DE /* OrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -110,6 +120,7 @@
 		736883B12F5DAB0F0068A8DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				736883BD2F5DAC490068A8DE /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -117,6 +128,7 @@
 		736883B22F5DAB110068A8DE /* Center */ = {
 			isa = PBXGroup;
 			children = (
+				736883C12F5DAC580068A8DE /* CenterViewController.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -163,6 +175,7 @@
 				733CC6DC2F5DA89000679CE9 /* Sources */,
 				733CC6DD2F5DA89000679CE9 /* Frameworks */,
 				733CC6DE2F5DA89000679CE9 /* Resources */,
+				9492B0F33B6510EE3D7F4E2B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +233,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9492B0F33B6510EE3D7F4E2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CairYuk/Pods-CairYuk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CairYuk/Pods-CairYuk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CairYuk/Pods-CairYuk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AAD1D6512BD25EF3E985B234 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,8 +286,12 @@
 				736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
+				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
+				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
+				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
+				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +319,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CairYuk/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cair Yuk";
@@ -320,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CairYuk/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cair Yuk";
