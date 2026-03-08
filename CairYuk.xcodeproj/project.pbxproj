@@ -10,15 +10,27 @@
 		733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733CC6F82F5DA89900679CE9 /* AppDelegate.swift */; };
 		733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6F92F5DA89900679CE9 /* Assets.xcassets */; };
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
+		736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B52F5DAB9E0068A8DE /* BaseViewController.swift */; };
+		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
+		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
+		736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883BB2F5DABFE0068A8DE /* LaunchViewController.swift */; };
+		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.release.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.release.xcconfig"; sourceTree = "<group>"; };
 		733CC6E02F5DA89000679CE9 /* CairYuk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CairYuk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		733CC6F82F5DA89900679CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733CC6F92F5DA89900679CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		733CC6FA2F5DA89900679CE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		733CC6FB2F5DA89900679CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CairYuk.entitlements; sourceTree = "<group>"; };
+		736883B52F5DAB9E0068A8DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		736883BB2F5DABFE0068A8DE /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
+		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +50,8 @@
 			children = (
 				733CC7012F5DA89900679CE9 /* CairYuk */,
 				733CC6E12F5DA89000679CE9 /* Products */,
+				F4DF0D40CF8D2EBF9204B31E /* Pods */,
+				E727E2494F8CA85D57F4ACA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,13 +66,90 @@
 		733CC7012F5DA89900679CE9 /* CairYuk */ = {
 			isa = PBXGroup;
 			children = (
-				733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */,
 				733CC6FA2F5DA89900679CE9 /* Info.plist */,
 				733CC6F92F5DA89900679CE9 /* Assets.xcassets */,
+				733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */,
 				733CC6F82F5DA89900679CE9 /* AppDelegate.swift */,
 				733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */,
+				736883B42F5DAB160068A8DE /* Other */,
+				736883B32F5DAB130068A8DE /* Product */,
+				736883B22F5DAB110068A8DE /* Center */,
+				736883B12F5DAB0F0068A8DE /* Home */,
+				736883B02F5DAB0D0068A8DE /* Order */,
+				736883AF2F5DAB0B0068A8DE /* Login */,
+				736883AE2F5DAB080068A8DE /* Base */,
 			);
 			path = CairYuk;
+			sourceTree = "<group>";
+		};
+		736883AE2F5DAB080068A8DE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				736883B52F5DAB9E0068A8DE /* BaseViewController.swift */,
+				736883B72F5DABB80068A8DE /* BaseNavigationController.swift */,
+				736883B92F5DABC90068A8DE /* BaseTabBarController.swift */,
+				736883BB2F5DABFE0068A8DE /* LaunchViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		736883AF2F5DAB0B0068A8DE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		736883B02F5DAB0D0068A8DE /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		736883B12F5DAB0F0068A8DE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		736883B22F5DAB110068A8DE /* Center */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Center;
+			sourceTree = "<group>";
+		};
+		736883B32F5DAB130068A8DE /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		736883B42F5DAB160068A8DE /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		E727E2494F8CA85D57F4ACA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4DF0D40CF8D2EBF9204B31E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */,
+				4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -67,6 +159,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 733CC6F32F5DA89100679CE9 /* Build configuration list for PBXNativeTarget "CairYuk" */;
 			buildPhases = (
+				AAD1D6512BD25EF3E985B234 /* [CP] Check Pods Manifest.lock */,
 				733CC6DC2F5DA89000679CE9 /* Sources */,
 				733CC6DD2F5DA89000679CE9 /* Frameworks */,
 				733CC6DE2F5DA89000679CE9 /* Resources */,
@@ -76,8 +169,6 @@
 			dependencies = (
 			);
 			name = CairYuk;
-			packageProductDependencies = (
-			);
 			productName = CairYuk;
 			productReference = 733CC6E02F5DA89000679CE9 /* CairYuk.app */;
 			productType = "com.apple.product-type.application";
@@ -128,12 +219,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AAD1D6512BD25EF3E985B234 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CairYuk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		733CC6DC2F5DA89000679CE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */,
+				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
+				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
+				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +273,7 @@
 /* Begin XCBuildConfiguration section */
 		733CC6F42F5DA89100679CE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -162,9 +283,9 @@
 				DEVELOPMENT_TEAM = 57MBH2272N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CairYuk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cair Yuk";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -191,6 +312,7 @@
 		};
 		733CC6F52F5DA89100679CE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -200,9 +322,9 @@
 				DEVELOPMENT_TEAM = 57MBH2272N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CairYuk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cair Yuk";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
