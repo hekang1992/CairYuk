@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  CairYuk
+
+  Created by hekang on 2026/3/8.
+  
+*/
+
+"Phone number" = "Phone number";
+"Enter phone number" = "Enter phone number";
+"Verification code" = "Verification code";
+"Enter verification code" = "Enter verification code";
+"Get code" = "Get code";
+"Log in" = "Log in";
+"+91" = "+91";
+"loc_en_image" = "loc_en_image";

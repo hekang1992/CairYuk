@@ -18,6 +18,13 @@
 		736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883BF2F5DAC500068A8DE /* OrderViewController.swift */; };
 		736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C12F5DAC580068A8DE /* CenterViewController.swift */; };
 		736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C32F5DB5C90068A8DE /* SecureUserManager.swift */; };
+		736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C52F5DB63F0068A8DE /* LoginViewController.swift */; };
+		736883C82F5DB9080068A8DE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C72F5DB9080068A8DE /* LoginView.swift */; };
+		736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883C92F5DBAE40068A8DE /* ToastManager.swift */; };
+		736883CD2F5DBC540068A8DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 736883CB2F5DBC540068A8DE /* Localizable.strings */; };
+		736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D02F5DBD9D0068A8DE /* LanguageManager.swift */; };
+		736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D32F5DC6DE0068A8DE /* BaseModel.swift */; };
+		736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D52F5DC8170068A8DE /* NetworkManager.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +44,14 @@
 		736883BF2F5DAC500068A8DE /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		736883C12F5DAC580068A8DE /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		736883C32F5DB5C90068A8DE /* SecureUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserManager.swift; sourceTree = "<group>"; };
+		736883C52F5DB63F0068A8DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		736883C72F5DB9080068A8DE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		736883C92F5DBAE40068A8DE /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		736883CC2F5DBC540068A8DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		736883CF2F5DBC640068A8DE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		736883D02F5DBD9D0068A8DE /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		736883D32F5DC6DE0068A8DE /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		736883D52F5DC8170068A8DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,8 +92,10 @@
 				733CC6FA2F5DA89900679CE9 /* Info.plist */,
 				733CC6F92F5DA89900679CE9 /* Assets.xcassets */,
 				733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */,
+				736883CB2F5DBC540068A8DE /* Localizable.strings */,
 				733CC6F82F5DA89900679CE9 /* AppDelegate.swift */,
 				733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */,
+				736883D22F5DC6CF0068A8DE /* Http */,
 				736883B42F5DAB160068A8DE /* Other */,
 				736883B32F5DAB130068A8DE /* Product */,
 				736883B22F5DAB110068A8DE /* Center */,
@@ -104,7 +121,9 @@
 		736883AF2F5DAB0B0068A8DE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				736883C72F5DB9080068A8DE /* LoginView.swift */,
 				736883C32F5DB5C90068A8DE /* SecureUserManager.swift */,
+				736883C52F5DB63F0068A8DE /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -143,8 +162,19 @@
 		736883B42F5DAB160068A8DE /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				736883D02F5DBD9D0068A8DE /* LanguageManager.swift */,
+				736883C92F5DBAE40068A8DE /* ToastManager.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		736883D22F5DC6CF0068A8DE /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				736883D52F5DC8170068A8DE /* NetworkManager.swift */,
+				736883D32F5DC6DE0068A8DE /* BaseModel.swift */,
+			);
+			path = Http;
 			sourceTree = "<group>";
 		};
 		E727E2494F8CA85D57F4ACA4 /* Frameworks */ = {
@@ -207,6 +237,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 733CC6D72F5DA89000679CE9;
 			minimizedProjectReferenceProxies = 1;
@@ -226,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */,
+				736883CD2F5DBC540068A8DE /* Localizable.strings in Resources */,
 				733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,13 +316,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */,
+				736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */,
+				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
+				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
 				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
 				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
+				736883C82F5DB9080068A8DE /* LoginView.swift in Sources */,
+				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,
+				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,
 				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +342,15 @@
 				733CC6FB2F5DA89900679CE9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		736883CB2F5DBC540068A8DE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				736883CC2F5DBC540068A8DE /* en */,
+				736883CF2F5DBC640068A8DE /* id */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -394,6 +441,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -457,6 +505,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

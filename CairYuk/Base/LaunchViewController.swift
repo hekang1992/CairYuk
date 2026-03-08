@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SnapKit
 
 class LaunchViewController: BaseViewController {
     
@@ -23,6 +24,10 @@ class LaunchViewController: BaseViewController {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         switchToMainTabBar()
     }
     
