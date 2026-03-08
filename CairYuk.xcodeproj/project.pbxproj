@@ -25,6 +25,11 @@
 		736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D02F5DBD9D0068A8DE /* LanguageManager.swift */; };
 		736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D32F5DC6DE0068A8DE /* BaseModel.swift */; };
 		736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D52F5DC8170068A8DE /* NetworkManager.swift */; };
+		736883D82F5DC93D0068A8DE /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D72F5DC92E0068A8DE /* AppService.swift */; };
+		736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883D92F5DC9D40068A8DE /* AppViewModel.swift */; };
+		736883DC2F5DCBD80068A8DE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DB2F5DCBD80068A8DE /* LoadingView.swift */; };
+		736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */; };
+		736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +57,11 @@
 		736883D02F5DBD9D0068A8DE /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		736883D32F5DC6DE0068A8DE /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		736883D52F5DC8170068A8DE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		736883D72F5DC92E0068A8DE /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		736883D92F5DC9D40068A8DE /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		736883DB2F5DCBD80068A8DE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
+		736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDFVKeychainManager.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -171,8 +181,13 @@
 		736883D22F5DC6CF0068A8DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				736883D52F5DC8170068A8DE /* NetworkManager.swift */,
+				736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */,
+				736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */,
+				736883DB2F5DCBD80068A8DE /* LoadingView.swift */,
 				736883D32F5DC6DE0068A8DE /* BaseModel.swift */,
+				736883D52F5DC8170068A8DE /* NetworkManager.swift */,
+				736883D72F5DC92E0068A8DE /* AppService.swift */,
+				736883D92F5DC9D40068A8DE /* AppViewModel.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -319,17 +334,22 @@
 				736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */,
 				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
+				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
+				736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */,
+				736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */,
 				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
 				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
 				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
 				736883C82F5DB9080068A8DE /* LoginView.swift in Sources */,
 				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,
+				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,
 				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
+				736883DC2F5DCBD80068A8DE /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

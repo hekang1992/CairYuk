@@ -6,5 +6,11 @@
 //
 
 class BaseModel: Codable {
-    
+    var securityair: String?
+    var northature: String?
+    var fatherarium: fatherariumModel?
+}
+
+class fatherariumModel: Codable {
+    var prehensship: String?
 }

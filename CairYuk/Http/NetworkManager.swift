@@ -5,13 +5,16 @@
 //  Created by hekang on 2026/3/8.
 //
 
+import Foundation
+import Alamofire
+
 enum NetworkError: Error {
     case invalidURL
     case noData
 }
 
-import Foundation
-import Alamofire
+let base_url = "http://8.215.5.252:10903/breviency"
+let h5_url = "http://8.215.5.252:10903"
 
 final class NetworkManager {
     
@@ -25,7 +28,9 @@ final class NetworkManager {
         headers: HTTPHeaders? = nil
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let apiUrl = self.createRequestUrl(baseUrl: base_url + url)
+        
+        guard let url = apiUrl else {
             throw NetworkError.invalidURL
         }
         
@@ -47,7 +52,9 @@ final class NetworkManager {
         headers: HTTPHeaders? = nil
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let apiUrl = self.createRequestUrl(baseUrl: base_url + url)
+        
+        guard let url = apiUrl else {
             throw NetworkError.invalidURL
         }
         
@@ -90,7 +97,9 @@ final class NetworkManager {
         headers: HTTPHeaders? = nil
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let apiUrl = self.createRequestUrl(baseUrl: base_url + url)
+        
+        guard let url = apiUrl else {
             throw NetworkError.invalidURL
         }
         
@@ -137,4 +146,18 @@ final class NetworkManager {
             }
         }
     }
+}
+
+extension NetworkManager {
+    
+    func createRequestUrl(baseUrl: String) -> URL? {
+        let parameters = DeviceInfoCollector().collectAllParameters()
+        
+        guard var components = URLComponents(string: baseUrl) else { return nil }
+        
+        components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        return components.url
+    }
+    
 }

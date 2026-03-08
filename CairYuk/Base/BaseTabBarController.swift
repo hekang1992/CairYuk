@@ -16,21 +16,21 @@ class BaseTabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         self.delegate = self
         let homeVC = createViewController(
-            viewController: UIViewController(),
+            viewController: HomeViewController(),
             title: "",
             defaultImageName: "home_nor_image",
             selectedImageName: "home_sel_image"
         )
         
         let orderVC = createViewController(
-            viewController: UIViewController(),
+            viewController: OrderViewController(),
             title: "",
             defaultImageName: "order_nor_image",
             selectedImageName: "order_sel_image"
         )
         
         let profileVC = createViewController(
-            viewController: UIViewController(),
+            viewController: CenterViewController(),
             title: "",
             defaultImageName: "mine_nor_image",
             selectedImageName: "mine_sel_image"
