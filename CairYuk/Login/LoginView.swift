@@ -10,8 +10,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-enum loginViewType {
-    case toPolicy
+enum loginViewType: String {
+    case toPolicy = "1"
     case toCode
     case toLogin
 }
@@ -231,7 +231,7 @@ class LoginView: UIView {
         policyBtn.snp.makeConstraints { make in
             make.top.equalTo(sureBtn).offset(1.pix())
             make.left.equalTo(sureBtn.snp.right).offset(5.pix())
-            if LanguageManager.shared.currentLanguage == .english {
+            if LanguageManager.shared.currentType == .english {
                 make.size.equalTo(CGSizeMake(269.pix(), 12.pix()))
             }else {
                 make.size.equalTo(CGSizeMake(223.pix(), 27.pix()))

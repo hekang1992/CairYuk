@@ -12,6 +12,17 @@ class AppViewModel: ObservableObject {
     
     @Published var model: BaseModel?
     
+    @Published var codeModel: BaseModel?
+    
+    @Published var loginModel: BaseModel?
+    
+    @Published var centerModel: BaseModel?
+    @Published var centerMsg: String?
+    
+    @Published var outModel: BaseModel?
+    
+    @Published var deleteModel: BaseModel?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -19,6 +30,107 @@ class AppViewModel: ObservableObject {
             do {
                 
                 model = try await AppService.launchInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func codeInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                codeModel = try await AppService.codeInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+    func loginInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                loginModel = try await AppService.loginInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func centerInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                centerModel = try await AppService.centerInfo(parameters: parameters)
+                
+            } catch {
+                
+                centerMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+}
+
+extension AppViewModel {
+    
+    func outInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                outModel = try await AppService.outInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+    func deleteInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                deleteModel = try await AppService.deleteInfo(parameters: parameters)
                 
             } catch {
                 

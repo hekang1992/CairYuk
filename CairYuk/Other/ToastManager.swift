@@ -10,7 +10,7 @@ import Toast_Swift
 
 class ToastManager {
     
-    private static func showOnWindow(_ text: String) {
+    static func showOnWindow(_ text: String) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else { return }
         

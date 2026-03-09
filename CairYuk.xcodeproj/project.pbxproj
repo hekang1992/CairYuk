@@ -31,6 +31,11 @@
 		736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */; };
 		736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */; };
 		736E3EF42F5E57C8004BF7F4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EF32F5E57C8004BF7F4 /* NetworkMonitor.swift */; };
+		736E3EF62F5E91E5004BF7F4 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EF52F5E91E5004BF7F4 /* CenterView.swift */; };
+		736E3EF82F5E96A5004BF7F4 /* CenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EF72F5E96A5004BF7F4 /* CenterViewCell.swift */; };
+		736E3EFA2F5E9F40004BF7F4 /* SchemeURLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EF92F5E9F40004BF7F4 /* SchemeURLHandler.swift */; };
+		736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EFB2F5EA0B1004BF7F4 /* SettingsViewController.swift */; };
+		736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EFD2F5EA185004BF7F4 /* AppHeadView.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +69,11 @@
 		736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDFVKeychainManager.swift; sourceTree = "<group>"; };
 		736E3EF32F5E57C8004BF7F4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		736E3EF52F5E91E5004BF7F4 /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		736E3EF72F5E96A5004BF7F4 /* CenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewCell.swift; sourceTree = "<group>"; };
+		736E3EF92F5E9F40004BF7F4 /* SchemeURLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeURLHandler.swift; sourceTree = "<group>"; };
+		736E3EFB2F5EA0B1004BF7F4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		736E3EFD2F5EA185004BF7F4 /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -159,7 +169,12 @@
 		736883B22F5DAB110068A8DE /* Center */ = {
 			isa = PBXGroup;
 			children = (
+				736E3EF92F5E9F40004BF7F4 /* SchemeURLHandler.swift */,
+				736E3EF52F5E91E5004BF7F4 /* CenterView.swift */,
 				736883C12F5DAC580068A8DE /* CenterViewController.swift */,
+				736E3EF72F5E96A5004BF7F4 /* CenterViewCell.swift */,
+				736E3EFB2F5EA0B1004BF7F4 /* SettingsViewController.swift */,
+				736E3EFD2F5EA185004BF7F4 /* AppHeadView.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -174,8 +189,8 @@
 		736883B42F5DAB160068A8DE /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				736883D02F5DBD9D0068A8DE /* LanguageManager.swift */,
 				736883C92F5DBAE40068A8DE /* ToastManager.swift */,
+				736883D02F5DBD9D0068A8DE /* LanguageManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -336,10 +351,12 @@
 				736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */,
 				736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */,
 				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
+				736E3EF82F5E96A5004BF7F4 /* CenterViewCell.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
 				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
+				736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */,
 				736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */,
@@ -347,10 +364,13 @@
 				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
 				736E3EF42F5E57C8004BF7F4 /* NetworkMonitor.swift in Sources */,
+				736E3EFA2F5E9F40004BF7F4 /* SchemeURLHandler.swift in Sources */,
 				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
 				736883C82F5DB9080068A8DE /* LoginView.swift in Sources */,
 				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,
+				736E3EF62F5E91E5004BF7F4 /* CenterView.swift in Sources */,
 				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
+				736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,
 				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
 				736883DC2F5DCBD80068A8DE /* LoadingView.swift in Sources */,

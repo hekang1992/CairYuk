@@ -57,7 +57,7 @@ class DeviceInfoCollector {
     }
     
     private func getCurrentLanguage() -> String {
-        return LanguageManager.shared.currentLanguage == .indonesian ? "ANG" : "ITA"
+        return LanguageManager.shared.currentType == .indonesian ? "39" : "40"
     }
     
 }

@@ -9,8 +9,17 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Combine
 
 class LoginViewController: BaseViewController {
+    
+    private let viewModel = AppViewModel()
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    private let countdownSeconds = 60
+    private var remainingSeconds = 0
+    private var countdownTimer: Timer?
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -29,10 +38,10 @@ class LoginViewController: BaseViewController {
         let loginView = LoginView()
         return loginView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -52,21 +61,177 @@ class LoginViewController: BaseViewController {
         }
         
         bindTap()
+        
+        viewModel.$codeModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                
+                guard let self, let model else { return }
+                
+                let securityair = model.securityair ?? ""
+                
+                if ["0", "00"].contains(securityair) {
+                    startCountdown()
+                    self.loginView.codeTextFiled.becomeFirstResponder()
+                }
+                ToastManager.showOnWindow(model.northature ?? "")
+            }.store(in: &cancellables)
+        
+        
+        viewModel.$loginModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                
+                guard let self, let model else { return }
+                
+                let securityair = model.securityair ?? ""
+                ToastManager.showOnWindow(model.northature ?? "")
+                if ["0", "00"].contains(securityair) {
+                    let phone = model.fatherarium?.almostice ?? ""
+                    let token = model.fatherarium?.patriise ?? ""
+                    
+                    SecureUserManager.saveUser(phone: phone, token: token)
+                    
+                    self.switchToMainTabBar()
+                }
+            }.store(in: &cancellables)
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loginView.phoneTextFiled.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopCountdown()
+    }
+    
+    private func startCountdown() {
+        stopCountdown()
+        
+        remainingSeconds = countdownSeconds
+        updateCodeButtonTitle()
+        
+        // 创建定时器
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            if self.remainingSeconds > 0 {
+                self.remainingSeconds -= 1
+                self.updateCodeButtonTitle()
+            } else {
+                self.stopCountdown()
+                self.resetCodeButton()
+            }
+        }
+        
+        RunLoop.current.add(countdownTimer!, forMode: .common)
+    }
+    
+    private func stopCountdown() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+    }
+    
+    private func updateCodeButtonTitle() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.loginView.codeBtn.setTitle("\(self.remainingSeconds)s", for: .normal)
+            self.loginView.codeBtn.isEnabled = false
+        }
+    }
+    
+    private func resetCodeButton() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.loginView.codeBtn.setTitle("Get code".localized, for: .normal)
+            self.loginView.codeBtn.isEnabled = true
+        }
+    }
+    
 }
 
 extension LoginViewController {
     
     private func bindTap() {
         
-        backBtn.rx.tap.bind(onNext: { [weak self] in
+        backBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.dismiss(animated: true)
+            }).disposed(by: disposeBag)
+        
+        loginView.tapClickBlock = { [weak self] type in
             guard let self = self else { return }
-            self.dismiss(animated: true)
-        }).disposed(by: disposeBag)
+            
+            switch type {
+            case .toCode:
+                self.codeInfo()
+                
+            case .toLogin:
+                self.loginInfo()
+                
+            case .toPolicy:
+                self.poliyInfo()
+            }
+            
+        }
         
+    }
+    
+    private func codeInfo() {
+        let phone = self.loginView.phoneTextFiled.text ?? ""
+        if phone.isEmpty {
+            ToastManager.showOnWindow("Enter phone number".localized)
+            return
+        }
         
+        let parameters = ["ratherine": phone]
+        viewModel.codeInfo(parameters: parameters)
         
+    }
+    
+    private func loginInfo() {
+        
+        self.loginView.phoneTextFiled.resignFirstResponder()
+        self.loginView.codeTextFiled.resignFirstResponder()
+        
+        let phone = self.loginView.phoneTextFiled.text ?? ""
+        let code = self.loginView.codeTextFiled.text ?? ""
+        if phone.isEmpty {
+            ToastManager.showOnWindow("Enter phone number".localized)
+            return
+        }
+        if code.isEmpty {
+            ToastManager.showOnWindow("Enter verification code".localized)
+            return
+        }
+        
+        let parameters = ["almostice": phone, "hetero": code]
+        viewModel.loginInfo(parameters: parameters)
+        
+    }
+    
+    private func poliyInfo() {
+        
+    }
+    
+}
+
+extension LoginViewController {
+    
+    private func switchToMainTabBar() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
+        let tabBarController = BaseTabBarController()
+        
+        UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve) {
+            window.rootViewController = tabBarController
+        }
     }
     
 }

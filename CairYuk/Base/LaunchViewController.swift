@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 import Combine
-import FBSDKCoreKit
 import RxSwift
 import RxCocoa
+import FBSDKCoreKit
 import IQKeyboardManagerSwift
 
 class LaunchViewController: BaseViewController {
@@ -93,11 +93,7 @@ extension LaunchViewController {
                 if ["0", "00"].contains(securityair) {
                     
                     let prehensship = model.fatherarium?.prehensship ?? ""
-                    if prehensship == "39" {
-                        LanguageManager.shared.setLanguage(.indonesian)
-                    }else {
-                        LanguageManager.shared.setLanguage(.english)
-                    }
+                    LanguageManager.shared.configure(with: prehensship)
                     
                     if let faceModel = model.fatherarium?.attorneyeur {
                         self.uploadFaceBookSDKInfo(with: faceModel)
