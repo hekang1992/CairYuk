@@ -137,3 +137,45 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func clickProductInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/hetero",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+extension AppService {
+    
+    static func productDetailInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/cytality",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+

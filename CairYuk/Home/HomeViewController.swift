@@ -33,6 +33,10 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
         
+        if let navigationController = self.navigationController {
+            SchemeURLHandler.shared.configure(navigationController: navigationController)
+        }
+        
         viewModel.$homeModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -80,13 +84,33 @@ class HomeViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
+        minView.tapBlock = { [weak self] productID in
+            guard let self = self else { return }
+            clickProduct(productID: productID)
+        }
+        
         self.minView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             getHomeInfo()
         })
         
+        viewModel.$clickProductModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let pageUrl = model.fatherarium?.botanitor ?? ""
+                    if pageUrl.hasPrefix(Scheme_URL) {
+                        SchemeURLHandler.shared.handleURL(pageUrl)
+                    }else {
+                        self.goWebVc(pageUrl: pageUrl)
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,6 +124,32 @@ extension HomeViewController {
     private func getHomeInfo() {
         let parameters = ["hepatery": "1", "raucage": Device.identifier]
         viewModel.homeInfo(parameters: parameters)
+    }
+    
+    private func clickProduct(productID: String) {
+        
+        if SecureUserManager.isLoggedIn() == false {
+            self.popLoginVc()
+            return
+        }
+        
+        let parameters = ["theyhood": "1001",
+                          "enjoyial": "1000",
+                          "familitimeenne": "1000",
+                          "dentacity": productID,
+                          "decisionie": "1"]
+        viewModel.clickProcutInfo(parameters: parameters)
+    }
+    
+}
+
+extension HomeViewController {
+    
+    private func popLoginVc() {
+        let loginVc = LoginViewController()
+        let navVc = BaseNavigationController(rootViewController: loginVc)
+        navVc.modalPresentationStyle = .overFullScreen
+        self.present(navVc, animated: true)
     }
     
 }

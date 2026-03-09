@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class HomeMinView: UIView {
     
@@ -16,6 +18,10 @@ class HomeMinView: UIView {
             cardView.model = model
         }
     }
+    
+    private let disposeBag = DisposeBag()
+    
+    var tapBlock: ((String) -> Void)?
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -172,10 +178,21 @@ class HomeMinView: UIView {
             }
         }
         
+        cardView.tapBlock = { [weak self] productID in
+            guard let self = self else { return }
+            self.tapBlock?(productID)
+        }
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+extension HomeMinView {
+    
+    
     
 }

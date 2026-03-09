@@ -37,6 +37,7 @@ class fatherariumModel: Codable {
     var patriise: String?
     var publicfic: [publicficModel]?
     var cordacity: [cordacityModel]?
+    var botanitor: String?
 }
 
 class attorneyeurModel: Codable {

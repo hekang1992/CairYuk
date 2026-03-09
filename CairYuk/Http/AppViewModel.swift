@@ -26,6 +26,13 @@ class AppViewModel: ObservableObject {
     @Published var homeModel: BaseModel?
     @Published var homeMsg: String?
     
+    
+    @Published var clickProductModel: BaseModel?
+    @Published var clickProductMsg: String?
+    
+    @Published var ProductDetailModel: BaseModel?
+    @Published var ProductDetailMsg: String?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -160,6 +167,50 @@ extension AppViewModel {
             } catch {
                 
                 homeMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func clickProcutInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                clickProductModel = try await AppService.clickProductInfo(parameters: parameters)
+                
+            } catch {
+                
+                clickProductMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func procutDetailInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                ProductDetailModel = try await AppService.productDetailInfo(parameters: parameters)
+                
+            } catch {
+                
+                ProductDetailMsg = error.localizedDescription
                 
             }
             

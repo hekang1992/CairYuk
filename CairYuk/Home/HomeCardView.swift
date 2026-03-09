@@ -13,6 +13,10 @@ import RxCocoa
 
 class HomeCardView: UIView {
     
+    private let disposeBag = DisposeBag()
+    
+    var tapBlock: ((String) -> Void)?
+    
     var model: foldfishessModel? {
         didSet {
             guard let model = model else { return }
@@ -73,7 +77,12 @@ class HomeCardView: UIView {
         applyBtn.setBackgroundImage(UIImage(named: "apply_a_b_image"), for: .normal)
         return applyBtn
     }()
-
+    
+    lazy var tapClickBtn: UIButton = {
+        let tapClickBtn = UIButton(type: .custom)
+        return tapClickBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
@@ -83,6 +92,7 @@ class HomeCardView: UIView {
         bgImageView.addSubview(twoLabel)
         bgImageView.addSubview(rateImageView)
         bgImageView.addSubview(applyBtn)
+        addSubview(tapClickBtn)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -123,10 +133,34 @@ class HomeCardView: UIView {
             make.top.equalTo(rateImageView.snp.bottom).offset(16.pix())
             make.size.equalTo(CGSize(width: 327.pix(), height: 48.pix()))
         }
+        
+        tapClickBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        bindTap()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension HomeCardView {
+    
+    private func bindTap() {
+        
+        tapClickBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                let productID = String(model.maciactuallyally ?? 0)
+                self.tapBlock?(productID)
+            }).disposed(by: disposeBag)
+        
     }
     
 }

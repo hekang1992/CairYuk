@@ -26,7 +26,6 @@ class SchemeURLHandler {
         let parameters: [String: String]
     }
     
-    // MARK: - 解析URL
     private func parseURL(_ urlString: String) -> SchemeURL? {
         guard let url = URL(string: urlString),
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
@@ -99,7 +98,9 @@ class SchemeURLHandler {
     }
     
     func goToProductDetailPage(parameters: [String: String]) {
-        
+        let productVc = ProductViewController()
+        productVc.productID = parameters["dentacity"] ?? ""
+        navigationController?.pushViewController(productVc, animated: true)
     }
     
     func goToCustomerServicePage(parameters: [String: String]) {
