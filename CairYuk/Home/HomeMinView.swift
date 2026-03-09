@@ -9,6 +9,13 @@ import UIKit
 import SnapKit
 
 class HomeMinView: UIView {
+    
+    var model: foldfishessModel? {
+        didSet {
+            guard let model = model else { return }
+            cardView.model = model
+        }
+    }
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()

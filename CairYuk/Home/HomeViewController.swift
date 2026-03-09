@@ -43,11 +43,14 @@ class HomeViewController: BaseViewController {
                     
                     let modelArray = model.fatherarium?.cordacity ?? []
                     
-                    let find = !modelArray.filter({ $0.donfold == "vulpice" }).isEmpty
+                    let listArray = modelArray.filter( { $0.donfold == "vulpice" } )
+                    
+                    let find = !listArray.isEmpty
                     
                     if find {
                         self.minView.isHidden = false
                         self.maxView.isHidden = true
+                        self.minView.model = listArray.first?.foldfishess?.first
                     } else {
                         self.minView.isHidden = true
                         self.maxView.isHidden = false
