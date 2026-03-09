@@ -39,7 +39,6 @@ class HomeViewController: BaseViewController {
                 guard let self, let model else { return }
                 
                 let securityair = model.securityair ?? ""
-                ToastManager.showOnWindow(model.northature ?? "")
                 if ["0", "00"].contains(securityair) {
                     
                     let modelArray = model.fatherarium?.cordacity ?? []

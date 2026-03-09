@@ -41,6 +41,7 @@
 		736E3F052F5EB36D004BF7F4 /* H5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F042F5EB36D004BF7F4 /* H5ViewController.swift */; };
 		736E3F072F5EC2A9004BF7F4 /* HomeMinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */; };
 		736E3F092F5EC2BC004BF7F4 /* HomeMaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */; };
+		736E3F0B2F5ECBF0004BF7F4 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F0A2F5ECBF0004BF7F4 /* HomeCardView.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		736E3F042F5EB36D004BF7F4 /* H5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5ViewController.swift; sourceTree = "<group>"; };
 		736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMinView.swift; sourceTree = "<group>"; };
 		736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMaxView.swift; sourceTree = "<group>"; };
+		736E3F0A2F5ECBF0004BF7F4 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -175,6 +177,7 @@
 				736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */,
 				736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */,
 				736883BD2F5DAC490068A8DE /* HomeViewController.swift */,
+				736E3F0A2F5ECBF0004BF7F4 /* HomeCardView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */,
+				736E3F0B2F5ECBF0004BF7F4 /* HomeCardView.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */,
 				736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */,
