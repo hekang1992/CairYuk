@@ -23,6 +23,9 @@ class AppViewModel: ObservableObject {
     
     @Published var deleteModel: BaseModel?
     
+    @Published var homeModel: BaseModel?
+    @Published var homeMsg: String?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -135,6 +138,28 @@ extension AppViewModel {
             } catch {
                 
                 print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func homeInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                homeModel = try await AppService.getHomeInfo(parameters: parameters)
+                
+            } catch {
+                
+                homeMsg = error.localizedDescription
                 
             }
             

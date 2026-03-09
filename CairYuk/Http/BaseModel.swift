@@ -36,6 +36,7 @@ class fatherariumModel: Codable {
     var almostice: String?
     var patriise: String?
     var publicfic: [publicficModel]?
+    var cordacity: [cordacityModel]?
 }
 
 class attorneyeurModel: Codable {
@@ -49,4 +50,21 @@ class publicficModel: Codable {
     var participantarian: String?
     var popularship: String?
     var technivity: String?
+}
+
+class cordacityModel: Codable {
+    var donfold: String?
+    var foldfishess: [foldfishessModel]?
+}
+
+class foldfishessModel: Codable {
+    var maciactuallyally: Int?
+    var acriestablish: String?
+    var withoutess: String?
+    var representic: String?
+    var opisthperiodcy: String?
+    var coupleacle: String?
+    var onomat: String?
+    var mammtreater: String?
+    var salubrsure: String?
 }

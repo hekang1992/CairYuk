@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import Combine
+import DeviceKit
 
 class HomeViewController: BaseViewController {
-
+    
+    private let viewModel = AppViewModel()
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        viewModel.$homeModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$homeMsg
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+            }
+            .store(in: &cancellables)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getHomeInfo()
     }
-    */
+    
+}
 
+extension HomeViewController {
+    
+    private func getHomeInfo() {
+        let parameters = ["hepatery": "1", "raucage": Device.identifier]
+        viewModel.homeInfo(parameters: parameters)
+    }
+    
 }

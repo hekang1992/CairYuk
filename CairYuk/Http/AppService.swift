@@ -117,3 +117,23 @@ extension AppService {
     
     
 }
+
+extension AppService {
+    
+    static func getHomeInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.get(
+            url: "/old/fatherarium",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
