@@ -97,7 +97,7 @@ class CenterViewController: BaseViewController {
             if pageUrl.hasPrefix(Scheme_URL) {
                 SchemeURLHandler.shared.handleURL(pageUrl)
             }else {
-                
+                self.goWebVc(pageUrl: pageUrl)
             }
         }
         

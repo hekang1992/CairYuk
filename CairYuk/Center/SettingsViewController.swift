@@ -11,6 +11,7 @@ import SnapKit
 import Combine
 import MJRefresh
 import RxCocoa
+import TYAlertController
 
 class SettingsViewController: BaseViewController {
     
@@ -76,6 +77,7 @@ class SettingsViewController: BaseViewController {
         deleteBtn.setTitle("Cancel account", for: .normal)
         deleteBtn.setTitleColor(.black, for: .normal)
         deleteBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        deleteBtn.isHidden = LanguageManager.shared.currentType == .indonesian ? true : false
         return deleteBtn
     }()
     
@@ -157,6 +159,7 @@ class SettingsViewController: BaseViewController {
                 let securityair = model.securityair ?? ""
                 ToastManager.showOnWindow(model.northature ?? "")
                 if ["0", "00"].contains(securityair) {
+                    self.dismiss(animated: true)
                     SecureUserManager.logout()
                     self.switchToMainTabBar()
                 }
@@ -171,6 +174,7 @@ class SettingsViewController: BaseViewController {
                 let securityair = model.securityair ?? ""
                 ToastManager.showOnWindow(model.northature ?? "")
                 if ["0", "00"].contains(securityair) {
+                    self.dismiss(animated: true)
                     SecureUserManager.logout()
                     self.switchToMainTabBar()
                 }
@@ -193,7 +197,7 @@ extension SettingsViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                viewModel.outInfo(parameters: [:])
+                self.popOutView()
             }).disposed(by: disposeBag)
         
         deleteBtn
@@ -202,7 +206,7 @@ extension SettingsViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                viewModel.deleteInfo(parameters: [:])
+                self.popDeleteView()
             }).disposed(by: disposeBag)
         
     }
@@ -210,6 +214,42 @@ extension SettingsViewController {
 }
 
 extension SettingsViewController {
+    
+    private func popOutView() {
+        let popView = PopAccountView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            viewModel.outInfo(parameters: [:])
+        }
+    }
+    
+    private func popDeleteView() {
+        
+        let popView = PopDeleteAcView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            if popView.sureBtn.isSelected == false {
+                ToastManager.showOnWindow("Please read and agree to the above")
+                return
+            }
+            viewModel.deleteInfo(parameters: [:])
+        }
+        
+    }
     
     private func switchToMainTabBar() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
