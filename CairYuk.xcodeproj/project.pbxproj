@@ -39,6 +39,8 @@
 		736E3F012F5EA9BC004BF7F4 /* PopAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F002F5EA9BC004BF7F4 /* PopAccountView.swift */; };
 		736E3F032F5EB15A004BF7F4 /* PopDeleteAcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F022F5EB151004BF7F4 /* PopDeleteAcView.swift */; };
 		736E3F052F5EB36D004BF7F4 /* H5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F042F5EB36D004BF7F4 /* H5ViewController.swift */; };
+		736E3F072F5EC2A9004BF7F4 /* HomeMinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */; };
+		736E3F092F5EC2BC004BF7F4 /* HomeMaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		736E3F002F5EA9BC004BF7F4 /* PopAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAccountView.swift; sourceTree = "<group>"; };
 		736E3F022F5EB151004BF7F4 /* PopDeleteAcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteAcView.swift; sourceTree = "<group>"; };
 		736E3F042F5EB36D004BF7F4 /* H5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5ViewController.swift; sourceTree = "<group>"; };
+		736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMinView.swift; sourceTree = "<group>"; };
+		736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMaxView.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,6 +172,8 @@
 		736883B12F5DAB0F0068A8DE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				736E3F062F5EC2A9004BF7F4 /* HomeMinView.swift */,
+				736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */,
 				736883BD2F5DAC490068A8DE /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -367,6 +373,7 @@
 			files = (
 				736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */,
 				736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */,
+				736E3F072F5EC2A9004BF7F4 /* HomeMinView.swift in Sources */,
 				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
 				736E3F012F5EA9BC004BF7F4 /* PopAccountView.swift in Sources */,
 				736E3EF82F5E96A5004BF7F4 /* CenterViewCell.swift in Sources */,
@@ -393,6 +400,7 @@
 				736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,
 				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
+				736E3F092F5EC2BC004BF7F4 /* HomeMaxView.swift in Sources */,
 				736883DC2F5DCBD80068A8DE /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
