@@ -30,6 +30,7 @@
 		736883DC2F5DCBD80068A8DE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DB2F5DCBD80068A8DE /* LoadingView.swift */; };
 		736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */; };
 		736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */; };
+		736E3EF42F5E57C8004BF7F4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3EF32F5E57C8004BF7F4 /* NetworkMonitor.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		736883DB2F5DCBD80068A8DE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDFVKeychainManager.swift; sourceTree = "<group>"; };
+		736E3EF32F5E57C8004BF7F4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 		736883D22F5DC6CF0068A8DE /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				736E3EF32F5E57C8004BF7F4 /* NetworkMonitor.swift */,
 				736883DF2F5DCE890068A8DE /* IDFVKeychainManager.swift */,
 				736883DD2F5DCD530068A8DE /* DeviceInfoCollector.swift */,
 				736883DB2F5DCBD80068A8DE /* LoadingView.swift */,
@@ -343,6 +346,7 @@
 				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
 				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,
+				736E3EF42F5E57C8004BF7F4 /* NetworkMonitor.swift in Sources */,
 				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
 				736883C82F5DB9080068A8DE /* LoginView.swift in Sources */,
 				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,

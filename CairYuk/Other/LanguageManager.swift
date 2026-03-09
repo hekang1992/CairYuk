@@ -5,7 +5,6 @@
 //  Created by hekang on 2026/3/8.
 //
 
-
 import Foundation
 
 class LanguageManager {
@@ -15,13 +14,13 @@ class LanguageManager {
     private let languageKey = "AppLanguage"
     
     enum LanguageCode: String {
-        case english = "en"
-        case indonesian = "id"
+        case english = "40"
+        case indonesian = "39"
         
         var displayName: String {
             switch self {
             case .english: return "English"
-            case .indonesian: return "Bahasa Indonesia"
+            case .indonesian: return "Indonesia"
             }
         }
     }

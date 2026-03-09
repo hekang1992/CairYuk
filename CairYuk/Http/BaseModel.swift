@@ -13,4 +13,12 @@ class BaseModel: Codable {
 
 class fatherariumModel: Codable {
     var prehensship: String?
+    var attorneyeur: attorneyeurModel?
+}
+
+class attorneyeurModel: Codable {
+    var cribrdoctoration: String?
+    var pilair: String?
+    var everyment: String?
+    var necrify: String?
 }
