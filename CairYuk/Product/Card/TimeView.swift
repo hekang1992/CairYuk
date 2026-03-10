@@ -18,7 +18,7 @@ class TimeView: UIView {
     private let monthLabel = UILabel()
     private let yearLabel = UILabel()
     
-    private let confirmButton = UIButton(type: .system)
+    private let confirmButton = UIButton(type: .custom)
     private let titleLabel = UILabel()
     
     private var days: [Int] = Array(1...31)
@@ -90,10 +90,13 @@ class TimeView: UIView {
         setupPicker(yearPicker, tag: 3)
         
         confirmButton.setTitle("Confirm".localized, for: .normal)
-        confirmButton.backgroundColor = .systemBlue
         confirmButton.setTitleColor(.white, for: .normal)
         confirmButton.layer.cornerRadius = 8
+        confirmButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         confirmButton.addTarget(self, action: #selector(confirmTapped), for: .touchUpInside)
+        
+        confirmButton.setBackgroundImage(UIImage(named: "con_a_bt_image"), for: .normal)
+        
         addSubview(confirmButton)
         
         setupConstraints()
@@ -164,8 +167,8 @@ class TimeView: UIView {
         confirmButton.snp.makeConstraints { make in
             make.top.equalTo(dayPicker.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-            make.width.equalTo(120)
-            make.height.equalTo(44)
+            make.width.equalTo(261)
+            make.height.equalTo(65)
             make.bottom.equalToSuperview().offset(-20)
         }
     }

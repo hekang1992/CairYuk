@@ -292,25 +292,50 @@ extension PopAuthCardView {
         let grayView = UIView()
         grayView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
+        let bgImageView = UIImageView()
+        bgImageView.isUserInteractionEnabled = true
+        bgImageView.image = UIImage(named: "ncp_a_d_image")
+        
+        let clickBtn = UIButton(type: .custom)
+        
         let timeView = TimeView(frame: .zero)
         
         timeView.setDate(from: time)
         
-        timeView.onConfirm = { dateString in
-            grayView.removeFromSuperview()
+        timeView.onConfirm = { [weak self] dateString in
+            guard let self = self else { return }
             self.threeTextFiled.text = dateString
+            grayView.removeFromSuperview()
+            bgImageView.removeFromSuperview()
         }
+        
+        clickBtn.rx.tap.bind(onNext: {
+            grayView.removeFromSuperview()
+            bgImageView.removeFromSuperview()
+        }).disposed(by: disposeBag)
         
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.addSubview(grayView)
-            window.addSubview(timeView)
+            window.addSubview(bgImageView)
+            bgImageView.addSubview(clickBtn)
+            bgImageView.addSubview(timeView)
             grayView.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
-            timeView.snp.makeConstraints { make in
+            bgImageView.snp.makeConstraints { make in
                 make.center.equalToSuperview()
-                make.size.equalTo(CGSize(width: 340.pix(), height: 350.pix()))
+                make.size.equalTo(CGSize(width: 343.pix(), height: 537.pix()))
+            }
+            clickBtn.snp.makeConstraints { make in
+                make.bottom.equalToSuperview()
+                make.centerX.equalToSuperview()
+                make.width.height.equalTo(32.pix())
+            }
+            timeView.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(86.pix())
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 319.pix(), height: 370.pix()))
             }
         }
     }
