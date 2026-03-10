@@ -26,6 +26,23 @@ extension BaseViewController {
         h5Vc.pageUrl = pageUrl
         self.navigationController?.pushViewController(h5Vc, animated: true)
     }
+}
+
+extension BaseViewController {
+    
+    func toProductListVc() {
+        guard let nav = navigationController else { return }
+
+        if let vc = nav.viewControllers.compactMap({ $0 as? ProductViewController }).first {
+            nav.popToViewController(vc, animated: true)
+        } else {
+            nav.popToRootViewController(animated: true)
+        }
+    }
+    
+}
+
+extension BaseViewController {
     
     func clickTypeToNextVc(stepModel: listensiveModel, cardModel: baloarianModel) {
         let type = stepModel.emeuous ?? ""

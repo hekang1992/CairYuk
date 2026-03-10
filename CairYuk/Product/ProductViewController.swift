@@ -162,13 +162,25 @@ class ProductViewController: BaseViewController {
                     let face = model.fatherarium?.impactling?.botanitor ?? ""
                     
                     if card.isEmpty {
+                        let cardVc = AuthCardViewController()
+                        cardVc.stepModel = stepModel
+                        cardVc.cardModel = cardModel
+                        self.navigationController?.pushViewController(cardVc, animated: true)
                         return
                     }
                     
                     if face.isEmpty {
+                        let faceVc = AuthFaceViewController()
+                        faceVc.stepModel = stepModel
+                        faceVc.cardModel = cardModel
+                        self.navigationController?.pushViewController(faceVc, animated: true)
                         return
                     }
                     
+                    let completeVc = AuthCompleteViewController()
+                    completeVc.stepModel = stepModel
+                    completeVc.cardModel = cardModel
+                    self.navigationController?.pushViewController(completeVc, animated: true)
                     
                 }
             }

@@ -19,15 +19,15 @@ class AuthFaceViewController: BaseViewController {
     
     private var cancellables = Set<AnyCancellable>()
     
-    private var cardModel: baloarianModel?
+    var cardModel: baloarianModel?
     
-    private var stepModel: listensiveModel? {
+    var stepModel: listensiveModel? {
         didSet {
             guard let stepModel = stepModel else { return }
             headView.configTile(with: stepModel.participantarian ?? "")
         }
     }
-        
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_head_bg_image")
@@ -51,9 +51,32 @@ class AuthFaceViewController: BaseViewController {
     lazy var nextBtn: UIButton = {
         let nextBtn = UIButton(type: .custom)
         nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitle("Next".localized, for: .normal)
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         nextBtn.setBackgroundImage(UIImage(named: "next_btn_bg_image"), for: .normal)
         return nextBtn
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
+    lazy var headImageView: UIImageView = {
+        let headImageView = UIImageView()
+        headImageView.image = UIImage(named: "in_one_icon_image")
+        headImageView.contentMode = .scaleAspectFit
+        return headImageView
+    }()
+    
+    lazy var clickBtn: UIButton = {
+        let clickBtn = UIButton(type: .custom)
+        clickBtn.setBackgroundImage(UIImage(named: "face_en_image".localized), for: .normal)
+        clickBtn.adjustsImageWhenHighlighted = false
+        return clickBtn
     }()
     
     override func viewDidLoad() {
@@ -86,9 +109,31 @@ class AuthFaceViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
+        bgView.addSubview(scrollView)
+        scrollView.addSubview(headImageView)
+        scrollView.addSubview(clickBtn)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
+        headImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
+            make.size.equalTo(CGSize(width: 350.pix(), height: 54.pix()))
+        }
+        
+        clickBtn.snp.makeConstraints { make in
+            make.top.equalTo(headImageView.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 327.pix(), height: 405.pix()))
+            make.bottom.equalToSuperview().offset(-20.pix())
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            self.toProductListVc()
         }
         
         nextBtn

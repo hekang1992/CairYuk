@@ -19,9 +19,9 @@ class AuthCompleteViewController: BaseViewController {
     
     private var cancellables = Set<AnyCancellable>()
     
-    private var cardModel: baloarianModel?
+    var cardModel: baloarianModel?
     
-    private var stepModel: listensiveModel? {
+    var stepModel: listensiveModel? {
         didSet {
             guard let stepModel = stepModel else { return }
             headView.configTile(with: stepModel.participantarian ?? "")
@@ -51,6 +51,7 @@ class AuthCompleteViewController: BaseViewController {
     lazy var nextBtn: UIButton = {
         let nextBtn = UIButton(type: .custom)
         nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitle("Next".localized, for: .normal)
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         nextBtn.setBackgroundImage(UIImage(named: "next_btn_bg_image"), for: .normal)
         return nextBtn
@@ -88,7 +89,7 @@ class AuthCompleteViewController: BaseViewController {
         
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            self.toProductListVc()
         }
         
         nextBtn
