@@ -289,18 +289,25 @@ extension PopAuthCardView {
     
     private func showTimeView(time: String) {
         
+        let grayView = UIView()
+        grayView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
         let timeView = TimeView(frame: .zero)
         
         timeView.setDate(from: time)
         
         timeView.onConfirm = { dateString in
-            print("选择的日期: \(dateString)")
-            
+            grayView.removeFromSuperview()
+            self.threeTextFiled.text = dateString
         }
         
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
+            window.addSubview(grayView)
             window.addSubview(timeView)
+            grayView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
             timeView.snp.makeConstraints { make in
                 make.center.equalToSuperview()
                 make.size.equalTo(CGSize(width: 340.pix(), height: 350.pix()))
