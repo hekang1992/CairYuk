@@ -193,6 +193,10 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
         if type == "mov" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TwoViewCell", for: indexPath) as! TwoViewCell
             cell.model = listModel
+            cell.tapBlock = { [weak self] model in
+                guard let self else { return }
+                self.tapClickCell(model: model, cell: cell)
+            }
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OneViewCell", for: indexPath) as! OneViewCell
@@ -200,4 +204,38 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+}
+
+extension PersonalViewController {
+    
+    private func tapClickCell(model: ambrememberuousModel, cell: TwoViewCell) {
+        let popView = ClickCellAlertView(frame: self.view.bounds)
+        
+        popView.nameLabel.text = model.participantarian ?? ""
+        
+        let modelArray = model.petrsive ?? []
+        
+        popView.modelArray = modelArray
+        
+        let name = cell.oneTextFiled.text ?? ""
+        
+        for (index, listModel) in modelArray.enumerated() {
+            if name == listModel.traveleous ?? "" {
+                popView.selectIndex(index)
+            }
+        }
+        
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.saveBlock = { [weak self] listModel in
+            guard let self else { return }
+        }
+        
+    }
+    
 }

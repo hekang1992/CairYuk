@@ -60,6 +60,7 @@
 		73A51A0D2F5F0223000644FB /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A51A0C2F5F0223000644FB /* ProductViewController.swift */; };
 		73DF1D0A2F60410D00CB302C /* OneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D092F60410D00CB302C /* OneViewCell.swift */; };
 		73DF1D0C2F60411600CB302C /* TwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D0B2F60411600CB302C /* TwoViewCell.swift */; };
+		73DF1D0E2F60724600CB302C /* ClickCellAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D0D2F60724600CB302C /* ClickCellAlertView.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		73A51A0C2F5F0223000644FB /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		73DF1D092F60410D00CB302C /* OneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneViewCell.swift; sourceTree = "<group>"; };
 		73DF1D0B2F60411600CB302C /* TwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewCell.swift; sourceTree = "<group>"; };
+		73DF1D0D2F60724600CB302C /* ClickCellAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickCellAlertView.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 		735D11992F5FE1CB00102F19 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				73DF1D0D2F60724600CB302C /* ClickCellAlertView.swift */,
 				73DF1D092F60410D00CB302C /* OneViewCell.swift */,
 				73DF1D0B2F60411600CB302C /* TwoViewCell.swift */,
 				735D11A22F5FF68300102F19 /* PersonalViewController.swift */,
@@ -511,6 +514,7 @@
 				736E3F052F5EB36D004BF7F4 /* H5ViewController.swift in Sources */,
 				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
 				735D11A32F5FF68300102F19 /* PersonalViewController.swift in Sources */,
+				73DF1D0E2F60724600CB302C /* ClickCellAlertView.swift in Sources */,
 				736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */,
 				735D119D2F5FE20200102F19 /* AuthFaceViewController.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,

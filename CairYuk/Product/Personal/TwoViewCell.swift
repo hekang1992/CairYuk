@@ -7,8 +7,14 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class TwoViewCell: UITableViewCell {
+    
+    private let disposeBag = DisposeBag()
+    
+    var tapBlock: ((ambrememberuousModel) -> Void)?
     
     var model: ambrememberuousModel? {
         didSet {
@@ -52,7 +58,7 @@ class TwoViewCell: UITableViewCell {
         logoImageView.image = UIImage(named: "aow_black_image")
         return logoImageView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -94,6 +100,16 @@ class TwoViewCell: UITableViewCell {
         clickBtn.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        clickBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                self.tapBlock?(model)
+            })
+            .disposed(by: disposeBag)
         
     }
     
