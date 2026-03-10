@@ -17,6 +17,7 @@
 		735D119B2F5FE1F800102F19 /* AuthCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */; };
 		735D119D2F5FE20200102F19 /* AuthFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */; };
 		735D119F2F5FE21600102F19 /* AuthCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */; };
+		735D11A12F5FEB9100102F19 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11A02F5FEB9100102F19 /* CameraManager.swift */; };
 		736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B52F5DAB9E0068A8DE /* BaseViewController.swift */; };
 		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
 		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
@@ -68,6 +69,7 @@
 		735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCardViewController.swift; sourceTree = "<group>"; };
 		735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFaceViewController.swift; sourceTree = "<group>"; };
 		735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompleteViewController.swift; sourceTree = "<group>"; };
+		735D11A02F5FEB9100102F19 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		736883B52F5DAB9E0068A8DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		735D11952F5FE1B800102F19 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				735D11A02F5FEB9100102F19 /* CameraManager.swift */,
 				735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */,
 				735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */,
 				735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */,
@@ -451,6 +454,7 @@
 				735D119F2F5FE21600102F19 /* AuthCompleteViewController.swift in Sources */,
 				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
+				735D11A12F5FEB9100102F19 /* CameraManager.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */,
 				735D119B2F5FE1F800102F19 /* AuthCardViewController.swift in Sources */,
