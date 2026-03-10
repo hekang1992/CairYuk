@@ -28,6 +28,8 @@ class PersonalViewController: BaseViewController {
         }
     }
     
+    private var listArray: [ambrememberuousModel] = []
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_head_bg_image")
@@ -55,6 +57,12 @@ class PersonalViewController: BaseViewController {
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         nextBtn.setBackgroundImage(UIImage(named: "next_btn_bg_image"), for: .normal)
         return nextBtn
+    }()
+    
+    lazy var headImageView: UIImageView = {
+        let headImageView = UIImageView()
+        headImageView.image = UIImage(named: "pri_icon_image")
+        return headImageView
     }()
     
     lazy var tableView: UITableView = {
@@ -105,9 +113,17 @@ class PersonalViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
+        bgView.addSubview(headImageView)
+        headImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.size.equalTo(CGSize(width: 350.pix(), height: 45.pix()))
+            make.centerX.equalToSuperview()
+        }
+        
         bgView.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
+            make.top.equalTo(headImageView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
@@ -120,6 +136,12 @@ class PersonalViewController: BaseViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
                 guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let listArray = model.fatherarium?.ambrememberuous ?? []
+                    self.listArray = listArray
+                }
+                self.tableView.reloadData()
             }
             .store(in: &cancellables)
         
@@ -162,12 +184,20 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return self.listArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TwoViewCell", for: indexPath) as! TwoViewCell
-        cell.textLabel?.text = "\(indexPath.row)====="
-        return cell
+        let listModel = self.listArray[indexPath.row]
+        let type = listModel.governmentacle ?? ""
+        if type == "mov" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TwoViewCell", for: indexPath) as! TwoViewCell
+            cell.model = listModel
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OneViewCell", for: indexPath) as! OneViewCell
+            cell.model = listModel
+            return cell
+        }
     }
 }
