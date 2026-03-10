@@ -23,6 +23,7 @@
 		735D11A72F5FF6C300102F19 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11A62F5FF6C300102F19 /* ContactViewController.swift */; };
 		735D11A92F5FF6E400102F19 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11A82F5FF6E400102F19 /* BankViewController.swift */; };
 		735D11AB2F5FFDBA00102F19 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11AA2F5FFDAE00102F19 /* CardListView.swift */; };
+		735D11AD2F60021600102F19 /* PopAuthCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11AC2F60021600102F19 /* PopAuthCardView.swift */; };
 		736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B52F5DAB9E0068A8DE /* BaseViewController.swift */; };
 		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
 		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
@@ -80,6 +81,7 @@
 		735D11A62F5FF6C300102F19 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		735D11A82F5FF6E400102F19 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
 		735D11AA2F5FFDAE00102F19 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		735D11AC2F60021600102F19 /* PopAuthCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAuthCardView.swift; sourceTree = "<group>"; };
 		736883B52F5DAB9E0068A8DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */,
 				735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */,
 				735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */,
+				735D11AC2F60021600102F19 /* PopAuthCardView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				736E3F0B2F5ECBF0004BF7F4 /* HomeCardView.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */,
+				735D11AD2F60021600102F19 /* PopAuthCardView.swift in Sources */,
 				735D11A52F5FF6A400102F19 /* WorkViewController.swift in Sources */,
 				736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */,
 				735D11A92F5FF6E400102F19 /* BankViewController.swift in Sources */,

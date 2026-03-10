@@ -240,3 +240,35 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func saveCardInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        if LanguageManager.shared.currentType == .indonesian {
+            let result: BaseModel = try await NetworkManager.shared.post(
+                url: "/old/conferencean",
+                parameters: parameters
+            )
+            
+            return result
+            
+        }else {
+            let result: BaseModel = try await NetworkManager.shared.post(
+                url: "/old/modernsome",
+                parameters: parameters
+            )
+            
+            return result
+        }
+        
+        
+    }
+    
+}

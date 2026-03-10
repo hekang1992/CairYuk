@@ -43,6 +43,7 @@ class AppViewModel: ObservableObject {
     @Published var uploadFrontCardModel: BaseModel?
     @Published var uploadFrontCardMsg: String?
     
+    @Published var saveCardModel: BaseModel?
     
     func launchInfo(parameters: [String: Any]) {
         
@@ -289,6 +290,27 @@ extension AppViewModel {
                 
                 uploadFrontCardMsg = error.localizedDescription
                 
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func saveCardInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                saveCardModel = try await AppService.saveCardInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
             }
             
         }

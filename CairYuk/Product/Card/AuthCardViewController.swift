@@ -182,6 +182,45 @@ class AuthCardViewController: BaseViewController {
                         faceVc.cardModel = cardModel
                         self.navigationController?.pushViewController(faceVc, animated: true)
                     }else {
+                        let popView = PopAuthCardView(frame: self.view.bounds)
+                        let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+                        if let fatherariumModel = model.fatherarium {
+                            popView.model = fatherariumModel
+                        }
+                        self.present(alertVc!, animated: true)
+                        
+                        popView.cancelBlock = { [weak self] in
+                            self?.dismiss(animated: true)
+                        }
+                        
+                        popView.sureBlock = { [weak self] name, number, time in
+                            guard let self = self else { return }
+                            
+                            if name.isEmpty {
+                                ToastManager.showOnWindow("Please enter your name".localized)
+                                return
+                            }
+                            
+                            if number.isEmpty {
+                                ToastManager.showOnWindow("Please enter your ID number".localized)
+                                return
+                            }
+                            
+                            if time.isEmpty {
+                                ToastManager.showOnWindow("Please enter your birthday".localized)
+                                return
+                            }
+                            
+                            let parameters = ["traveleous": name,
+                                              "lucmomentair": number,
+                                              "spherdom": time,
+                                              "visitmost": SecureUserManager.getPhone() ?? "",
+                                              "dentacity": cardModel?.maciactuallyally ?? "",
+                                              "itudeacious": cardModel?.withoutess ?? ""]
+                            
+                            viewModel.saveCardInfo(parameters: parameters)
+                            
+                        }
                         
                     }
                 }else {
@@ -189,6 +228,21 @@ class AuthCardViewController: BaseViewController {
                 }
             }
             .store(in: &cancellables)
+        
+        viewModel.$saveCardModel.receive(on: DispatchQueue.main).sink { [weak self] model in
+            guard let self, let model else { return }
+            let securityair = model.securityair ?? ""
+            if ["0", "00"].contains(securityair) {
+                self.dismiss(animated: true) {
+                    let faceVc = AuthFaceViewController()
+                    faceVc.stepModel = self.stepModel
+                    faceVc.cardModel = self.cardModel
+                    self.navigationController?.pushViewController(faceVc, animated: true)
+                }
+            }else {
+                ToastManager.showOnWindow(model.northature ?? "")
+            }
+        }.store(in: &cancellables)
         
     }
     

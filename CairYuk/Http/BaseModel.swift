@@ -43,6 +43,9 @@ class fatherariumModel: Codable {
     var actionproof: actionproofModel?
     var impactling: actionproofModel?
     var wayine: Int?
+    var traveleous: String?
+    var lucmomentair: String?
+    var spherdom: String?
 }
 
 class attorneyeurModel: Codable {

@@ -37,3 +37,7 @@
 "Real name" = "Nama asli";
 "PAN number" = "Nomor KTP";
 "Date of birth" = "Tanggal lahir";
+"Confirm" = "Mengonfirmasi";
+"Please enter your name" = "Silakan masukkan nama Anda";
+"Please enter your ID number" = "Silakan masukkan nomor identitas Anda";
+"Please enter your birthday" = "Silakan masukkan tanggal lahir Anda";

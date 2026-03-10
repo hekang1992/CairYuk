@@ -177,9 +177,28 @@ class AuthFaceViewController: BaseViewController {
                 guard let self, let model else { return }
                 let securityair = model.securityair ?? ""
                 if ["0", "00"].contains(securityair) {
-                    
+                    self.getDetailInfo()
                 }else {
                     ToastManager.showOnWindow(model.northature ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$productDetailModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    
+                    let cardModel = model.fatherarium?.baloarian
+                    self.cardModel = cardModel
+                    
+                    let stepModel = model.fatherarium?.myxen
+                    self.stepModel = stepModel
+                    
+                    self.clickTypeToNextVc(stepModel: stepModel ?? listensiveModel(),
+                                           cardModel: cardModel ?? baloarianModel())
                 }
             }
             .store(in: &cancellables)
@@ -189,6 +208,11 @@ class AuthFaceViewController: BaseViewController {
 }
 
 extension AuthFaceViewController {
+    
+    private func getDetailInfo() {
+        let parameters = ["dentacity": cardModel?.maciactuallyally ?? ""]
+        viewModel.procutDetailInfo(parameters: parameters)
+    }
     
     private func uploadImageInfo(image: UIImage) {
         let parameters = ["donfold": "10",

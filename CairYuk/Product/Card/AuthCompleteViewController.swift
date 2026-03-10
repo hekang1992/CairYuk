@@ -225,7 +225,7 @@ class AuthCompleteViewController: BaseViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                getDetailInfo()
             })
             .disposed(by: disposeBag)
         
