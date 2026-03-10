@@ -61,7 +61,7 @@ class ProductViewController: BaseViewController {
         
         view.addSubview(bgView)
         bgView.snp.makeConstraints { make in
-            make.top.equalTo(headView.snp.bottom)
+            make.top.equalTo(headView.snp.bottom).offset(5.pix())
             make.left.right.bottom.equalToSuperview()
         }
         
