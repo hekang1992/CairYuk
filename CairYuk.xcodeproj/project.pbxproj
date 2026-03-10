@@ -12,6 +12,8 @@
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
 		735D118E2F5FADC000102F19 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118D2F5FADC000102F19 /* OrderEmptyView.swift */; };
 		735D11902F5FB0D200102F19 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118F2F5FB0D200102F19 /* OrderViewCell.swift */; };
+		735D11922F5FBF8B00102F19 /* ProductStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */; };
+		735D11942F5FC09200102F19 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11932F5FC09200102F19 /* ProductCardView.swift */; };
 		736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B52F5DAB9E0068A8DE /* BaseViewController.swift */; };
 		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
 		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
@@ -58,6 +60,8 @@
 		733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CairYuk.entitlements; sourceTree = "<group>"; };
 		735D118D2F5FADC000102F19 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		735D118F2F5FB0D200102F19 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
+		735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStepViewCell.swift; sourceTree = "<group>"; };
+		735D11932F5FC09200102F19 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		736883B52F5DAB9E0068A8DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 		736883B32F5DAB130068A8DE /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				735D11932F5FC09200102F19 /* ProductCardView.swift */,
+				735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */,
 				73A51A0C2F5F0223000644FB /* ProductViewController.swift */,
 			);
 			path = Product;
@@ -387,6 +393,7 @@
 				735D118E2F5FADC000102F19 /* OrderEmptyView.swift in Sources */,
 				736883D12F5DBD9D0068A8DE /* LanguageManager.swift in Sources */,
 				736E3F072F5EC2A9004BF7F4 /* HomeMinView.swift in Sources */,
+				735D11922F5FBF8B00102F19 /* ProductStepViewCell.swift in Sources */,
 				73A51A0D2F5F0223000644FB /* ProductViewController.swift in Sources */,
 				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
 				736E3F012F5EA9BC004BF7F4 /* PopAccountView.swift in Sources */,
@@ -407,6 +414,7 @@
 				736E3EFA2F5E9F40004BF7F4 /* SchemeURLHandler.swift in Sources */,
 				736883C42F5DB5C90068A8DE /* SecureUserManager.swift in Sources */,
 				736883C82F5DB9080068A8DE /* LoginView.swift in Sources */,
+				735D11942F5FC09200102F19 /* ProductCardView.swift in Sources */,
 				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,
 				736E3F032F5EB15A004BF7F4 /* PopDeleteAcView.swift in Sources */,
 				736E3EF62F5E91E5004BF7F4 /* CenterView.swift in Sources */,

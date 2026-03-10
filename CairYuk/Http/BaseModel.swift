@@ -27,7 +27,6 @@ class BaseModel: Codable {
         fatherarium = try? container.decode(fatherariumModel.self, forKey: .fatherarium)
     }
     
-    
 }
 
 class fatherariumModel: Codable {
@@ -38,6 +37,9 @@ class fatherariumModel: Codable {
     var publicfic: [publicficModel]?
     var cordacity: [cordacityModel]?
     var botanitor: String?
+    var baloarian: baloarianModel?
+    var listensive: [listensiveModel]?
+    var myxen: listensiveModel?
 }
 
 class attorneyeurModel: Codable {
@@ -68,4 +70,21 @@ class foldfishessModel: Codable {
     var onomat: String?
     var mammtreater: String?
     var salubrsure: String?
+}
+
+class baloarianModel: Codable {
+    var ventise: String?
+    var phasyform: String?
+    var maciactuallyally: String?
+    var acriestablish: String?
+    var plec: String?
+    var withoutess: String?
+}
+
+class listensiveModel: Codable {
+    var participantarian: String?
+    var spargenne: String?
+    var seeketic: String?
+    var arhitty: Int?
+    var emeuous: String?
 }
