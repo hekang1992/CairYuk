@@ -182,8 +182,6 @@ class ProductViewController: BaseViewController {
                 guard let self = self else { return }
                 if let stepModel, let cardModel  {
                     self.nextTapClick(stepModel: stepModel, cardModel: cardModel)
-                }else {
-                    
                 }
             })
             .disposed(by: disposeBag)
@@ -251,7 +249,14 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = listArray[indexPath.row]
-        
+        let type = model.arhitty ?? 0
+        if type == 1 {
+            self.clickTypeToNextVc(stepModel: model, cardModel: cardModel ?? baloarianModel())
+        }else {
+            if let stepModel, let cardModel  {
+                self.nextTapClick(stepModel: stepModel, cardModel: cardModel)
+            }
+        }
     }
 }
 
