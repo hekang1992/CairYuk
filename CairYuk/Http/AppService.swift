@@ -178,4 +178,22 @@ extension AppService {
     
 }
 
-
+extension AppService {
+    
+    static func orderListInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/botanitor",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}

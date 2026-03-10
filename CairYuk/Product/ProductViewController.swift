@@ -70,7 +70,7 @@ class ProductViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
         
-        viewModel.$ProductDetailModel
+        viewModel.$productDetailModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
                 guard let self, let model else { return }

@@ -30,8 +30,13 @@ class AppViewModel: ObservableObject {
     @Published var clickProductModel: BaseModel?
     @Published var clickProductMsg: String?
     
-    @Published var ProductDetailModel: BaseModel?
-    @Published var ProductDetailMsg: String?
+    @Published var productDetailModel: BaseModel?
+    @Published var productDetailMsg: String?
+    
+    @Published var orderListModel: BaseModel?
+    @Published var orderListMsg: String?
+    
+    
     
     func launchInfo(parameters: [String: Any]) {
         
@@ -206,11 +211,33 @@ extension AppViewModel {
             
             do {
                 
-                ProductDetailModel = try await AppService.productDetailInfo(parameters: parameters)
+                productDetailModel = try await AppService.productDetailInfo(parameters: parameters)
                 
             } catch {
                 
-                ProductDetailMsg = error.localizedDescription
+                productDetailMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func orderListlInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                orderListModel = try await AppService.orderListInfo(parameters: parameters)
+                
+            } catch {
+                
+                orderListMsg = error.localizedDescription
                 
             }
             
