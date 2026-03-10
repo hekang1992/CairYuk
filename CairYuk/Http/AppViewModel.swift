@@ -45,6 +45,9 @@ class AppViewModel: ObservableObject {
     
     @Published var saveCardModel: BaseModel?
     
+    @Published var personalModel: BaseModel?
+    @Published var savePersonalModel: BaseModel?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -307,6 +310,44 @@ extension AppViewModel {
             do {
                 
                 saveCardModel = try await AppService.saveCardInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func getPersonalInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                personalModel = try await AppService.getPersonalInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func savePersonalInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                savePersonalModel = try await AppService.savePersonalInfo(parameters: parameters)
                 
             } catch {
                 

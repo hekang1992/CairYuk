@@ -46,6 +46,7 @@ class fatherariumModel: Codable {
     var traveleous: String?
     var lucmomentair: String?
     var spherdom: String?
+    var ambrememberuous: [ambrememberuousModel]?
 }
 
 class attorneyeurModel: Codable {
@@ -106,4 +107,36 @@ class familianeityModel: Codable {
     var traveleous: String?
     var lucmomentair: String?
     var spherdom: String?
+}
+
+class ambrememberuousModel: Codable {
+    var participantarian: String?
+    var spargenne: String?
+    var securityair: String?
+    var governmentacle: String?
+    var amify: String?
+    var donfold: String?
+    var soundfy: String?
+    var petrsive: [petrsiveModel]?
+}
+
+class petrsiveModel: Codable {
+    var traveleous: String?
+    var donfold: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case traveleous, donfold
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let intValue = try? container.decode(Int.self, forKey: .donfold) {
+            donfold = String(intValue)
+        } else {
+            donfold = try? container.decode(String.self, forKey: .donfold)
+        }
+        
+        traveleous = try? container.decode(String.self, forKey: .traveleous)
+    }
 }

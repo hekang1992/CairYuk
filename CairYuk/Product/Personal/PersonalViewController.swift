@@ -57,6 +57,24 @@ class PersonalViewController: BaseViewController {
         return nextBtn
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.estimatedRowHeight = 80
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OneViewCell.self, forCellReuseIdentifier: "OneViewCell")
+        tableView.register(TwoViewCell.self, forCellReuseIdentifier: "TwoViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
@@ -87,10 +105,23 @@ class PersonalViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
+        bgView.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.toProductListVc()
         }
+        
+        viewModel.$personalModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+            }
+            .store(in: &cancellables)
         
         nextBtn
             .rx
@@ -104,5 +135,39 @@ class PersonalViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getListInfo()
+    }
+    
 }
 
+extension PersonalViewController {
+    
+    private func getListInfo() {
+        let parameters = ["dentacity": cardModel?.maciactuallyally ?? ""]
+        viewModel.getPersonalInfo(parameters: parameters)
+    }
+}
+
+extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView = UIView()
+        return headView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TwoViewCell", for: indexPath) as! TwoViewCell
+        cell.textLabel?.text = "\(indexPath.row)====="
+        return cell
+    }
+}

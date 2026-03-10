@@ -58,6 +58,8 @@
 		736E3F092F5EC2BC004BF7F4 /* HomeMaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */; };
 		736E3F0B2F5ECBF0004BF7F4 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736E3F0A2F5ECBF0004BF7F4 /* HomeCardView.swift */; };
 		73A51A0D2F5F0223000644FB /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A51A0C2F5F0223000644FB /* ProductViewController.swift */; };
+		73DF1D0A2F60410D00CB302C /* OneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D092F60410D00CB302C /* OneViewCell.swift */; };
+		73DF1D0C2F60411600CB302C /* TwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF1D0B2F60411600CB302C /* TwoViewCell.swift */; };
 		A9BDC0F3E9FB6DA6214EB3B6 /* Pods_CairYuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,8 @@
 		736E3F082F5EC2BC004BF7F4 /* HomeMaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMaxView.swift; sourceTree = "<group>"; };
 		736E3F0A2F5ECBF0004BF7F4 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		73A51A0C2F5F0223000644FB /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		73DF1D092F60410D00CB302C /* OneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneViewCell.swift; sourceTree = "<group>"; };
+		73DF1D0B2F60411600CB302C /* TwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewCell.swift; sourceTree = "<group>"; };
 		78511A3BCFA2D2A21C624DFD /* Pods-CairYuk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.debug.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.debug.xcconfig"; sourceTree = "<group>"; };
 		C7F63CF6A26C858ADF6F0FAC /* Pods_CairYuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CairYuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -214,6 +218,8 @@
 		735D11992F5FE1CB00102F19 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				73DF1D092F60410D00CB302C /* OneViewCell.swift */,
+				73DF1D0B2F60411600CB302C /* TwoViewCell.swift */,
 				735D11A22F5FF68300102F19 /* PersonalViewController.swift */,
 			);
 			path = Personal;
@@ -499,7 +505,9 @@
 				736883D62F5DC8170068A8DE /* NetworkManager.swift in Sources */,
 				735D11B12F60111E00102F19 /* TimeView.swift in Sources */,
 				736E3F032F5EB15A004BF7F4 /* PopDeleteAcView.swift in Sources */,
+				73DF1D0C2F60411600CB302C /* TwoViewCell.swift in Sources */,
 				736E3EF62F5E91E5004BF7F4 /* CenterView.swift in Sources */,
+				73DF1D0A2F60410D00CB302C /* OneViewCell.swift in Sources */,
 				736E3F052F5EB36D004BF7F4 /* H5ViewController.swift in Sources */,
 				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
 				735D11A32F5FF68300102F19 /* PersonalViewController.swift in Sources */,

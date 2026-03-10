@@ -272,3 +272,39 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func getPersonalInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/balosure",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func savePersonalInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/phant",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
