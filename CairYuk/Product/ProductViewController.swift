@@ -23,7 +23,7 @@ class ProductViewController: BaseViewController {
     
     private var cardModel: baloarianModel?
     
-    private var setpModel: listensiveModel?
+    private var stepModel: listensiveModel?
     
     private var listArray: [listensiveModel] = []
     
@@ -125,11 +125,12 @@ class ProductViewController: BaseViewController {
                 guard let self, let model else { return }
                 let securityair = model.securityair ?? ""
                 if ["0", "00"].contains(securityair) {
+                    
                     let cardModel = model.fatherarium?.baloarian
                     self.cardModel = cardModel
                     
                     let stepModel = model.fatherarium?.myxen
-                    self.setpModel = stepModel
+                    self.stepModel = stepModel
                     
                     let listArray = model.fatherarium?.listensive ?? []
                     self.listArray = listArray
@@ -149,6 +150,43 @@ class ProductViewController: BaseViewController {
                 self.tableView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
+        
+        
+        viewModel.$authCardModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let card = model.fatherarium?.actionproof?.botanitor ?? ""
+                    let face = model.fatherarium?.impactling?.botanitor ?? ""
+                    
+                    if card.isEmpty {
+                        return
+                    }
+                    
+                    if face.isEmpty {
+                        return
+                    }
+                    
+                    
+                }
+            }
+            .store(in: &cancellables)
+        
+        nextBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                if let stepModel, let cardModel  {
+                    self.nextTapClick(stepModel: stepModel, cardModel: cardModel)
+                }else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
         
     }
     
@@ -210,4 +248,28 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
         cell.model = model
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = listArray[indexPath.row]
+        
+    }
+}
+
+extension ProductViewController {
+    
+    private func nextTapClick(stepModel: listensiveModel, cardModel: baloarianModel) {
+        let type = stepModel.emeuous ?? ""
+        if type == "exampleie" {
+            getCardInfo()
+        }else {
+            self.clickTypeToNextVc(stepModel: stepModel, cardModel: cardModel)
+        }
+        
+    }
+    
+    private func getCardInfo() {
+        let parameters = ["dentacity": productID]
+        viewModel.authCardInfo(parameters: parameters)
+    }
+    
 }

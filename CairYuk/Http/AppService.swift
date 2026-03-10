@@ -197,3 +197,23 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func authCardInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.get(
+            url: "/old/electosity",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}

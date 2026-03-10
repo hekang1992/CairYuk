@@ -36,7 +36,8 @@ class AppViewModel: ObservableObject {
     @Published var orderListModel: BaseModel?
     @Published var orderListMsg: String?
     
-    
+    @Published var authCardModel: BaseModel?
+    @Published var authCardMsg: String?
     
     func launchInfo(parameters: [String: Any]) {
         
@@ -238,6 +239,28 @@ extension AppViewModel {
             } catch {
                 
                 orderListMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func authCardInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                authCardModel = try await AppService.authCardInfo(parameters: parameters)
+                
+            } catch {
+                
+                authCardMsg = error.localizedDescription
                 
             }
             

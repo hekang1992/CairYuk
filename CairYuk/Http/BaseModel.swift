@@ -40,6 +40,8 @@ class fatherariumModel: Codable {
     var baloarian: baloarianModel?
     var listensive: [listensiveModel]?
     var myxen: listensiveModel?
+    var actionproof: actionproofModel?
+    var impactling: actionproofModel?
 }
 
 class attorneyeurModel: Codable {
@@ -89,4 +91,15 @@ class listensiveModel: Codable {
     var arhitty: Int?
     var emeuous: String?
     var pteratory: String?
+}
+
+class actionproofModel: Codable {
+    var botanitor: String?
+    var familianeity: familianeityModel?
+}
+
+class familianeityModel: Codable {
+    var traveleous: String?
+    var lucmomentair: String?
+    var spherdom: String?
 }

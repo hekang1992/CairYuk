@@ -27,4 +27,32 @@ extension BaseViewController {
         self.navigationController?.pushViewController(h5Vc, animated: true)
     }
     
+    func clickTypeToNextVc(stepModel: listensiveModel, cardModel: baloarianModel) {
+        let type = stepModel.emeuous ?? ""
+        
+        switch type {
+        case "exampleie":
+            break
+            
+        case "zoain":
+            break
+            
+        case "noteable":
+            break
+            
+        case "common":
+            break
+            
+        case "major":
+            break
+            
+        case "":
+            break
+            
+        default:
+            break
+        }
+        
+    }
+    
 }

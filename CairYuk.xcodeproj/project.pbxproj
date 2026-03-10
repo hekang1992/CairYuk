@@ -14,6 +14,9 @@
 		735D11902F5FB0D200102F19 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118F2F5FB0D200102F19 /* OrderViewCell.swift */; };
 		735D11922F5FBF8B00102F19 /* ProductStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */; };
 		735D11942F5FC09200102F19 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11932F5FC09200102F19 /* ProductCardView.swift */; };
+		735D119B2F5FE1F800102F19 /* AuthCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */; };
+		735D119D2F5FE20200102F19 /* AuthFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */; };
+		735D119F2F5FE21600102F19 /* AuthCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */; };
 		736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B52F5DAB9E0068A8DE /* BaseViewController.swift */; };
 		736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B72F5DABB80068A8DE /* BaseNavigationController.swift */; };
 		736883BA2F5DABC90068A8DE /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736883B92F5DABC90068A8DE /* BaseTabBarController.swift */; };
@@ -62,6 +65,9 @@
 		735D118F2F5FB0D200102F19 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStepViewCell.swift; sourceTree = "<group>"; };
 		735D11932F5FC09200102F19 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
+		735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCardViewController.swift; sourceTree = "<group>"; };
+		735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFaceViewController.swift; sourceTree = "<group>"; };
+		735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCompleteViewController.swift; sourceTree = "<group>"; };
 		736883B52F5DAB9E0068A8DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		736883B72F5DABB80068A8DE /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		736883B92F5DABC90068A8DE /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,44 @@
 			path = CairYuk;
 			sourceTree = "<group>";
 		};
+		735D11952F5FE1B800102F19 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				735D119A2F5FE1F800102F19 /* AuthCardViewController.swift */,
+				735D119C2F5FE20200102F19 /* AuthFaceViewController.swift */,
+				735D119E2F5FE21600102F19 /* AuthCompleteViewController.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		735D11962F5FE1C100102F19 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		735D11972F5FE1C500102F19 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		735D11982F5FE1C800102F19 /* Work */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Work;
+			sourceTree = "<group>";
+		};
+		735D11992F5FE1CB00102F19 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
 		736883AE2F5DAB080068A8DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +258,11 @@
 				735D11932F5FC09200102F19 /* ProductCardView.swift */,
 				735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */,
 				73A51A0C2F5F0223000644FB /* ProductViewController.swift */,
+				735D11952F5FE1B800102F19 /* Card */,
+				735D11992F5FE1CB00102F19 /* Personal */,
+				735D11982F5FE1C800102F19 /* Work */,
+				735D11972F5FE1C500102F19 /* Contact */,
+				735D11962F5FE1C100102F19 /* Bank */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -399,10 +448,12 @@
 				736E3F012F5EA9BC004BF7F4 /* PopAccountView.swift in Sources */,
 				736E3EF82F5E96A5004BF7F4 /* CenterViewCell.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
+				735D119F2F5FE21600102F19 /* AuthCompleteViewController.swift in Sources */,
 				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */,
+				735D119B2F5FE1F800102F19 /* AuthCardViewController.swift in Sources */,
 				736E3F0B2F5ECBF0004BF7F4 /* HomeCardView.swift in Sources */,
 				736883C02F5DAC500068A8DE /* OrderViewController.swift in Sources */,
 				736883DE2F5DCD530068A8DE /* DeviceInfoCollector.swift in Sources */,
@@ -421,6 +472,7 @@
 				736E3F052F5EB36D004BF7F4 /* H5ViewController.swift in Sources */,
 				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
 				736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */,
+				735D119D2F5FE20200102F19 /* AuthFaceViewController.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,
 				735D11902F5FB0D200102F19 /* OrderViewCell.swift in Sources */,
 				736883BE2F5DAC490068A8DE /* HomeViewController.swift in Sources */,
