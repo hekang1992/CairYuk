@@ -7,8 +7,23 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ProductStepViewCell: UITableViewCell {
+    
+    var model: listensiveModel? {
+        didSet {
+            guard let model = model else { return }
+            let logoUrl = model.seeketic ?? ""
+            logoImageView.kf.setImage(with: URL(string: logoUrl))
+            nameLabel.text = model.participantarian ?? ""
+            typeLabel.text = model.pteratory ?? ""
+            
+            let arhitty = model.arhitty ?? 0
+            typeView.backgroundColor = arhitty == 1 ? UIColor.init(hexString: "#ECF0FF") : UIColor.init(hexString: "#3F6EFF")
+            typeImageView.image = arhitty == 1 ? UIImage(named: "cg_image_icon") : UIImage(named: "rithy_ic_a_image")
+        }
+    }
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
@@ -48,14 +63,32 @@ class ProductStepViewCell: UITableViewCell {
         whiteView.backgroundColor = UIColor.init(hexString: "#F8F9FB")
         return whiteView
     }()
+    
+    lazy var typeView: UIView = {
+        let typeView = UIView()
+        typeView.layer.cornerRadius = 6
+        typeView.layer.masksToBounds = true
+        typeView.backgroundColor = UIColor.init(hexString: "#ECF0FF")
+        return typeView
+    }()
+    
+    lazy var typeImageView: UIImageView = {
+        let typeImageView = UIImageView()
+        typeImageView.contentMode = .center
+        return typeImageView
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
+        selectionStyle = .none
         contentView.addSubview(grayView)
         grayView.addSubview(whiteView)
         whiteView.addSubview(logoImageView)
         whiteView.addSubview(nameLabel)
         whiteView.addSubview(typeLabel)
+        whiteView.addSubview(typeView)
+        typeView.addSubview(typeImageView)
         grayView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
@@ -70,6 +103,24 @@ class ProductStepViewCell: UITableViewCell {
             make.width.height.equalTo(57)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(8)
+        }
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.left.equalTo(logoImageView.snp.right).offset(16)
+            make.height.equalTo(20)
+        }
+        typeLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(8)
+            make.left.equalTo(logoImageView.snp.right).offset(16)
+            make.height.equalTo(20)
+        }
+        typeView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-16)
+            make.width.height.equalTo(40)
+        }
+        typeImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     

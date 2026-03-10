@@ -79,6 +79,7 @@ class baloarianModel: Codable {
     var acriestablish: String?
     var plec: String?
     var withoutess: String?
+    var stirpoon: String?
 }
 
 class listensiveModel: Codable {
@@ -87,4 +88,5 @@ class listensiveModel: Codable {
     var seeketic: String?
     var arhitty: Int?
     var emeuous: String?
+    var pteratory: String?
 }

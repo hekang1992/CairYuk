@@ -23,7 +23,9 @@ class ProductViewController: BaseViewController {
     
     private var cardModel: baloarianModel?
     
-//    private var cardModel: baloarianModel?
+    private var setpModel: listensiveModel?
+    
+    private var listArray: [listensiveModel] = []
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -125,6 +127,13 @@ class ProductViewController: BaseViewController {
                 if ["0", "00"].contains(securityair) {
                     let cardModel = model.fatherarium?.baloarian
                     self.cardModel = cardModel
+                    
+                    let stepModel = model.fatherarium?.myxen
+                    self.setpModel = stepModel
+                    
+                    let listArray = model.fatherarium?.listensive ?? []
+                    self.listArray = listArray
+                    
                     let nextStr = cardModel?.withoutess ?? ""
                     nextBtn.setTitle(nextStr, for: .normal)
                 }
@@ -192,12 +201,13 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.listArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductStepViewCell", for: indexPath) as! ProductStepViewCell
-        cell.textLabel?.text = "\(indexPath.row)====="
+        let model = listArray[indexPath.row]
+        cell.model = model
         return cell
     }
 }
