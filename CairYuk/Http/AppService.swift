@@ -5,6 +5,8 @@
 //  Created by hekang on 2026/3/8.
 //
 
+import UIKit
+
 class AppService {
     
     static func launchInfo(parameters: [String: Any]) async throws -> BaseModel? {
@@ -211,6 +213,27 @@ extension AppService {
         let result: BaseModel = try await NetworkManager.shared.get(
             url: "/old/electosity",
             parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+extension AppService {
+    
+    static func uploadFrontCardInfo(parameters: [String: Any], images: [UIImage]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.postWithImage(
+            url: "/old/eye",
+            parameters: parameters,
+            images: images
         )
         
         return result

@@ -116,7 +116,7 @@ final class NetworkManager {
                     
                     for (index, image) in images.enumerated() {
                         
-                        if let data = image.jpegData(compressionQuality: 0.8) {
+                        if let data = image.jpegData(compressionQuality: 0.9) {
                             
                             formData.append(
                                 data,

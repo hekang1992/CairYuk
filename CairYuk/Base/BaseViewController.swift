@@ -49,19 +49,34 @@ extension BaseViewController {
         
         switch type {
         case "exampleie":
-            break
+            let completeVc = AuthCompleteViewController()
+            completeVc.stepModel = stepModel
+            completeVc.cardModel = cardModel
+            self.navigationController?.pushViewController(completeVc, animated: true)
             
         case "zoain":
-            break
+            let listVc = PersonalViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "noteable":
-            break
+            let listVc = WorkViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "common":
-            break
+            let listVc = ContactViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "major":
-            break
+            let listVc = BankViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "":
             break

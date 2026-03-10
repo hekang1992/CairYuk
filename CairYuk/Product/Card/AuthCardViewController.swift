@@ -19,6 +19,8 @@ class AuthCardViewController: BaseViewController {
     
     private var cancellables = Set<AnyCancellable>()
     
+    private var cameraManager: CameraManager?
+    
     var cardModel: baloarianModel?
     
     var stepModel: listensiveModel? {
@@ -136,17 +138,70 @@ class AuthCardViewController: BaseViewController {
             self.toProductListVc()
         }
         
+        clickBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                cameraManager?.openCamera()
+            })
+            .disposed(by: disposeBag)
+        
         nextBtn
             .rx
             .tap
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                cameraManager?.openCamera()
             })
             .disposed(by: disposeBag)
+        
+        cameraManager = CameraManager(
+            presentingViewController: self,
+            initialCameraPosition: .rear
+        )
+        
+        cameraManager?.photoCaptureComplete = { [weak self] image in
+            if let self, let image {
+                self.uploadImageInfo(image: image)
+            }
+        }
+        
+        viewModel.$uploadFrontCardModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let wayine = model.fatherarium?.wayine ?? 1
+                    if wayine == 0 {
+                        let faceVc = AuthFaceViewController()
+                        faceVc.stepModel = stepModel
+                        faceVc.cardModel = cardModel
+                        self.navigationController?.pushViewController(faceVc, animated: true)
+                    }else {
+                        
+                    }
+                }else {
+                    ToastManager.showOnWindow(model.northature ?? "")
+                }
+            }
+            .store(in: &cancellables)
         
     }
     
 }
 
+extension AuthCardViewController {
+    
+    private func uploadImageInfo(image: UIImage) {
+        let parameters = ["donfold": "11",
+                          "lenade": "2",
+                          "nuncicanitude": "",
+                          "trudaceous": "1"]
+        viewModel.uploadFrontCardInfo(parameters: parameters, images: [image])
+    }
+    
+}

@@ -151,7 +151,6 @@ class ProductViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
-        
         viewModel.$authCardModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in

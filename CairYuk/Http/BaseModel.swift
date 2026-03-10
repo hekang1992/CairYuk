@@ -42,6 +42,7 @@ class fatherariumModel: Codable {
     var myxen: listensiveModel?
     var actionproof: actionproofModel?
     var impactling: actionproofModel?
+    var wayine: Int?
 }
 
 class attorneyeurModel: Codable {

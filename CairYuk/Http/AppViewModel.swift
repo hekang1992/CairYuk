@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class AppViewModel: ObservableObject {
     
@@ -38,6 +39,10 @@ class AppViewModel: ObservableObject {
     
     @Published var authCardModel: BaseModel?
     @Published var authCardMsg: String?
+    
+    @Published var uploadFrontCardModel: BaseModel?
+    @Published var uploadFrontCardMsg: String?
+    
     
     func launchInfo(parameters: [String: Any]) {
         
@@ -261,6 +266,28 @@ extension AppViewModel {
             } catch {
                 
                 authCardMsg = error.localizedDescription
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func uploadFrontCardInfo(parameters: [String: Any], images: [UIImage]) {
+        
+        Task {
+            
+            do {
+                
+                uploadFrontCardModel = try await AppService.uploadFrontCardInfo(parameters: parameters, images: images)
+                
+            } catch {
+                
+                uploadFrontCardMsg = error.localizedDescription
                 
             }
             
