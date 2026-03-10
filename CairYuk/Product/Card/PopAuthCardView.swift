@@ -272,5 +272,40 @@ extension PopAuthCardView {
                 self.sureBlock?(name, number, time)
             })
             .disposed(by: disposeBag)
+        
+        threeBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.showTimeView(time: threeTextFiled.text ?? "")
+            })
+            .disposed(by: disposeBag)
+        
     }
+}
+
+extension PopAuthCardView {
+    
+    private func showTimeView(time: String) {
+        
+        let timeView = TimeView(frame: .zero)
+        
+        timeView.setDate(from: time)
+        
+        timeView.onConfirm = { dateString in
+            print("选择的日期: \(dateString)")
+            
+        }
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.addSubview(timeView)
+            timeView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.size.equalTo(CGSize(width: 340.pix(), height: 350.pix()))
+            }
+        }
+    }
+    
 }

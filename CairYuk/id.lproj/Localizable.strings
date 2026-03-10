@@ -41,3 +41,7 @@
 "Please enter your name" = "Silakan masukkan nama Anda";
 "Please enter your ID number" = "Silakan masukkan nomor identitas Anda";
 "Please enter your birthday" = "Silakan masukkan tanggal lahir Anda";
+"Select date" = "Pilih tanggal";
+"Day" = "Hari";
+"Month" = "Bulan";
+"Year" = "Tahun";
