@@ -225,7 +225,10 @@ extension PersonalViewController {
             }
         }
         
-        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        let alertVc = TYAlertController(alert: popView,
+                                        preferredStyle: .alert,
+                                        transitionAnimation: .scaleFade)
+        
         self.present(alertVc!, animated: true)
         
         popView.cancelBlock = { [weak self] in
