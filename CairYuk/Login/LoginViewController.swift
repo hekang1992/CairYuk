@@ -19,11 +19,11 @@ class LoginViewController: BaseViewController {
     
     private var countdownTimer: Timer?
     
-    private let location = AppLocationManager()
-    
     private var onetime: String = ""
     
     private var twotime: String = ""
+    
+    private let location = AppLocationManager()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()

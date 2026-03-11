@@ -15,7 +15,13 @@ import TYAlertController
 
 class AuthCardViewController: BaseViewController {
     
+    private var onetime: String = ""
+    
+    private var twotime: String = ""
+    
     private var cameraManager: CameraManager?
+    
+    private let location = AppLocationManager()
     
     var cardModel: baloarianModel?
     
@@ -80,6 +86,8 @@ class AuthCardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
+        
+        location.startLocation { result, error in }
         
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
@@ -173,6 +181,18 @@ class AuthCardViewController: BaseViewController {
                 if ["0", "00"].contains(securityair) {
                     let wayine = model.fatherarium?.wayine ?? 1
                     if wayine == 0 {
+                        
+                        Task {
+                            try? await Task.sleep(nanoseconds: 2_000_000_000)
+                            let productID = self.cardModel?.maciactuallyally ?? ""
+                            let OrderID = self.cardModel?.plec ?? ""
+                            self.followInfo(step: "2",
+                                            productID: productID,
+                                            OrderID: OrderID,
+                                            starttime: self.onetime,
+                                            endtime: self.twotime)
+                        }
+                        
                         let faceVc = AuthFaceViewController()
                         faceVc.stepModel = stepModel
                         faceVc.cardModel = cardModel
@@ -225,20 +245,36 @@ class AuthCardViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
-        viewModel.$saveCardModel.receive(on: DispatchQueue.main).sink { [weak self] model in
-            guard let self, let model else { return }
-            let securityair = model.securityair ?? ""
-            if ["0", "00"].contains(securityair) {
-                self.dismiss(animated: true) {
-                    let faceVc = AuthFaceViewController()
-                    faceVc.stepModel = self.stepModel
-                    faceVc.cardModel = self.cardModel
-                    self.navigationController?.pushViewController(faceVc, animated: true)
+        viewModel.$saveCardModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
+                        let productID = self.cardModel?.maciactuallyally ?? ""
+                        let OrderID = self.cardModel?.plec ?? ""
+                        self.followInfo(step: "2",
+                                        productID: productID,
+                                        OrderID: OrderID,
+                                        starttime: self.onetime,
+                                        endtime: self.twotime)
+                    }
+                    
+                    self.dismiss(animated: true) {
+                        let faceVc = AuthFaceViewController()
+                        faceVc.stepModel = self.stepModel
+                        faceVc.cardModel = self.cardModel
+                        self.navigationController?.pushViewController(faceVc, animated: true)
+                    }
+                }else {
+                    ToastManager.showOnWindow(model.northature ?? "")
                 }
-            }else {
-                ToastManager.showOnWindow(model.northature ?? "")
-            }
-        }.store(in: &cancellables)
+            }.store(in: &cancellables)
+        
+        onetime = self.getFollowTime()
         
     }
     
@@ -247,6 +283,7 @@ class AuthCardViewController: BaseViewController {
 extension AuthCardViewController {
     
     private func uploadImageInfo(image: UIImage) {
+        twotime = self.getFollowTime()
         let parameters = ["donfold": "11",
                           "lenade": "2",
                           "nuncicanitude": "",

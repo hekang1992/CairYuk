@@ -17,23 +17,43 @@ class BaseViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    private var parameters: [String: String] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        viewModel.$applyOrderModel.receive(on: DispatchQueue.main).sink { [weak self] model in
-            guard let self, let model else { return }
-            let securityair = model.securityair ?? ""
-            if ["0", "00"].contains(securityair) {
-                let pageUrl = model.fatherarium?.botanitor ?? ""
-                if pageUrl.hasPrefix(Scheme_URL) {
-                    SchemeURLHandler.shared.handleURL(pageUrl)
-                }else {
-                    self.goWebVc(pageUrl: pageUrl)
+        viewModel.$applyOrderModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let pageUrl = model.fatherarium?.botanitor ?? ""
+                    if pageUrl.hasPrefix(Scheme_URL) {
+                        SchemeURLHandler.shared.handleURL(pageUrl)
+                    }else {
+                        self.goWebVc(pageUrl: pageUrl)
+                    }
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
+                        
+                        let productID = self.parameters["falcry"] ?? ""
+                        
+                        let OrderID = self.parameters["itudeacious"] ?? ""
+                        
+                        self.followInfo(step: "8",
+                                        productID: productID,
+                                        OrderID: OrderID,
+                                        starttime: String(Int(Date().timeIntervalSince1970)),
+                                        endtime: String(Int(Date().timeIntervalSince1970)))
+                    }
+                    
                 }
             }
-        }.store(in: &cancellables)
+            .store(in: &cancellables)
         
     }
 }
@@ -124,6 +144,7 @@ extension BaseViewController {
         case "":
             let parameters = ["itudeacious": cardModel.plec ?? "",
                               "falcry": cardModel.maciactuallyally ?? ""]
+            self.parameters = parameters
             viewModel.applyOrderInfo(parameters: parameters)
             
         default:

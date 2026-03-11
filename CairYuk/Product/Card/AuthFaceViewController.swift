@@ -15,7 +15,13 @@ import TYAlertController
 
 class AuthFaceViewController: BaseViewController {
     
+    private var onetime: String = ""
+    
+    private var twotime: String = ""
+    
     private var cameraManager: CameraManager?
+    
+    private let location = AppLocationManager()
     
     var cardModel: baloarianModel?
     
@@ -79,6 +85,9 @@ class AuthFaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        location.startLocation { result, error in }
+        
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
         
         view.addSubview(bgImageView)
@@ -174,6 +183,18 @@ class AuthFaceViewController: BaseViewController {
                 let securityair = model.securityair ?? ""
                 if ["0", "00"].contains(securityair) {
                     self.getDetailInfo()
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
+                        let productID = self.cardModel?.maciactuallyally ?? ""
+                        let OrderID = self.cardModel?.plec ?? ""
+                        self.followInfo(step: "3",
+                                        productID: productID,
+                                        OrderID: OrderID,
+                                        starttime: self.onetime,
+                                        endtime: self.twotime)
+                    }
+                    
                 }else {
                     ToastManager.showOnWindow(model.northature ?? "")
                 }
@@ -199,6 +220,8 @@ class AuthFaceViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
+        onetime = self.getFollowTime()
+        
     }
     
 }
@@ -211,6 +234,9 @@ extension AuthFaceViewController {
     }
     
     private func uploadImageInfo(image: UIImage) {
+        
+        twotime = self.getFollowTime()
+        
         let parameters = ["donfold": "10",
                           "lenade": "2",
                           "nuncicanitude": "",

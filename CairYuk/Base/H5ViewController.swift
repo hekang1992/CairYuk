@@ -10,11 +10,12 @@ import WebKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import StoreKit
 
 class H5ViewController: BaseViewController {
     
     var pageUrl: String = ""
-        
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_head_bg_image")
@@ -64,6 +65,8 @@ class H5ViewController: BaseViewController {
         return progressView
     }()
     
+    private let location = AppLocationManager()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +85,7 @@ class H5ViewController: BaseViewController {
             }
         }
     }
-        
+    
     private func setupUI() {
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
@@ -147,33 +150,60 @@ class H5ViewController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
-        
+    
     private func loadWebView() {
         guard let url = self.createRequestUrl(baseUrl: pageUrl) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }
-        
+    
     private func handleH5Call(methodName: String, body: Any?) {
         switch methodName {
         case "stratally":
-            // 风控埋点
-            break
+            
+            location.startLocation { result, error in }
+            
+            let listArray = body as? [String] ?? []
+            let productID = listArray.first ?? ""
+            let orderID = listArray.last ?? ""
+            let time = String(Int(Date().timeIntervalSince1970))
+            
+            Task {
+                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                
+                self.followInfo(step: "9",
+                                productID: productID,
+                                OrderID: orderID,
+                                starttime: time,
+                                endtime: time)
+            }
+            
         case "front":
-            // 跳转原生或者H5
-            break
+            guard let pageUrl = body as? String, !pageUrl.isEmpty else {
+                return
+            }
+            
+            if pageUrl.hasPrefix(Scheme_URL) {
+                SchemeURLHandler.shared.handleURL(pageUrl)
+            }else {
+                self.pageUrl = pageUrl
+                self.loadWebView()
+            }
+            
         case "populfy":
-            // 关闭当前H5
-            break
+            self.navigationController?.popViewController(animated: true)
+            
         case "behindality":
-            // 回到App首页
-            break
+            self.switchToMainTabBar()
+            
         case "limincollectionial":
-            // H5页面里的拨打电话
-            break
+            if let body = body {
+                self.toEmail(body: body)
+            }
+            
         case "tersTVo":
-            // 调用App应用评分
-            break
+            self.rankStore()
+            
         default:
             break
         }
@@ -187,7 +217,7 @@ extension H5ViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        // 页面加载完成
+        progressView.isHidden = true
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -202,6 +232,7 @@ extension H5ViewController: WKScriptMessageHandler {
 }
 
 extension H5ViewController {
+    
     private func switchToMainTabBar() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else { return }
@@ -211,6 +242,31 @@ extension H5ViewController {
         UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve) {
             window.rootViewController = tabBarController
         }
+    }
+    
+    func rankStore() {
+        guard #available(iOS 14.0, *),
+              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return
+        }
+        SKStoreReviewController.requestReview(in: windowScene)
+    }
+    
+    private func toEmail(body: Any) {
+        guard let email = body as? String, !email.isEmpty else {
+            return
+        }
+        
+        let phone = SecureUserManager.getPhone() ?? ""
+        let body = "Cair Yuk: \(phone)"
+        
+        guard let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let emailURL = URL(string: "mailto:\(email)?body=\(encodedBody)"),
+              UIApplication.shared.canOpenURL(emailURL) else {
+            return
+        }
+        
+        UIApplication.shared.open(emailURL)
     }
     
     func createRequestUrl(baseUrl: String) -> URL? {

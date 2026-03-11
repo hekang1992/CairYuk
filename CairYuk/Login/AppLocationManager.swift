@@ -90,8 +90,8 @@ extension AppLocationManager: CLLocationManagerDelegate {
 
         guard let location = locations.last else { return }
         
-        let latNumber = String(location.coordinate.latitude)
-        let longNumber = String(location.coordinate.longitude)
+        let latNumber = String(format: "%.8f", location.coordinate.latitude)
+        let longNumber = String(format: "%.8f", location.coordinate.longitude)
         
         UserDefaults.standard.set(latNumber, forKey: "latNumber")
         UserDefaults.standard.set(longNumber, forKey: "longNumber")

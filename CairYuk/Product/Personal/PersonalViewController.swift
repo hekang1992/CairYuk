@@ -15,6 +15,12 @@ import TYAlertController
 
 class PersonalViewController: BaseViewController {
     
+    private var onetime: String = ""
+    
+    private var twotime: String = ""
+    
+    private let location = AppLocationManager()
+    
     var cardModel: baloarianModel?
     
     var stepModel: listensiveModel? {
@@ -81,6 +87,11 @@ class PersonalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        location.startLocation { result, error in }
+        
+        onetime = self.getFollowTime()
+        
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
         
         view.addSubview(bgImageView)
@@ -148,6 +159,18 @@ class PersonalViewController: BaseViewController {
                 let securityair = model.securityair ?? ""
                 if ["0", "00"].contains(securityair) {
                     self.getDetailInfo()
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
+                        let productID = self.cardModel?.maciactuallyally ?? ""
+                        let OrderID = self.cardModel?.plec ?? ""
+                        self.followInfo(step: "4",
+                                        productID: productID,
+                                        OrderID: OrderID,
+                                        starttime: self.onetime,
+                                        endtime: self.twotime)
+                    }
+                    
                 }else {
                     ToastManager.showOnWindow(model.northature ?? "")
                 }
@@ -286,6 +309,8 @@ extension PersonalViewController {
 extension PersonalViewController {
     
     private func saveInfo() {
+        
+        twotime = self.getFollowTime()
         
         var parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
                           "syfication": IDFVKeychainManager.shared.getIDFV()]

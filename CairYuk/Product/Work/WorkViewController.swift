@@ -15,6 +15,12 @@ import TYAlertController
 
 class WorkViewController: BaseViewController {
     
+    private var onetime: String = ""
+    
+    private var twotime: String = ""
+    
+    private let location = AppLocationManager()
+    
     var cardModel: baloarianModel?
     
     var stepModel: listensiveModel? {
@@ -148,6 +154,18 @@ class WorkViewController: BaseViewController {
                 let securityair = model.securityair ?? ""
                 if ["0", "00"].contains(securityair) {
                     self.getDetailInfo()
+                    
+                    Task {
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
+                        let productID = self.cardModel?.maciactuallyally ?? ""
+                        let OrderID = self.cardModel?.plec ?? ""
+                        self.followInfo(step: "5",
+                                        productID: productID,
+                                        OrderID: OrderID,
+                                        starttime: self.onetime,
+                                        endtime: self.twotime)
+                    }
+                    
                 }else {
                     ToastManager.showOnWindow(model.northature ?? "")
                 }
@@ -184,6 +202,10 @@ class WorkViewController: BaseViewController {
                 self.saveInfo()
             })
             .disposed(by: disposeBag)
+        
+        location.startLocation { result, error in }
+        
+        onetime = self.getFollowTime()
         
     }
     
@@ -286,6 +308,8 @@ extension WorkViewController {
 extension WorkViewController {
     
     private func saveInfo() {
+        
+        twotime = self.getFollowTime()
         
         var parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
                           "syfication": IDFVKeychainManager.shared.getIDFV()]
