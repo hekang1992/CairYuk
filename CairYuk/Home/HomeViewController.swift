@@ -54,10 +54,12 @@ class HomeViewController: BaseViewController {
                     } else {
                         self.minView.isHidden = true
                         self.maxView.isHidden = false
+                        self.maxView.modelArray = modelArray
+                        self.maxView.tableView.reloadData()
                     }
                     
                 }
-                
+                self.maxView.tableView.mj_header?.endRefreshing()
                 self.minView.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
@@ -86,6 +88,11 @@ class HomeViewController: BaseViewController {
         }
         
         self.minView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            getHomeInfo()
+        })
+        
+        self.maxView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             getHomeInfo()
         })

@@ -24,6 +24,12 @@ class HomeCardView: UIView {
             oneLabel.text = model.opisthperiodcy ?? ""
             twoLabel.text = model.representic ?? ""
             applyBtn.setTitle(model.withoutess ?? "", for: .normal)
+            
+            let logoUrl = model.recentlyian ?? ""
+            logoImageView.kf.setImage(with: URL(string: logoUrl))
+            
+            rateBtn.setTitle(model.onomat ?? "", for: .normal)
+            dayBtn.setTitle(model.salubrsure ?? "", for: .normal)
         }
     }
     
@@ -83,6 +89,37 @@ class HomeCardView: UIView {
         return tapClickBtn
     }()
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    lazy var rateBtn: UIButton = {
+        let rateBtn = UIButton(type: .custom)
+        rateBtn.isEnabled = false
+        rateBtn.setImage(UIImage(named: "Icon_lea_image"), for: .normal)
+        rateBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        rateBtn.setTitleColor(.black, for: .normal)
+        rateBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        rateBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        return rateBtn
+    }()
+    
+    lazy var dayBtn: UIButton = {
+        let dayBtn = UIButton(type: .custom)
+        dayBtn.isEnabled = false
+        dayBtn.setImage(UIImage(named: "Icon_day_image"), for: .normal)
+        dayBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        dayBtn.setTitleColor(.black, for: .normal)
+        dayBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        dayBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        return dayBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
@@ -138,6 +175,15 @@ class HomeCardView: UIView {
             make.edges.equalToSuperview()
         }
         
+        rateImageView.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.left.right.equalToSuperview().inset(10.pix())
+        }
+        
+        stackView.addArrangedSubview(rateBtn)
+        stackView.addArrangedSubview(dayBtn)
+        
         bindTap()
     }
     
@@ -159,7 +205,8 @@ extension HomeCardView {
                 guard let self, let model else { return }
                 let productID = String(model.maciactuallyally ?? 0)
                 self.tapBlock?(productID)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
     }
     
