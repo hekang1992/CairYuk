@@ -154,6 +154,35 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.modelArray.count - 1 == section  {
+            return 35
+        }else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.modelArray.count - 1 == section  {
+            let headView = UIView()
+            let nameLabel = UILabel()
+            nameLabel.text = "Produk"
+            nameLabel.textAlignment = .center
+            nameLabel.textColor = .black
+            nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            headView.addSubview(nameLabel)
+            nameLabel.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.left.equalToSuperview()
+                make.centerX.equalToSuperview()
+                make.height.equalTo(20)
+            }
+            return headView
+        }else {
+            return nil
+        }
+    }
 
 }
 

@@ -88,7 +88,7 @@ class OrderViewCell: UITableViewCell {
         let typeLabel = PaddingLabel()
         typeLabel.textAlignment = .center
         typeLabel.textColor = .white
-        typeLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        typeLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         typeLabel.layer.cornerRadius = 14
         typeLabel.layer.masksToBounds = true
         return typeLabel
