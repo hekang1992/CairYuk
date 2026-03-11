@@ -12,73 +12,106 @@ import RxCocoa
 
 class ClickCellAlertView: UIView {
     
+    // MARK: - Public Properties
     var cancelBlock: (() -> Void)?
-    
     var saveBlock: ((petrsiveModel) -> Void)?
     
-    private var currentSelectedIndex: Int? = nil
-    
+    // MARK: - Private Properties
+    private var currentSelectedIndex: Int?
     private let disposeBag = DisposeBag()
-    
     var modelArray: [petrsiveModel]?
     
-    lazy var bgImageView: UIImageView = {
-        let bgImageView = UIImageView()
-        bgImageView.image = UIImage(named: "ncp_a_d_image")
-        bgImageView.isUserInteractionEnabled = true
-        return bgImageView
+    // MARK: - UI Components
+    private lazy var bgImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "ncp_a_d_image")
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }()
     
-    lazy var cancelBtn: UIButton = {
-        let cancelBtn = UIButton(type: .custom)
-        return cancelBtn
+    private lazy var cancelBtn: UIButton = {
+        let button = UIButton(type: .custom)
+        return button
     }()
     
     lazy var nameLabel: UILabel = {
-        let nameLabel = UILabel()
-        nameLabel.textAlignment = .left
-        nameLabel.textColor = .black
-        nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        return nameLabel
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
     }()
     
-    lazy var confirmBtn: UIButton = {
-        let confirmBtn = UIButton(type: .custom)
-        confirmBtn.setTitle("Confirm".localized, for: .normal)
-        confirmBtn.setTitleColor(UIColor.white, for: .normal)
-        confirmBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        confirmBtn.setBackgroundImage(UIImage(named: "con_a_bt_image"), for: .normal)
-        confirmBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        return confirmBtn
+    private lazy var confirmBtn: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Confirm".localized, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        button.setBackgroundImage(UIImage(named: "con_a_bt_image"), for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 12.pix(), right: 0)
+        return button
     }()
     
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.estimatedRowHeight = 80
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        tableView.layer.cornerRadius = 16
-        tableView.layer.masksToBounds = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(BlueViewCell.self, forCellReuseIdentifier: BlueViewCell.identifier)
+        
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
         return tableView
     }()
     
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
+        setupBindings()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    func configure(with models: [petrsiveModel]?, selectedIndex: Int? = nil) {
+        self.modelArray = models
+        self.currentSelectedIndex = selectedIndex
+        tableView.reloadData()
+    }
+    
+    func selectIndex(_ index: Int?) {
+        guard let models = modelArray, !models.isEmpty else { return }
+        
+        if let index = index, index >= 0 && index < models.count {
+            currentSelectedIndex = index
+        } else {
+            currentSelectedIndex = nil
+        }
+        
+        tableView.reloadData()
+    }
+    
+    // MARK: - Private Methods
+    private func setupUI() {
         addSubview(bgImageView)
         bgImageView.addSubview(cancelBtn)
         bgImageView.addSubview(nameLabel)
         bgImageView.addSubview(confirmBtn)
         bgImageView.addSubview(tableView)
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         bgImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 343.pix(), height: 537.pix()))
@@ -97,7 +130,7 @@ class ClickCellAlertView: UIView {
         }
         
         confirmBtn.snp.makeConstraints { make in
-            make.bottom.equalTo(cancelBtn.snp.top).offset(-32.pix())
+            make.bottom.equalTo(cancelBtn.snp.top).offset(-35.pix())
             make.centerX.equalToSuperview()
             make.width.equalTo(261.pix())
             make.height.equalTo(65.pix())
@@ -108,7 +141,9 @@ class ClickCellAlertView: UIView {
             make.left.right.equalToSuperview()
             make.bottom.equalTo(confirmBtn.snp.top).offset(-5.pix())
         }
-        
+    }
+    
+    private func setupBindings() {
         cancelBtn.rx.tap
             .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
@@ -116,73 +151,50 @@ class ClickCellAlertView: UIView {
             })
             .disposed(by: disposeBag)
         
-        confirmBtn
-            .rx
-            .tap
+        confirmBtn.rx.tap
             .throttle(.milliseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
-                guard let self = self else { return }
-                if currentSelectedIndex == nil {
-                    ToastManager.showOnWindow("Please select one item".localized)
-                    return
-                }
-                if let modelArray = modelArray, let currentSelectedIndex = currentSelectedIndex {
-                    self.saveBlock?(modelArray[currentSelectedIndex])
-                }
+                self?.handleConfirmTap()
             })
             .disposed(by: disposeBag)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func selectIndex(_ index: Int?) {
-        guard let modelArray = modelArray, modelArray.count > 0 else { return }
-        
-        if let index = index, index >= 0 && index < modelArray.count {
-            currentSelectedIndex = index
-        } else {
-            currentSelectedIndex = nil
+    private func handleConfirmTap() {
+        guard let selectedIndex = currentSelectedIndex else {
+            ToastManager.showOnWindow("Please select one item".localized)
+            return
         }
         
-        tableView.reloadData()
+        guard let models = modelArray, selectedIndex < models.count else { return }
+        
+        saveBlock?(models[selectedIndex])
     }
     
-}
-
-extension ClickCellAlertView: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 12.pix()
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.modelArray?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+    private func configureCell(_ cell: BlueViewCell, at indexPath: IndexPath) {
+        guard let model = modelArray?[indexPath.row] else { return }
         
-        cell.contentView.backgroundColor = .clear
-        
-        let model = self.modelArray?[indexPath.row]
-        
-        cell.textLabel?.text = model?.traveleous ?? ""
-        
-        cell.textLabel?.textAlignment = .center
+        cell.nameLabel.text = model.traveleous
         
         let isSelected = (currentSelectedIndex == indexPath.row)
         
-        cell.backgroundColor = isSelected ? UIColor.init(hexString: "#3F6EFF") : UIColor.white
-        
-        cell.layer.cornerRadius = 12
-        cell.layer.masksToBounds = true
-        
+        cell.bgView.backgroundColor = isSelected ? UIColor(hexString: "#3F6EFF") : .white
+        cell.nameLabel.font = isSelected ?
+        UIFont.systemFont(ofSize: 15, weight: .bold) :
+        UIFont.systemFont(ofSize: 15, weight: .medium)
+        cell.nameLabel.textColor = isSelected ? .white : .black
+    }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+extension ClickCellAlertView: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return modelArray?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BlueViewCell.identifier, for: indexPath) as! BlueViewCell
+        configureCell(cell, at: indexPath)
         return cell
     }
     
@@ -195,4 +207,16 @@ extension ClickCellAlertView: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20.pix()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+}
+
+// MARK: - Reusable Identifier Extension
+extension BlueViewCell {
+    static let identifier = "BlueViewCell"
 }

@@ -308,3 +308,127 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func getWorkInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/nugous",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func saveWorkInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/hepatery",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+extension AppService {
+    
+    static func getBankInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/cordacity",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func saveBankInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/donfold",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+extension AppService {
+    
+    static func getContactInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/popularship",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func saveContactInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/technivity",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func uploadContactsInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.shared.show()
+        
+        defer {
+            LoadingView.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/donfold",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}

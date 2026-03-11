@@ -48,6 +48,8 @@ class AppViewModel: ObservableObject {
     @Published var personalModel: BaseModel?
     @Published var savePersonalModel: BaseModel?
     
+    @Published var uploadContactsModel: BaseModel?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -359,3 +361,135 @@ extension AppViewModel {
     }
     
 }
+
+extension AppViewModel {
+    
+    func getWorkInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                personalModel = try await AppService.getWorkInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func saveWorkInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                savePersonalModel = try await AppService.saveWorkInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func getBankInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                personalModel = try await AppService.getBankInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func saveBankInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                savePersonalModel = try await AppService.saveBankInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+}
+
+extension AppViewModel {
+    
+    func getContactInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                personalModel = try await AppService.getContactInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func saveContactInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                savePersonalModel = try await AppService.saveContactInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+    func uploadContactsInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                uploadContactsModel = try await AppService.uploadContactsInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+            }
+            
+        }
+        
+    }
+    
+}
+

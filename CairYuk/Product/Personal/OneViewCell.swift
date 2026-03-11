@@ -10,6 +10,8 @@ import SnapKit
 
 class OneViewCell: UITableViewCell {
     
+    var textChanged: ((String)->Void)?
+    
     var model: ambrememberuousModel? {
         didSet {
             guard let model = model else { return }
@@ -18,6 +20,9 @@ class OneViewCell: UITableViewCell {
             
             let soundfy = model.soundfy ?? ""
             oneTextFiled.keyboardType = soundfy == "1" ? .numberPad : .default
+            
+            let selectName = model.amify ?? ""
+            oneTextFiled.text = selectName
         }
     }
     
@@ -54,6 +59,7 @@ class OneViewCell: UITableViewCell {
         contentView.addSubview(oneView)
         oneView.addSubview(oneTextFiled)
         
+        oneTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         oneLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -74,11 +80,14 @@ class OneViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(15.pix())
             make.right.equalToSuperview().offset(-5.pix())
         }
-        
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        let text = textField.text ?? ""
+        textChanged?(text)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

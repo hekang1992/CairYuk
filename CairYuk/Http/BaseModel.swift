@@ -47,6 +47,7 @@ class fatherariumModel: Codable {
     var lucmomentair: String?
     var spherdom: String?
     var ambrememberuous: [ambrememberuousModel]?
+    var colorguyion: colorguyionModel?
 }
 
 class attorneyeurModel: Codable {
@@ -65,6 +66,16 @@ class publicficModel: Codable {
 class cordacityModel: Codable {
     var donfold: String?
     var foldfishess: [foldfishessModel]?
+    var piltion: String?
+    var traveleous: String?
+    var visitmost: String?
+    var sibilious: String?
+    var paridemocrat: [petrsiveModel]?
+    var dignical: String?
+    var relationship_title: String?
+    var relationship_placeholder: String?
+    var contact_title: String?
+    var contact_placeholder: String?
 }
 
 class foldfishessModel: Codable {
@@ -139,4 +150,8 @@ class petrsiveModel: Codable {
         
         traveleous = try? container.decode(String.self, forKey: .traveleous)
     }
+}
+
+class colorguyionModel: Codable {
+    var cordacity: [cordacityModel]?
 }

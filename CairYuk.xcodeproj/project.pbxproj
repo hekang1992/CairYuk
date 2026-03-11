@@ -10,6 +10,9 @@
 		733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733CC6F82F5DA89900679CE9 /* AppDelegate.swift */; };
 		733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6F92F5DA89900679CE9 /* Assets.xcassets */; };
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
+		733F30792F60F92D00571E33 /* BlueViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F30782F60F92D00571E33 /* BlueViewCell.swift */; };
+		733F307B2F610AC800571E33 /* BlueContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F307A2F610AC800571E33 /* BlueContactViewCell.swift */; };
+		733F307D2F6111BC00571E33 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F307C2F6111BC00571E33 /* ContactManager.swift */; };
 		735D118E2F5FADC000102F19 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118D2F5FADC000102F19 /* OrderEmptyView.swift */; };
 		735D11902F5FB0D200102F19 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118F2F5FB0D200102F19 /* OrderViewCell.swift */; };
 		735D11922F5FBF8B00102F19 /* ProductStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */; };
@@ -72,6 +75,9 @@
 		733CC6FA2F5DA89900679CE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		733CC6FB2F5DA89900679CE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CairYuk.entitlements; sourceTree = "<group>"; };
+		733F30782F60F92D00571E33 /* BlueViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueViewCell.swift; sourceTree = "<group>"; };
+		733F307A2F610AC800571E33 /* BlueContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueContactViewCell.swift; sourceTree = "<group>"; };
+		733F307C2F6111BC00571E33 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		735D118D2F5FADC000102F19 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		735D118F2F5FB0D200102F19 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStepViewCell.swift; sourceTree = "<group>"; };
@@ -204,7 +210,9 @@
 		735D11972F5FE1C500102F19 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				733F307C2F6111BC00571E33 /* ContactManager.swift */,
 				735D11A62F5FF6C300102F19 /* ContactViewController.swift */,
+				733F307A2F610AC800571E33 /* BlueContactViewCell.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 				73DF1D092F60410D00CB302C /* OneViewCell.swift */,
 				73DF1D0B2F60411600CB302C /* TwoViewCell.swift */,
 				735D11A22F5FF68300102F19 /* PersonalViewController.swift */,
+				733F30782F60F92D00571E33 /* BlueViewCell.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -486,6 +495,8 @@
 				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				735D11A12F5FEB9100102F19 /* CameraManager.swift in Sources */,
+				733F307B2F610AC800571E33 /* BlueContactViewCell.swift in Sources */,
+				733F307D2F6111BC00571E33 /* ContactManager.swift in Sources */,
 				736883CA2F5DBAE40068A8DE /* ToastManager.swift in Sources */,
 				736E3EFC2F5EA0B1004BF7F4 /* SettingsViewController.swift in Sources */,
 				735D119B2F5FE1F800102F19 /* AuthCardViewController.swift in Sources */,
@@ -515,6 +526,7 @@
 				736883D82F5DC93D0068A8DE /* AppService.swift in Sources */,
 				735D11A32F5FF68300102F19 /* PersonalViewController.swift in Sources */,
 				73DF1D0E2F60724600CB302C /* ClickCellAlertView.swift in Sources */,
+				733F30792F60F92D00571E33 /* BlueViewCell.swift in Sources */,
 				736E3EFE2F5EA185004BF7F4 /* AppHeadView.swift in Sources */,
 				735D119D2F5FE20200102F19 /* AuthFaceViewController.swift in Sources */,
 				736883C62F5DB63F0068A8DE /* LoginViewController.swift in Sources */,

@@ -145,13 +145,47 @@ class PersonalViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
+        viewModel.$savePersonalModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    self.getDetailInfo()
+                }else {
+                    ToastManager.showOnWindow(model.northature ?? "")
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$productDetailModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    
+                    let cardModel = model.fatherarium?.baloarian
+                    self.cardModel = cardModel
+                    
+                    let stepModel = model.fatherarium?.myxen
+                    self.stepModel = stepModel
+                    
+                    self.clickTypeToNextVc(stepModel: stepModel ?? listensiveModel(),
+                                           cardModel: cardModel ?? baloarianModel())
+                }
+            }
+            .store(in: &cancellables)
+        
+        
         nextBtn
             .rx
             .tap
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                self.saveInfo()
             })
             .disposed(by: disposeBag)
         
@@ -195,12 +229,17 @@ extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
             cell.model = listModel
             cell.tapBlock = { [weak self] model in
                 guard let self else { return }
+                self.view.endEditing(true)
                 self.tapClickCell(model: model, cell: cell)
             }
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OneViewCell", for: indexPath) as! OneViewCell
             cell.model = listModel
+            cell.textChanged = { text in
+                listModel.donfold = text
+                listModel.amify = text
+            }
             return cell
         }
     }
@@ -237,8 +276,36 @@ extension PersonalViewController {
         
         popView.saveBlock = { [weak self] listModel in
             guard let self else { return }
+            self.dismiss(animated: true) {
+                cell.oneTextFiled.text = listModel.traveleous ?? ""
+                model.donfold = listModel.donfold ?? ""
+                model.amify = listModel.traveleous ?? ""
+            }
         }
         
+    }
+    
+}
+
+extension PersonalViewController {
+    
+    private func saveInfo() {
+        
+        var parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
+                          "syfication": IDFVKeychainManager.shared.getIDFV()]
+        
+        for model in listArray {
+            let key = model.securityair ?? ""
+            let value = model.donfold ?? ""
+            parameters[key] = value
+        }
+        
+        viewModel.savePersonalInfo(parameters: parameters)
+    }
+    
+    private func getDetailInfo() {
+        let parameters = ["dentacity": cardModel?.maciactuallyally ?? ""]
+        viewModel.procutDetailInfo(parameters: parameters)
     }
     
 }

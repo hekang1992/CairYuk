@@ -66,6 +66,14 @@ class OrderViewController: BaseViewController {
         return coverView
     }()
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
     private lazy var indicatorImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "secc_bg_image")
@@ -118,6 +126,7 @@ class OrderViewController: BaseViewController {
         view.addSubview(nameLabel)
         view.addSubview(bgView)
         bgView.addSubview(coverView)
+        coverView.addSubview(scrollView)
         coverView.addSubview(indicatorImageView)
         bgView.addSubview(tableView)
     }
@@ -134,7 +143,7 @@ class OrderViewController: BaseViewController {
             button.setTitleColor(UIColor.black, for: .selected)
             
             button.translatesAutoresizingMaskIntoConstraints = false
-            coverView.addSubview(button)
+            scrollView.addSubview(button)
             buttons.append(button)
         }
     }
@@ -163,6 +172,10 @@ class OrderViewController: BaseViewController {
             make.height.equalTo(48)
         }
         
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         for (index, button) in buttons.enumerated() {
             button.snp.makeConstraints { make in
                 make.centerY.equalToSuperview()
@@ -173,13 +186,13 @@ class OrderViewController: BaseViewController {
                     make.left.equalToSuperview().offset(12)
                     
                 case 1:
-                    make.left.equalTo(buttons[0].snp.right).offset(20)
+                    make.left.equalTo(buttons[0].snp.right).offset(10)
                     
                 case 2:
-                    make.left.equalTo(buttons[1].snp.right).offset(30)
+                    make.left.equalTo(buttons[1].snp.right).offset(10)
                     
                 case 3:
-                    make.left.equalTo(buttons[2].snp.right).offset(20)
+                    make.left.equalTo(buttons[2].snp.right).offset(10)
                     make.right.lessThanOrEqualToSuperview().offset(-12)
                     
                 default:

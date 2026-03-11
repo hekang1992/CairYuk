@@ -2,7 +2,7 @@
 //  BankViewController.swift
 //  CairYuk
 //
-//  Created by hekang on 2026/3/10.
+//  Created by hekang on 2026/3/8.
 //
 
 import UIKit
@@ -27,6 +27,8 @@ class BankViewController: BaseViewController {
             headView.configTile(with: stepModel.participantarian ?? "")
         }
     }
+    
+    private var listArray: [ambrememberuousModel] = []
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -55,6 +57,30 @@ class BankViewController: BaseViewController {
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         nextBtn.setBackgroundImage(UIImage(named: "next_btn_bg_image"), for: .normal)
         return nextBtn
+    }()
+    
+    lazy var headImageView: UIImageView = {
+        let headImageView = UIImageView()
+        headImageView.image = UIImage(named: "pribk_icon_image")
+        return headImageView
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.estimatedRowHeight = 80
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OneViewCell.self, forCellReuseIdentifier: "OneViewCell")
+        tableView.register(TwoViewCell.self, forCellReuseIdentifier: "TwoViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -87,10 +113,71 @@ class BankViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
+        bgView.addSubview(headImageView)
+        headImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.size.equalTo(CGSize(width: 350.pix(), height: 45.pix()))
+            make.centerX.equalToSuperview()
+        }
+        
+        bgView.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headImageView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
             self.toProductListVc()
         }
+        
+        viewModel.$personalModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    let listArray = model.fatherarium?.ambrememberuous ?? []
+                    self.listArray = listArray
+                }
+                self.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$savePersonalModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    self.getDetailInfo()
+                }else {
+                    ToastManager.showOnWindow(model.northature ?? "")
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$productDetailModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
+                if ["0", "00"].contains(securityair) {
+                    
+                    let cardModel = model.fatherarium?.baloarian
+                    self.cardModel = cardModel
+                    
+                    let stepModel = model.fatherarium?.myxen
+                    self.stepModel = stepModel
+                    
+                    self.clickTypeToNextVc(stepModel: stepModel ?? listensiveModel(),
+                                           cardModel: cardModel ?? baloarianModel())
+                }
+            }
+            .store(in: &cancellables)
+        
         
         nextBtn
             .rx
@@ -98,11 +185,127 @@ class BankViewController: BaseViewController {
             .throttle(.microseconds(250), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                
+                self.saveInfo()
             })
             .disposed(by: disposeBag)
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getListInfo()
+    }
+    
 }
 
+extension BankViewController {
+    
+    private func getListInfo() {
+        let parameters = ["dentacity": cardModel?.maciactuallyally ?? ""]
+        viewModel.getBankInfo(parameters: parameters)
+    }
+}
+
+extension BankViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView = UIView()
+        return headView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.listArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let listModel = self.listArray[indexPath.row]
+        let type = listModel.governmentacle ?? ""
+        if type == "mov" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TwoViewCell", for: indexPath) as! TwoViewCell
+            cell.model = listModel
+            cell.tapBlock = { [weak self] model in
+                guard let self else { return }
+                self.view.endEditing(true)
+                self.tapClickCell(model: model, cell: cell)
+            }
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OneViewCell", for: indexPath) as! OneViewCell
+            cell.model = listModel
+            cell.textChanged = { text in
+                listModel.donfold = text
+                listModel.amify = text
+            }
+            return cell
+        }
+    }
+}
+
+extension BankViewController {
+    
+    private func tapClickCell(model: ambrememberuousModel, cell: TwoViewCell) {
+        let popView = ClickCellAlertView(frame: self.view.bounds)
+        
+        popView.nameLabel.text = model.participantarian ?? ""
+        
+        let modelArray = model.petrsive ?? []
+        
+        popView.modelArray = modelArray
+        
+        let name = cell.oneTextFiled.text ?? ""
+        
+        for (index, listModel) in modelArray.enumerated() {
+            if name == listModel.traveleous ?? "" {
+                popView.selectIndex(index)
+            }
+        }
+        
+        let alertVc = TYAlertController(alert: popView,
+                                        preferredStyle: .alert,
+                                        transitionAnimation: .scaleFade)
+        
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.saveBlock = { [weak self] listModel in
+            guard let self else { return }
+            self.dismiss(animated: true) {
+                cell.oneTextFiled.text = listModel.traveleous ?? ""
+                model.donfold = listModel.donfold ?? ""
+                model.amify = listModel.traveleous ?? ""
+            }
+        }
+        
+    }
+    
+}
+
+extension BankViewController {
+    
+    private func saveInfo() {
+        
+        var parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
+                          "syfication": IDFVKeychainManager.shared.getIDFV()]
+        
+        for model in listArray {
+            let key = model.securityair ?? ""
+            let value = model.donfold ?? ""
+            parameters[key] = value
+        }
+        
+        viewModel.saveBankInfo(parameters: parameters)
+    }
+    
+    private func getDetailInfo() {
+        let parameters = ["dentacity": cardModel?.maciactuallyally ?? ""]
+        viewModel.procutDetailInfo(parameters: parameters)
+    }
+    
+}

@@ -21,6 +21,10 @@ class TwoViewCell: UITableViewCell {
             guard let model = model else { return }
             oneLabel.text = model.participantarian ?? ""
             oneTextFiled.placeholder = model.spargenne ?? ""
+            
+            let selectName = model.amify ?? ""
+            oneTextFiled.text = selectName
+            
         }
     }
     
