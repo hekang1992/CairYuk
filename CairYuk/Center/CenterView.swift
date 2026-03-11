@@ -31,7 +31,7 @@ class CenterView: UIView {
     lazy var phoneLabel: UILabel = {
         let phoneLabel = UILabel()
         phoneLabel.textAlignment = .left
-        phoneLabel.text = SecureUserManager.getPhone()
+        phoneLabel.text = phoneFormat(SecureUserManager.getPhone() ?? "")
         phoneLabel.textColor = UIColor.black
         phoneLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return phoneLabel
@@ -118,6 +118,26 @@ extension CenterView: UITableViewDelegate, UITableViewDataSource {
         let model = self.modelArray[indexPath.row]
         let pageUrl = model.technivity ?? ""
         self.tapBlock?(pageUrl)
+    }
+    
+}
+
+extension CenterView {
+    
+    func phoneFormat(_ phoneNumber: String,
+                prefixLength: Int = 3,
+                suffixLength: Int = 4) -> String {
+        let count = phoneNumber.count
+        
+        guard count >= prefixLength + suffixLength else {
+            return phoneNumber
+        }
+        
+        let prefix = String(phoneNumber.prefix(prefixLength))
+        let suffix = String(phoneNumber.suffix(suffixLength))
+        let hiddenCount = count - prefixLength - suffixLength
+        
+        return prefix + String(repeating: "*", count: hiddenCount) + suffix
     }
     
 }
