@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class HomeProductViewCell: UITableViewCell {
+    
+    private let disposeBag = DisposeBag()
+    
+    var tapBlock: ((String) -> Void)?
     
     var model: foldfishessModel? {
         didSet {
@@ -83,6 +89,11 @@ class HomeProductViewCell: UITableViewCell {
         typeLabel.layer.masksToBounds = true
         return typeLabel
     }()
+    
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        return tapBtn
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -133,6 +144,23 @@ class HomeProductViewCell: UITableViewCell {
             make.height.equalTo(40.pix())
             make.right.equalToSuperview().offset(-12)
         }
+        
+        contentView.addSubview(tapBtn)
+        tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                let productID = String(model.maciactuallyally ?? 0)
+                self.tapBlock?(productID)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {

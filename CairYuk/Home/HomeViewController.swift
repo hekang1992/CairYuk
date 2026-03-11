@@ -109,9 +109,16 @@ class HomeViewController: BaseViewController {
                     }else {
                         self.goWebVc(pageUrl: pageUrl)
                     }
+                }else {
+                    ToastManager.showOnWindow(model.northature ?? "")
                 }
             }
             .store(in: &cancellables)
+        
+        maxView.tapBlock = { [weak self] productID in
+            guard let self else { return }
+            clickProduct(productID: productID)
+        }
         
     }
     

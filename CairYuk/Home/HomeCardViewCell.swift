@@ -10,6 +10,8 @@ import SnapKit
 
 class HomeCardViewCell: UITableViewCell {
     
+    var tapBlock: ((String) -> Void)?
+    
     var model: foldfishessModel? {
         didSet {
             guard let model = model else { return }
@@ -32,6 +34,11 @@ class HomeCardViewCell: UITableViewCell {
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 375.pix(), height: 255.pix()))
             make.bottom.equalToSuperview().offset(-16.pix())
+        }
+        
+        cardView.tapBlock = { [weak self] productID in
+            guard let self = self else { return }
+            self.tapBlock?(productID)
         }
     }
     

@@ -12,6 +12,8 @@ import RxCocoa
 
 class HomeMaxView: UIView {
     
+    var tapBlock: ((String) -> Void)?
+    
     var modelArray: [cordacityModel] = []
     
     lazy var bgImageView: UIImageView = {
@@ -132,11 +134,19 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
         case "taur":
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCardViewCell", for: indexPath) as! HomeCardViewCell
             cell.model = model.foldfishess?.first
+            cell.tapBlock = { [weak self] productID in
+                guard let self = self else { return }
+                self.tapBlock?(productID)
+            }
             return cell
             
         case "billion":
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeProductViewCell", for: indexPath) as! HomeProductViewCell
             cell.model = model.foldfishess?[indexPath.row]
+            cell.tapBlock = { [weak self] productID in
+                guard let self = self else { return }
+                self.tapBlock?(productID)
+            }
             return cell
             
         default:
@@ -144,5 +154,6 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
+
 }
+
