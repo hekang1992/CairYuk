@@ -192,6 +192,16 @@ extension HomeViewController {
                     viewModel.uploadLocationInfo(parameters: result)
                 }
             }
+            
+            UIDevice.current.buildDeviceInfo { [weak self] dict in
+                guard let self else { return }
+                if let data = try? JSONSerialization.data(withJSONObject: dict),
+                   let base64 = data.base64EncodedString() as String? {
+                    let parameters = ["fatherarium": base64]
+                    viewModel.uploadAppMessageInfo(parameters: parameters)
+                }
+            }
+            
         }
         
     }

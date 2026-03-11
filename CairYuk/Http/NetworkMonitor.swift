@@ -22,7 +22,7 @@ class NetworkMonitor {
                 callBack(true, "5G")
                 
             case .reachable(.ethernetOrWiFi):
-                callBack(true, "WiFi")
+                callBack(true, "WIFI")
                 
             case .unknown:
                 callBack(false, "unknown")

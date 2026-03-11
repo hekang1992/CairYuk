@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		731CC6892F61A45700D09605 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731CC6882F61A45600D09605 /* AppLocationManager.swift */; };
+		731CC68B2F61BA1300D09605 /* AppDeviceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731CC68A2F61BA0900D09605 /* AppDeviceConfig.swift */; };
 		733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733CC6F82F5DA89900679CE9 /* AppDelegate.swift */; };
 		733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6F92F5DA89900679CE9 /* Assets.xcassets */; };
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.release.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.release.xcconfig"; sourceTree = "<group>"; };
 		731CC6882F61A45600D09605 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
+		731CC68A2F61BA0900D09605 /* AppDeviceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeviceConfig.swift; sourceTree = "<group>"; };
 		733CC6E02F5DA89000679CE9 /* CairYuk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CairYuk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		733CC6F82F5DA89900679CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733CC6F92F5DA89900679CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		736883AE2F5DAB080068A8DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				731CC68A2F61BA0900D09605 /* AppDeviceConfig.swift */,
 				736E3F042F5EB36D004BF7F4 /* H5ViewController.swift */,
 				736883B52F5DAB9E0068A8DE /* BaseViewController.swift */,
 				736883B72F5DABB80068A8DE /* BaseNavigationController.swift */,
@@ -523,6 +526,7 @@
 				735D11A52F5FF6A400102F19 /* WorkViewController.swift in Sources */,
 				736883DA2F5DC9D80068A8DE /* AppViewModel.swift in Sources */,
 				735D11A92F5FF6E400102F19 /* BankViewController.swift in Sources */,
+				731CC68B2F61BA1300D09605 /* AppDeviceConfig.swift in Sources */,
 				736883B62F5DAB9E0068A8DE /* BaseViewController.swift in Sources */,
 				736883C22F5DAC580068A8DE /* CenterViewController.swift in Sources */,
 				736883B82F5DABB80068A8DE /* BaseNavigationController.swift in Sources */,

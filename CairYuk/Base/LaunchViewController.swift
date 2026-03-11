@@ -52,6 +52,7 @@ class LaunchViewController: BaseViewController {
         
         NetworkMonitor.shared.startListen { [weak self] isConnected, statusText in
             guard let self = self else { return }
+            UserDefaults.standard.set(statusText, forKey: "netwotk_status")
             if isConnected {
                 NetworkMonitor.shared.stopListen()
                 viewModel.launchInfo(parameters: [:])
