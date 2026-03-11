@@ -40,6 +40,13 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController {
     
+    func getFollowTime() -> String {
+        return String(Int(Date().timeIntervalSince1970))
+    }
+}
+
+extension BaseViewController {
+    
     func goWebVc(pageUrl: String) {
         let h5Vc = H5ViewController()
         h5Vc.pageUrl = pageUrl
@@ -57,6 +64,23 @@ extension BaseViewController {
         } else {
             nav.popToRootViewController(animated: true)
         }
+    }
+    
+}
+
+extension BaseViewController {
+    
+    func followInfo(step: String,
+                    productID: String,
+                    OrderID: String,
+                    starttime: String,
+                    endtime: String) {
+        let parameters = ["actence": productID,
+                          "colule": step,
+                          "plec": OrderID,
+                          "discuss": starttime,
+                          "acetkin": endtime]
+        viewModel.appFllowInfo(parameters: parameters)
     }
     
 }

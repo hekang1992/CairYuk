@@ -226,16 +226,16 @@ class OrderViewController: BaseViewController {
                 
                 switch index {
                 case 0:
-                    make.left.equalToSuperview().offset(12)
+                    make.left.equalToSuperview().offset(20.pix())
                     
                 case 1:
-                    make.left.equalTo(buttons[0].snp.right).offset(10)
+                    make.left.equalTo(buttons[0].snp.right).offset(15.pix())
                     
                 case 2:
-                    make.left.equalTo(buttons[1].snp.right).offset(10)
+                    make.left.equalTo(buttons[1].snp.right).offset(15.pix())
                     
                 case 3:
-                    make.left.equalTo(buttons[2].snp.right).offset(10)
+                    make.left.equalTo(buttons[2].snp.right).offset(15.pix())
                     make.right.lessThanOrEqualToSuperview().offset(-12)
                     
                 default:

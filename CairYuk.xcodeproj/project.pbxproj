@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731CC6892F61A45700D09605 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731CC6882F61A45600D09605 /* AppLocationManager.swift */; };
 		733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733CC6F82F5DA89900679CE9 /* AppDelegate.swift */; };
 		733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6F92F5DA89900679CE9 /* Assets.xcassets */; };
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.release.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.release.xcconfig"; sourceTree = "<group>"; };
+		731CC6882F61A45600D09605 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
 		733CC6E02F5DA89000679CE9 /* CairYuk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CairYuk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		733CC6F82F5DA89900679CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733CC6F92F5DA89900679CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		736883AF2F5DAB0B0068A8DE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				731CC6882F61A45600D09605 /* AppLocationManager.swift */,
 				736883C72F5DB9080068A8DE /* LoginView.swift */,
 				736883C32F5DB5C90068A8DE /* SecureUserManager.swift */,
 				736883C52F5DB63F0068A8DE /* LoginViewController.swift */,
@@ -505,6 +508,7 @@
 				736883E02F5DCE890068A8DE /* IDFVKeychainManager.swift in Sources */,
 				733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */,
 				733F307F2F614D5200571E33 /* HomeCardViewCell.swift in Sources */,
+				731CC6892F61A45700D09605 /* AppLocationManager.swift in Sources */,
 				735D11A12F5FEB9100102F19 /* CameraManager.swift in Sources */,
 				733F307B2F610AC800571E33 /* BlueContactViewCell.swift in Sources */,
 				733F307D2F6111BC00571E33 /* ContactManager.swift in Sources */,

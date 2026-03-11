@@ -516,3 +516,76 @@ extension AppViewModel {
     }
     
 }
+
+extension AppViewModel {
+    
+    func uploadLocationInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                _ = try await AppService.uploadLocationInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+    func uploadAppMessageInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                _ = try await AppService.uploadAppMessageInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+    func appFllowInfo(parameters: [String: Any]) {
+        
+        let longNumber = UserDefaults.standard.string(forKey: "longNumber") ?? ""
+        
+        let latNumber = UserDefaults.standard.string(forKey: "latNumber") ?? ""
+        
+        let idfa = IDFVKeychainManager.shared.getIDFA()
+        
+        let idfv = IDFVKeychainManager.shared.getIDFV()
+        
+        var followParas: [String: Any] = ["pod": longNumber,
+                                          "startel": latNumber,
+                                          "genispeech": idfa,
+                                          "micice": idfv]
+        
+        followParas = followParas.merging(parameters) { (_, new) in new }
+        
+        Task {
+            
+            do {
+                
+                _ = try await AppService.appFllowInfo(parameters: followParas)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+}

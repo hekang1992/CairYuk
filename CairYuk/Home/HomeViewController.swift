@@ -10,9 +10,11 @@ import Combine
 import DeviceKit
 import SnapKit
 import MJRefresh
+import AdSupport
+import AppTrackingTransparency
 
 class HomeViewController: BaseViewController {
-
+    
     lazy var minView: HomeMinView = {
         let minView = HomeMinView(frame: .zero)
         minView.isHidden = true
@@ -24,6 +26,8 @@ class HomeViewController: BaseViewController {
         maxView.isHidden = true
         return maxView
     }()
+    
+    private let location = AppLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +131,46 @@ class HomeViewController: BaseViewController {
         getHomeInfo()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Task {
+            await self.getIDFA()
+        }
+    }
+    
+}
+
+extension HomeViewController {
+    
+    private func getIDFA() async {
+        guard #available(iOS 14, *) else { return }
+        
+        try? await Task.sleep(nanoseconds: 800_000_000)
+        let status = await ATTrackingManager.requestTrackingAuthorization()
+        
+        print("Tracking authorization status: \(status.rawValue)")
+    }
+    
+    private func showLocationAlertInfo() {
+        let alert = UIAlertController(
+            title: "需要开启定位权限",
+            message: "请前往设置开启定位",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        
+        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+            
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+            
+        })
+        
+        present(alert, animated: true)
+    }
+    
 }
 
 extension HomeViewController {
@@ -134,6 +178,22 @@ extension HomeViewController {
     private func getHomeInfo() {
         let parameters = ["hepatery": "1", "raucage": Device.identifier]
         viewModel.homeInfo(parameters: parameters)
+        
+        if SecureUserManager.isLoggedIn() {
+            location.startLocation { [weak self] result, error in
+                guard let self else { return }
+                if result.isEmpty {
+                    if LanguageManager.shared.currentType == .indonesian {
+                        if location.shouldShowLocationAlert() {
+                            self.showLocationAlertInfo()
+                        }
+                    }
+                }else {
+                    viewModel.uploadLocationInfo(parameters: result)
+                }
+            }
+        }
+        
     }
     
     private func clickProduct(productID: String) {

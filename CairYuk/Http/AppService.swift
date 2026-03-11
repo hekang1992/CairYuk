@@ -446,3 +446,37 @@ extension AppService {
     }
     
 }
+
+extension AppService {
+    
+    static func uploadLocationInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/recentlyian",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func uploadAppMessageInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/withoutess",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func appFllowInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/abovesive",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}

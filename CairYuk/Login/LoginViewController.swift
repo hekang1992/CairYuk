@@ -19,6 +19,12 @@ class LoginViewController: BaseViewController {
     
     private var countdownTimer: Timer?
     
+    private let location = AppLocationManager()
+    
+    private var onetime: String = ""
+    
+    private var twotime: String = ""
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "login_bg_image")
@@ -90,14 +96,32 @@ class LoginViewController: BaseViewController {
                     
                     SecureUserManager.saveUser(phone: phone, token: token)
                     
+                    Task {
+                        try? await Task.sleep(nanoseconds: 1_000_000_000)
+                        
+                        self.followInfo(step: "1",
+                                        productID: "",
+                                        OrderID: "",
+                                        starttime: self.onetime,
+                                        endtime: self.twotime)
+                    }
+                    
                     self.switchToMainTabBar()
                 }
             }.store(in: &cancellables)
+        
+        onetime = self.getFollowTime()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loginView.phoneTextFiled.becomeFirstResponder()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            location.startLocation { result, error in }
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -111,8 +135,8 @@ class LoginViewController: BaseViewController {
         remainingSeconds = countdownSeconds
         updateCodeButtonTitle()
         
-        // 创建定时器
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0,
+                                              repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
             if self.remainingSeconds > 0 {
@@ -194,7 +218,10 @@ extension LoginViewController {
     
     private func loginInfo() {
         
+        twotime = self.getFollowTime()
+        
         self.loginView.phoneTextFiled.resignFirstResponder()
+        
         self.loginView.codeTextFiled.resignFirstResponder()
         
         let phone = self.loginView.phoneTextFiled.text ?? ""
