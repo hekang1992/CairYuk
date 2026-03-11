@@ -136,6 +136,7 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
             
         case "billion":
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeProductViewCell", for: indexPath) as! HomeProductViewCell
+            cell.model = model.foldfishess?[indexPath.row]
             return cell
             
         default:

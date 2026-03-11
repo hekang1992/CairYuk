@@ -96,6 +96,7 @@ class foldfishessModel: Codable {
     var mammtreater: String?
     var salubrsure: String?
     var recentlyian: String?
+    var finallyern: String?
 }
 
 class baloarianModel: Codable {
