@@ -82,6 +82,7 @@ class cordacityModel: Codable {
     var ceivofress: String?
     var aesthetian: String?
     var fringhood: String?
+    var showColor: String?
 }
 
 class foldfishessModel: Codable {
@@ -189,4 +190,6 @@ class colorguyionModel: Codable {
 class groundModel: Codable {
     var ludture: String?
     var pastacity: String?
+    var cosmatuous: String?
+    var finallyern: String?
 }

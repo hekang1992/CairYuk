@@ -66,3 +66,26 @@ extension Int {
         return CGFloat(self) / 375.0 * UIScreen.main.bounds.width
     }
 }
+
+class PaddingLabel: UILabel {
+    
+    var textInsets = UIEdgeInsets(top: 7, left: 10, bottom: 7, right: 9)
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textInsets))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        let width = size.width + textInsets.left + textInsets.right
+        let height = size.height + textInsets.top + textInsets.bottom
+        return CGSize(width: width, height: height)
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let sizeThatFits = super.sizeThatFits(size)
+        let width = sizeThatFits.width + textInsets.left + textInsets.right
+        let height = sizeThatFits.height + textInsets.top + textInsets.bottom
+        return CGSize(width: width, height: height)
+    }
+}
