@@ -262,6 +262,11 @@ class OrderViewController: BaseViewController {
             make.top.equalTo(coverView.snp.bottom).offset(5)
             make.left.right.bottom.equalToSuperview()
         }
+        
+        emptyView.tapBlock = { [weak self] in
+            guard let self else { return }
+            self.switchToMainTabBar()
+        }
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
@@ -369,3 +374,17 @@ extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension OrderViewController {
+    
+    private func switchToMainTabBar() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
+        let tabBarController = BaseTabBarController()
+        
+        UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve) {
+            window.rootViewController = tabBarController
+        }
+    }
+    
+}

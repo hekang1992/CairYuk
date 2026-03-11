@@ -17,7 +17,9 @@ class OrderEmptyView: UIView {
     var tapBlock: (() -> Void)?
     
     lazy var clickBtn: UIButton = {
-        clickBtn.setBackgroundImage(UIImage(named: "login_btn_image"), for: .normal)
+        let clickBtn = UIButton(type: .custom)
+        clickBtn.setBackgroundImage(UIImage(named: "ccp_ien_image".localized), for: .normal)
+        clickBtn.adjustsImageWhenHighlighted = false
         return clickBtn
     }()
     
@@ -25,7 +27,7 @@ class OrderEmptyView: UIView {
         super.init(frame: frame)
         addSubview(clickBtn)
         clickBtn.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(80)
+            make.top.equalToSuperview().offset(40)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 206.pix(), height: 276.pix()))
         }
