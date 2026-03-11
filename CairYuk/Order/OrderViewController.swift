@@ -84,6 +84,7 @@ class OrderViewController: BaseViewController {
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isHidden = true
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
@@ -93,6 +94,14 @@ class OrderViewController: BaseViewController {
         }
         return tableView
     }()
+    
+    lazy var emptyView: OrderEmptyView = {
+        let emptyView = OrderEmptyView(frame: .zero)
+        emptyView.isHidden = true
+        return emptyView
+    }()
+    
+    var listModelArray: [cordacityModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,10 +120,48 @@ class OrderViewController: BaseViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
                 guard let self, let model else { return }
+                let securityair = model.securityair ?? ""
                 
+                if ["0", "00"].contains(securityair) {
+                    let listModelArray = model.fatherarium?.cordacity ?? []
+                    self.listModelArray = listModelArray
+                    updateEmptyState(hasData: !listModelArray.isEmpty)
+                } else {
+                    showEmptyState()
+                }
+                
+                self.tableView.reloadData()
             }
             .store(in: &cancellables)
         
+        viewModel.$orderListMsg
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.showEmptyState()
+            }
+            .store(in: &cancellables)
+        
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            orderListInfo(type: orderType)
+        })
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        orderListInfo(type: orderType)
+    }
+    
+    private func updateEmptyState(hasData: Bool) {
+        tableView.isHidden = !hasData
+        emptyView.isHidden = hasData
+        tableView.mj_header?.endRefreshing()
+    }
+    
+    private func showEmptyState() {
+        updateEmptyState(hasData: false)
     }
     
     private func setupUI() {
@@ -124,6 +171,7 @@ class OrderViewController: BaseViewController {
         bgView.addSubview(coverView)
         coverView.addSubview(scrollView)
         coverView.addSubview(indicatorImageView)
+        bgView.addSubview(emptyView)
         bgView.addSubview(tableView)
     }
     
@@ -205,6 +253,11 @@ class OrderViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 15, height: 7))
         }
         
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(coverView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(coverView.snp.bottom).offset(5)
             make.left.right.bottom.equalToSuperview()
@@ -272,10 +325,6 @@ class OrderViewController: BaseViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        orderListInfo(type: orderType)
-    }
 }
 
 extension OrderViewController {
@@ -289,14 +338,33 @@ extension OrderViewController {
 
 extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12.pix()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return self.listModelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderViewCell", for: indexPath) as! OrderViewCell
-        cell.textLabel?.text = "\(indexPath.row)========"
+        let model = self.listModelArray[indexPath.row]
+        cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.listModelArray[indexPath.row]
+        let pageUrl = model.fringhood ?? ""
+        if pageUrl.hasPrefix(Scheme_URL) {
+            SchemeURLHandler.shared.handleURL(pageUrl)
+        }else {
+            self.goWebVc(pageUrl: pageUrl)
+        }
     }
     
 }

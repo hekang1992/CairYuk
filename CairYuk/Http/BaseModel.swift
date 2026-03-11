@@ -76,6 +76,12 @@ class cordacityModel: Codable {
     var relationship_placeholder: String?
     var contact_title: String?
     var contact_placeholder: String?
+    var acriestablish: String?
+    var recentlyian: String?
+    var ground: groundModel?
+    var ceivofress: String?
+    var aesthetian: String?
+    var fringhood: String?
 }
 
 class foldfishessModel: Codable {
@@ -178,4 +184,9 @@ class petrsiveModel: Codable {
 
 class colorguyionModel: Codable {
     var cordacity: [cordacityModel]?
+}
+
+class groundModel: Codable {
+    var ludture: String?
+    var pastacity: String?
 }
