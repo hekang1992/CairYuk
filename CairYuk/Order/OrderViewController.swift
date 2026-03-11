@@ -84,7 +84,6 @@ class OrderViewController: BaseViewController {
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.isHidden = true
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
