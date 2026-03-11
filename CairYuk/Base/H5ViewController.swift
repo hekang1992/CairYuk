@@ -74,7 +74,12 @@ class H5ViewController: BaseViewController {
         loadWebView()
         
         headView.backBlock = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            guard let self else { return }
+            if self.webView.canGoBack {
+                self.webView.goBack()
+            }else {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
         
@@ -209,11 +214,16 @@ extension H5ViewController {
     }
     
     func createRequestUrl(baseUrl: String) -> URL? {
-        let parameters = DeviceInfoCollector().collectAllParameters()
+        let deviceParameters = DeviceInfoCollector().collectAllParameters()
         
         guard var components = URLComponents(string: baseUrl) else { return nil }
         
-        components.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        var allQueryItems = components.queryItems ?? []
+        
+        let deviceQueryItems = deviceParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        allQueryItems.append(contentsOf: deviceQueryItems)
+        
+        components.queryItems = allQueryItems
         
         return components.url
     }

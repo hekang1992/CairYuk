@@ -12,11 +12,7 @@ import SnapKit
 import MJRefresh
 
 class HomeViewController: BaseViewController {
-    
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
+
     lazy var minView: HomeMinView = {
         let minView = HomeMinView(frame: .zero)
         minView.isHidden = true

@@ -15,10 +15,6 @@ import TYAlertController
 
 class AuthCardViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     private var cameraManager: CameraManager?
     
     var cardModel: baloarianModel?

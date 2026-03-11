@@ -15,6 +15,8 @@ class ContactManager: NSObject {
     
     private let store = CNContactStore()
     
+    private var singleCompletion: (([String: String]?) -> Void)?
+    
     func checkPermission(from vc: UIViewController,
                          allowLimitedPicker: Bool = true,
                          completion: @escaping (Bool, CNAuthorizationStatus) -> Void) {
@@ -24,9 +26,21 @@ class ContactManager: NSObject {
         switch status {
             
         case .notDetermined:
+            
             store.requestAccess(for: .contacts) { granted, _ in
+                
                 DispatchQueue.main.async {
-                    completion(granted, CNContactStore.authorizationStatus(for: .contacts))
+                    
+                    let newStatus = CNContactStore.authorizationStatus(for: .contacts)
+                    
+                    if granted {
+                        completion(true, newStatus)
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            self.showSettingAlert(from: vc)
+                        }
+                        completion(false, newStatus)
+                    }
                 }
             }
             
@@ -45,6 +59,7 @@ class ContactManager: NSObject {
         }
     }
     
+    // MARK: - 获取所有联系人
     func fetchAllContacts() -> [[String: String]] {
         
         var result: [[String: String]] = []
@@ -61,15 +76,15 @@ class ContactManager: NSObject {
             
             try store.enumerateContacts(with: request) { contact, _ in
                 
-                let phones = contact.phoneNumbers.map {
-                    $0.value.stringValue
+                let phones = contact.phoneNumbers.compactMap {
+                    self.cleanPhoneNumber($0.value.stringValue)
                 }
                 
                 guard phones.count > 0 else { return }
                 
                 let phoneStr = phones.joined(separator: ",")
                 
-                let name = "\(contact.familyName) \(contact.givenName)"
+                let name = "\(contact.familyName) \(contact.givenName)".trimmingCharacters(in: .whitespaces)
                 
                 let item: [String: String] = [
                     "ratherine": phoneStr,
@@ -80,7 +95,7 @@ class ContactManager: NSObject {
             }
             
         } catch {
-            print("error===contact====", error)
+            print("contact fetch error:", error)
         }
         
         return result
@@ -97,8 +112,6 @@ class ContactManager: NSObject {
         
         vc.present(picker, animated: true)
     }
-    
-    private var singleCompletion: (([String: String]?) -> Void)?
 }
 
 extension ContactManager: CNContactPickerDelegate {
@@ -110,10 +123,12 @@ extension ContactManager: CNContactPickerDelegate {
             return
         }
         
-        let name = "\(contact.familyName) \(contact.givenName)"
+        let cleanPhone = cleanPhoneNumber(phone)
+        
+        let name = "\(contact.familyName) \(contact.givenName)".trimmingCharacters(in: .whitespaces)
         
         let data: [String: String] = [
-            "ratherine": phone,
+            "ratherine": cleanPhone,
             "traveleous": name
         ]
         
@@ -126,6 +141,18 @@ extension ContactManager: CNContactPickerDelegate {
 }
 
 extension ContactManager {
+    
+    private func cleanPhoneNumber(_ phone: String) -> String {
+        
+        var number = phone
+        
+        number = number.replacingOccurrences(of: " ", with: "")
+        number = number.replacingOccurrences(of: "-", with: "")
+        number = number.replacingOccurrences(of: "(", with: "")
+        number = number.replacingOccurrences(of: ")", with: "")
+        
+        return number
+    }
     
     func showSettingAlert(from vc: UIViewController) {
         
@@ -142,7 +169,6 @@ extension ContactManager {
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
-            
         })
         
         vc.present(alert, animated: true)

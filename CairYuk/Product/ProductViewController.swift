@@ -15,10 +15,6 @@ import TYAlertController
 
 class ProductViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     var productID: String = ""
     
     private var cardModel: baloarianModel?
@@ -185,6 +181,19 @@ class ProductViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
+        viewModel.$applyOrderModel.receive(on: DispatchQueue.main).sink { [weak self] model in
+            guard let self, let model else { return }
+            let securityair = model.securityair ?? ""
+            if ["0", "00"].contains(securityair) {
+                let pageUrl = model.fatherarium?.botanitor ?? ""
+                if pageUrl.hasPrefix(Scheme_URL) {
+                    SchemeURLHandler.shared.handleURL(pageUrl)
+                }else {
+                    self.goWebVc(pageUrl: pageUrl)
+                }
+            }
+        }.store(in: &cancellables)
+        
         nextBtn
             .rx
             .tap
@@ -193,6 +202,10 @@ class ProductViewController: BaseViewController {
                 guard let self = self else { return }
                 if let stepModel, let cardModel  {
                     self.nextTapClick(stepModel: stepModel, cardModel: cardModel)
+                }else {
+                    let parameters = ["itudeacious": cardModel?.plec ?? "",
+                                      "falcry": cardModel?.maciactuallyally ?? ""]
+                    viewModel.applyOrderInfo(parameters: parameters)
                 }
             })
             .disposed(by: disposeBag)

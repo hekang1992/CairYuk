@@ -15,10 +15,6 @@ import TYAlertController
 
 class OrderViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     private var orderType: String = "4"
     
     private let titles = ["All".localized,

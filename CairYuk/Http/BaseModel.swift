@@ -129,6 +129,30 @@ class ambrememberuousModel: Codable {
     var donfold: String?
     var soundfy: String?
     var petrsive: [petrsiveModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case participantarian, spargenne, securityair, governmentacle, amify, donfold, soundfy, petrsive
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        participantarian = try container.decode(String.self, forKey: .participantarian)
+        spargenne = try container.decode(String.self, forKey: .spargenne)
+        securityair = try container.decode(String.self, forKey: .securityair)
+        governmentacle = try container.decode(String.self, forKey: .governmentacle)
+        amify = try container.decode(String.self, forKey: .amify)
+        donfold = try container.decode(String.self, forKey: .donfold)
+        petrsive = try container.decode([petrsiveModel].self, forKey: .petrsive)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .soundfy) {
+            soundfy = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .soundfy) {
+            soundfy = String(intValue)
+        } else {
+            soundfy = nil
+        }
+    }
 }
 
 class petrsiveModel: Codable {

@@ -417,6 +417,20 @@ extension AppService {
     
     static func uploadContactsInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/old/opisthperiodcy",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+}
+
+extension AppService {
+    
+    static func applyOrderInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
         LoadingView.shared.show()
         
         defer {
@@ -424,7 +438,7 @@ extension AppService {
         }
         
         let result: BaseModel = try await NetworkManager.shared.post(
-            url: "/old/donfold",
+            url: "/old/foldfishess",
             parameters: parameters
         )
         

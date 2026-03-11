@@ -46,3 +46,4 @@
 "Month" = "Bulan";
 "Year" = "Tahun";
 "Please select one item" = "Silakan pilih salah satu";
+"Name or phone number cannot be empty, please select again" = "Nama atau nomor telepon tidak boleh kosong, silakan pilih lagi";

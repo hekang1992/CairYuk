@@ -7,15 +7,34 @@
 
 import UIKit
 import RxSwift
+import Combine
 
 class BaseViewController: UIViewController {
     
+    let viewModel = AppViewModel()
+    
+    var cancellables = Set<AnyCancellable>()
+    
     let disposeBag = DisposeBag()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
+        
+        viewModel.$applyOrderModel.receive(on: DispatchQueue.main).sink { [weak self] model in
+            guard let self, let model else { return }
+            let securityair = model.securityair ?? ""
+            if ["0", "00"].contains(securityair) {
+                let pageUrl = model.fatherarium?.botanitor ?? ""
+                if pageUrl.hasPrefix(Scheme_URL) {
+                    SchemeURLHandler.shared.handleURL(pageUrl)
+                }else {
+                    self.goWebVc(pageUrl: pageUrl)
+                }
+            }
+        }.store(in: &cancellables)
+        
     }
 }
 
@@ -32,7 +51,7 @@ extension BaseViewController {
     
     func toProductListVc() {
         guard let nav = navigationController else { return }
-
+        
         if let vc = nav.viewControllers.compactMap({ $0 as? ProductViewController }).first {
             nav.popToViewController(vc, animated: true)
         } else {
@@ -79,7 +98,9 @@ extension BaseViewController {
             self.navigationController?.pushViewController(listVc, animated: true)
             
         case "":
-            break
+            let parameters = ["itudeacious": cardModel.plec ?? "",
+                              "falcry": cardModel.maciactuallyally ?? ""]
+            viewModel.applyOrderInfo(parameters: parameters)
             
         default:
             break

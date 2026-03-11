@@ -22,8 +22,40 @@ class BlueContactViewCell: UITableViewCell {
         didSet {
             guard let model = model else { return }
             nameLabel.text = model.dignical ?? ""
-            oneLabel.text = model.relationship_placeholder ?? ""
-            twoLabel.text = model.contact_placeholder ?? ""
+            
+            
+            let name = model.traveleous ?? ""
+            let phone = model.visitmost ?? ""
+            
+            if !name.isEmpty && !phone.isEmpty {
+                twoLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+                twoLabel.textColor = .black
+                twoLabel.text = "\(name)-\(phone)"
+            }else {
+                twoLabel.text = model.contact_placeholder ?? ""
+                twoLabel.textColor = UIColor.init(hexString: "#949595")
+                twoLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            }
+            
+            let piltion = model.piltion ?? ""
+            if !piltion.isEmpty {
+                oneLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+                oneLabel.textColor = .black
+                
+                let listArray = model.paridemocrat ?? []
+                for listModel in listArray {
+                    if listModel.donfold == piltion {
+                        oneLabel.text = listModel.traveleous
+                    }
+                }
+                
+            }else {
+                oneLabel.text = model.relationship_placeholder ?? ""
+                oneLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+                oneLabel.textColor = UIColor.init(hexString: "#949595")
+            }
+            
+            
         }
     }
     

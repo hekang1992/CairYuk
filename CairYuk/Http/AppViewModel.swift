@@ -50,6 +50,8 @@ class AppViewModel: ObservableObject {
     
     @Published var uploadContactsModel: BaseModel?
     
+    @Published var applyOrderModel: BaseModel?
+    
     func launchInfo(parameters: [String: Any]) {
         
         Task {
@@ -493,3 +495,24 @@ extension AppViewModel {
     
 }
 
+extension AppViewModel {
+    
+    func applyOrderInfo(parameters: [String: Any]) {
+        
+        Task {
+            
+            do {
+                
+                applyOrderModel = try await AppService.applyOrderInfo(parameters: parameters)
+                
+            } catch {
+                
+                print("error===\(error)")
+                
+            }
+            
+        }
+        
+    }
+    
+}

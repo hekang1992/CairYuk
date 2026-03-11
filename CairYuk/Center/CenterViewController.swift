@@ -13,10 +13,6 @@ import MJRefresh
 
 class CenterViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     lazy var centerView: CenterView = {
         let centerView = CenterView(frame: .zero)
         return centerView

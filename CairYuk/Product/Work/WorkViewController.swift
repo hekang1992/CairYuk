@@ -15,10 +15,6 @@ import TYAlertController
 
 class WorkViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     var cardModel: baloarianModel?
     
     var stepModel: listensiveModel? {

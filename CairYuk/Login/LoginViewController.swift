@@ -13,12 +13,10 @@ import Combine
 
 class LoginViewController: BaseViewController {
     
-    private let viewModel = AppViewModel()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
     private let countdownSeconds = 60
+    
     private var remainingSeconds = 0
+    
     private var countdownTimer: Timer?
     
     lazy var bgImageView: UIImageView = {
