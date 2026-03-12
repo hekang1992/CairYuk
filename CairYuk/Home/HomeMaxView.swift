@@ -129,6 +129,7 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
             
         case "genarwrongitude":
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeBannerViewCell", for: indexPath) as! HomeBannerViewCell
+            cell.modelArray = model.foldfishess ?? []
             return cell
             
         case "taur":

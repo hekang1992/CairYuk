@@ -17,4 +17,5 @@ target 'CairYuk' do
   pod 'Kingfisher'
   pod 'Alamofire'
   pod 'MJRefresh'
+  pod 'FSPagerView'
 end
