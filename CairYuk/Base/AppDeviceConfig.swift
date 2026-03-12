@@ -145,9 +145,7 @@ extension UIDevice {
 extension UIDevice {
     
     func availableMemory() -> Int64? {
-        
         var stats = vm_statistics64()
-        
         var count = mach_msg_type_number_t(
             MemoryLayout<vm_statistics64>.size / MemoryLayout<integer_t>.size
         )
@@ -155,20 +153,23 @@ extension UIDevice {
         let hostPort = mach_host_self()
         
         let result = withUnsafeMutablePointer(to: &stats) {
-            
             $0.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
-                
                 host_statistics64(hostPort, HOST_VM_INFO64, $0, &count)
             }
         }
         
         if result == KERN_SUCCESS {
+            let pageSize = UInt64(vm_page_size)
             
-            return Int64(stats.free_count) * Int64(vm_page_size)
+            let free = UInt64(stats.free_count)
+            let inactive = UInt64(stats.inactive_count)
+            
+            return Int64((free + inactive) * pageSize)
         }
         
         return nil
     }
+    
 }
 
 extension UIDevice {
