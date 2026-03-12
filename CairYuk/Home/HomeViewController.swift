@@ -124,6 +124,15 @@ class HomeViewController: BaseViewController {
             clickProduct(productID: productID)
         }
         
+        maxView.tapBannerBlock = { [weak self] pageUrl in
+            guard let self else { return }
+            if pageUrl.hasPrefix(Scheme_URL) {
+                SchemeURLHandler.shared.handleURL(pageUrl)
+            }else {
+                self.goWebVc(pageUrl: pageUrl)
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -14,6 +14,8 @@ class HomeMaxView: UIView {
     
     var tapBlock: ((String) -> Void)?
     
+    var tapBannerBlock: ((String) -> Void)?
+    
     var modelArray: [cordacityModel] = []
     
     lazy var bgImageView: UIImageView = {
@@ -130,6 +132,10 @@ extension HomeMaxView: UITableViewDelegate, UITableViewDataSource {
         case "genarwrongitude":
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeBannerViewCell", for: indexPath) as! HomeBannerViewCell
             cell.modelArray = model.foldfishess ?? []
+            cell.tapBlock = { [weak self] model in
+                guard let self else { return }
+                self.tapBannerBlock?(model.botanitor ?? "")
+            }
             return cell
             
         case "taur":
