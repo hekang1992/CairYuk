@@ -130,7 +130,7 @@ class ContactViewController: BaseViewController {
         
         headView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.toProductListVc()
+            self.popLeaveView()
         }
         
         viewModel.$personalModel

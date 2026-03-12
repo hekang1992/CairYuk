@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		731CC6892F61A45700D09605 /* AppLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731CC6882F61A45600D09605 /* AppLocationManager.swift */; };
 		731CC68B2F61BA1300D09605 /* AppDeviceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731CC68A2F61BA0900D09605 /* AppDeviceConfig.swift */; };
+		73226E9A2F624C3E00144436 /* ProductLeaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73226E992F624C3E00144436 /* ProductLeaveView.swift */; };
 		733CC7022F5DA89900679CE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733CC6F82F5DA89900679CE9 /* AppDelegate.swift */; };
 		733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6F92F5DA89900679CE9 /* Assets.xcassets */; };
 		733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */; };
@@ -76,6 +77,7 @@
 		4CEDC148533101B236C2D964 /* Pods-CairYuk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CairYuk.release.xcconfig"; path = "Target Support Files/Pods-CairYuk/Pods-CairYuk.release.xcconfig"; sourceTree = "<group>"; };
 		731CC6882F61A45600D09605 /* AppLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocationManager.swift; sourceTree = "<group>"; };
 		731CC68A2F61BA0900D09605 /* AppDeviceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeviceConfig.swift; sourceTree = "<group>"; };
+		73226E992F624C3E00144436 /* ProductLeaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLeaveView.swift; sourceTree = "<group>"; };
 		733CC6E02F5DA89000679CE9 /* CairYuk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CairYuk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		733CC6F82F5DA89900679CE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733CC6F92F5DA89900679CE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		736883B32F5DAB130068A8DE /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				73226E992F624C3E00144436 /* ProductLeaveView.swift */,
 				735D11932F5FC09200102F19 /* ProductCardView.swift */,
 				735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */,
 				73A51A0C2F5F0223000644FB /* ProductViewController.swift */,
@@ -505,6 +508,7 @@
 				73A51A0D2F5F0223000644FB /* ProductViewController.swift in Sources */,
 				736883D42F5DC6E20068A8DE /* BaseModel.swift in Sources */,
 				736E3F012F5EA9BC004BF7F4 /* PopAccountView.swift in Sources */,
+				73226E9A2F624C3E00144436 /* ProductLeaveView.swift in Sources */,
 				736E3EF82F5E96A5004BF7F4 /* CenterViewCell.swift in Sources */,
 				736883BC2F5DABFE0068A8DE /* LaunchViewController.swift in Sources */,
 				735D119F2F5FE21600102F19 /* AuthCompleteViewController.swift in Sources */,

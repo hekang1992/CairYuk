@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import Combine
+import TYAlertController
 
 class BaseViewController: UIViewController {
     
@@ -56,6 +57,28 @@ class BaseViewController: UIViewController {
             .store(in: &cancellables)
         
     }
+}
+
+extension BaseViewController {
+    
+    func popLeaveView() {
+        let popView = ProductLeaveView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self else { return }
+            self.dismiss(animated: true) {
+                self.toProductListVc()
+            }
+        }
+        
+    }
+    
 }
 
 extension BaseViewController {
