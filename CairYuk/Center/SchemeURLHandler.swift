@@ -27,17 +27,15 @@ class SchemeURLHandler {
     }
     
     private func parseURL(_ urlString: String) -> SchemeURL? {
-        guard let url = URL(string: urlString),
-              let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+        guard let url = URL(string: urlString) else {
             return nil
         }
         
-        let path = components.path.replacingOccurrences(of: "/", with: "")
+        let path = url.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         
-        var parameters: [String: String] = [:]
-        components.queryItems?.forEach { item in
-            parameters[item.name] = item.value
-        }
+        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems
+        
+        let parameters = queryItems?.reduce(into: [String: String]()) { $0[$1.name] = $1.value } ?? [:]
         
         return SchemeURL(path: path, parameters: parameters)
     }

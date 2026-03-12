@@ -60,7 +60,7 @@ class LoginViewController: BaseViewController {
         
         view.addSubview(loginView)
         loginView.snp.makeConstraints { make in
-            make.top.equalTo(backBtn.snp.bottom).offset(40)
+            make.top.equalTo(backBtn.snp.bottom).offset(30)
             make.left.right.bottom.equalToSuperview()
         }
         
