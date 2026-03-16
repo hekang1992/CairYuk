@@ -13,8 +13,8 @@ enum NetworkError: Error {
     case noData
 }
 
-let base_url = "http://8.215.5.252:10903/breviency"
 let h5_url = "http://8.215.5.252:10903"
+let base_url = "http://8.215.5.252:10903/breviency"
 
 final class NetworkManager {
     

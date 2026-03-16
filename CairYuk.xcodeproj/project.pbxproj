@@ -19,6 +19,7 @@
 		733F307F2F614D5200571E33 /* HomeCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F307E2F614D5200571E33 /* HomeCardViewCell.swift */; };
 		733F30812F614D5D00571E33 /* HomeBannerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F30802F614D5D00571E33 /* HomeBannerViewCell.swift */; };
 		733F30832F614D6A00571E33 /* HomeProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F30822F614D6A00571E33 /* HomeProductViewCell.swift */; };
+		7341DE852F67A6A8008D4C83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7341DE832F67A6A8008D4C83 /* InfoPlist.strings */; };
 		735D118E2F5FADC000102F19 /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118D2F5FADC000102F19 /* OrderEmptyView.swift */; };
 		735D11902F5FB0D200102F19 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D118F2F5FB0D200102F19 /* OrderViewCell.swift */; };
 		735D11922F5FBF8B00102F19 /* ProductStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */; };
@@ -90,6 +91,8 @@
 		733F307E2F614D5200571E33 /* HomeCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardViewCell.swift; sourceTree = "<group>"; };
 		733F30802F614D5D00571E33 /* HomeBannerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerViewCell.swift; sourceTree = "<group>"; };
 		733F30822F614D6A00571E33 /* HomeProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductViewCell.swift; sourceTree = "<group>"; };
+		7341DE842F67A6A8008D4C83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7341DE862F67A6B7008D4C83 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		735D118D2F5FADC000102F19 /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		735D118F2F5FB0D200102F19 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		735D11912F5FBF8B00102F19 /* ProductStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStepViewCell.swift; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				733CC6FA2F5DA89900679CE9 /* Info.plist */,
 				733CC6F92F5DA89900679CE9 /* Assets.xcassets */,
 				733CC7092F5DA8C600679CE9 /* CairYuk.entitlements */,
+				7341DE832F67A6A8008D4C83 /* InfoPlist.strings */,
 				736883CB2F5DBC540068A8DE /* Localizable.strings */,
 				733CC6F82F5DA89900679CE9 /* AppDelegate.swift */,
 				733CC6FC2F5DA89900679CE9 /* LaunchScreen.storyboard */,
@@ -265,10 +269,10 @@
 		736883AF2F5DAB0B0068A8DE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				731CC6882F61A45600D09605 /* AppLocationManager.swift */,
 				736883C72F5DB9080068A8DE /* LoginView.swift */,
 				736883C32F5DB5C90068A8DE /* SecureUserManager.swift */,
 				736883C52F5DB63F0068A8DE /* LoginViewController.swift */,
+				731CC6882F61A45600D09605 /* AppLocationManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -440,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				733CC7052F5DA89900679CE9 /* Assets.xcassets in Resources */,
+				7341DE852F67A6A8008D4C83 /* InfoPlist.strings in Resources */,
 				736883CD2F5DBC540068A8DE /* Localizable.strings in Resources */,
 				733CC7072F5DA89900679CE9 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -570,6 +575,15 @@
 				733CC6FB2F5DA89900679CE9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7341DE832F67A6A8008D4C83 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7341DE842F67A6A8008D4C83 /* en */,
+				7341DE862F67A6B7008D4C83 /* id */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		736883CB2F5DBC540068A8DE /* Localizable.strings */ = {

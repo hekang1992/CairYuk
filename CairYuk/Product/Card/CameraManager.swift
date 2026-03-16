@@ -55,16 +55,19 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         guard let viewController = presentingViewController else { return }
         
         let alert = UIAlertController(
-            title: "需要相机权限",
-            message: "请在设置中开启相机权限以使用拍照功能",
+            title: "Camera Permission".localized,
+            message: "Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
-            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(settingsURL)
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
+            
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
             }
+            
         })
         
         viewController.present(alert, animated: true)

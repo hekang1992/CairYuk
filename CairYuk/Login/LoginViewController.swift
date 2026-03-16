@@ -241,7 +241,8 @@ extension LoginViewController {
     }
     
     private func poliyInfo() {
-        
+        let pageUrl = h5_url + "/rhizfy"
+        self.goWebVc(pageUrl: pageUrl)
     }
     
 }

@@ -18,7 +18,7 @@ class ProductCardView: UIView {
             oneLabel.text = model.phasyform ?? ""
             twoLabel.text = model.ventise ?? ""
             
-            let logoUrl = model.stirpoon ?? ""
+            let logoUrl = model.recentlyian ?? ""
             logoImageView.kf.setImage(with: URL(string: logoUrl))
         }
     }

@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  CairYuk
-
-  Created by David Jones on 2026/3/8.
-  
-*/
+/*
+ Localizable.strings
+ CairYuk
+ 
+ Created by David Jones on 2026/3/8.
+ 
+ */
 
 "Phone number" = "Phone number";
 "Enter phone number" = "Enter phone number";
@@ -49,3 +49,13 @@
 "Name or phone number cannot be empty, please select again" = "Name or phone number cannot be empty, please select again";
 "ccp_ien_image" = "ccp_ien_image";
 "lc_stp_n_image" = "lc_stp_n_image";
+
+"Cancel" = "Cancel";
+"Go to Settings" = "Go to Settings";
+"Location Permission" = "Location Permission";
+"Camera Permission" = "Camera Permission";
+"Contacts Permission" = "Contacts Permission";
+
+"Location permission is required for identity verification. Please grant access in Settings." = "Location permission is required for identity verification. Please grant access in Settings.";
+"To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings." = "To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings.";
+"Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings." = "Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings.";

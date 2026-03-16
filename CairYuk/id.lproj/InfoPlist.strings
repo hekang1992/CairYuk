@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  CairYuk
+
+  Created by hekang on 2026/3/16.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Untuk membuat layanan kami lebih sesuai dengan kebutuhan aktual Anda, Cair Yuk meminta izin mengakses lokasi Anda. Berdasarkan informasi lokasi Anda, sistem akan secara cerdas menyaring dan mengirimkan produk pinjaman yang cocok serta layanan eksklusif lokal, mengurangi gangguan informasi tidak valid, dan secara signifikan meningkatkan efisiensi pencocokan antara layanan dan kebutuhan Anda.";
+
+"NSCameraUsageDescription" = "Untuk meningkatkan efisiensi verifikasi identitas dan mempersingkat siklus tinjauan, Cair Yuk meminta izin mengakses kamera Anda (verifikasi melalui foto menggantikan pengisian manual).";
+
+"NSUserTrackingUsageDescription" = "Untuk menciptakan pengalaman pengguna yang lebih personal, Cair Yuk meminta izin mengakses IDFA Anda. Melalui izin ini, platform akan mewujudkan penyampaian presisi produk pinjaman dan informasi layanan. Selain itu, semua informasi pengguna disimpan dan ditransmisikan dengan enkripsi tingkat tinggi. Kami secara ketat mematuhi norma perlindungan privasi dan melindungi keamanan informasi Anda secara menyeluruh.";
+
+"NSContactsUsageDescription" = "Untuk memperkuat keamanan akun dan menyelesaikan verifikasi identitas, Cair Yuk meminta izin mengakses kontak Anda. Hal ini membantu meningkatkan verifikasi keamanan, mengurangi risiko, dan memfasilitasi pemrosesan bisnis pinjaman yang efisien.";

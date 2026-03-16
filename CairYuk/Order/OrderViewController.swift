@@ -115,6 +115,10 @@ class OrderViewController: BaseViewController {
             self?.updateIndicatorPosition(animated: false)
         }
         
+        if let navigationController = self.navigationController {
+            SchemeURLHandler.shared.configure(navigationController: navigationController)
+        }
+        
         viewModel.$orderListModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in

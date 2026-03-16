@@ -109,6 +109,7 @@ class baloarianModel: Codable {
     var plec: String?
     var withoutess: String?
     var stirpoon: String?
+    var recentlyian: String?
 }
 
 class listensiveModel: Codable {

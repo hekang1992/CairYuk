@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  CairYuk
-
-  Created by David Jones on 2026/3/8.
-  
-*/
+ Localizable.strings
+ CairYuk
+ 
+ Created by David Jones on 2026/3/8.
+ 
+ */
 
 "Phone number" = "Nomor telepon";
 "Enter phone number" = "Nomor telepon";
@@ -49,3 +49,13 @@
 "Name or phone number cannot be empty, please select again" = "Nama atau nomor telepon tidak boleh kosong, silakan pilih lagi";
 "ccp_ien_image" = "ccp_i_image";
 "lc_stp_n_image" = "lc_stp_in_image";
+
+"Cancel" = "Batal";
+"Go to Settings" = "Buka Pengaturan";
+"Location Permission" = "Izin Lokasi";
+"Camera Permission" = "Izin Kamera";
+"Contacts Permission" = "Izin Kontak";
+
+"Location permission is required for identity verification. Please grant access in Settings." = "Izin lokasi diperlukan untuk verifikasi identitas. Silakan berikan akses di Pengaturan.";
+"To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings." = "Untuk memverifikasi informasi identitas Anda, kami perlu mengakses daftar kontak Anda. Langkah keamanan ini membantu mencegah penipuan dan mempercepat proses aplikasi pinjaman Anda. Silakan berikan akses di Pengaturan.";
+"Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings." = "Izin kamera diperlukan untuk mengambil foto kartu identitas Anda dan mengumpulkan informasi identitas Anda dengan aman. Silakan berikan akses di Pengaturan.";

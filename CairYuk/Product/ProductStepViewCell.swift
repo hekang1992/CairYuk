@@ -20,8 +20,15 @@ class ProductStepViewCell: UITableViewCell {
             typeLabel.text = model.pteratory ?? ""
             
             let arhitty = model.arhitty ?? 0
+            
             typeView.backgroundColor = arhitty == 1 ? UIColor.init(hexString: "#ECF0FF") : UIColor.init(hexString: "#3F6EFF")
-            typeImageView.image = arhitty == 1 ? UIImage(named: "cg_image_icon") : UIImage(named: "rithy_ic_a_image")
+            
+            if arhitty == 1 {
+                typeImageView.image = UIImage(named: "cg_image_icon")
+            }else {
+                typeImageView.image = LanguageManager.shared.currentType == .indonesian ? UIImage(named: "go_nd_icon_image") : UIImage(named: "go_n_icon_image")
+            }
+            
         }
     }
     

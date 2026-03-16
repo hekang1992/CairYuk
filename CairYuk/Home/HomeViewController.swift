@@ -162,14 +162,14 @@ extension HomeViewController {
     
     private func showLocationAlertInfo() {
         let alert = UIAlertController(
-            title: "需要开启定位权限",
-            message: "请前往设置开启定位",
+            title: "Location Permission".localized,
+            message: "Location permission is required for identity verification. Please grant access in Settings.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
             
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)

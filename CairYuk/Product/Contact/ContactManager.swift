@@ -157,18 +157,19 @@ extension ContactManager {
     func showSettingAlert(from vc: UIViewController) {
         
         let alert = UIAlertController(
-            title: "通讯录权限未开启",
-            message: "请前往设置开启通讯录权限",
+            title: "Contacts Permission".localized,
+            message: "To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
             
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
+            
         })
         
         vc.present(alert, animated: true)
