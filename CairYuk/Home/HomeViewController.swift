@@ -114,6 +114,10 @@ class HomeViewController: BaseViewController {
                         self.goWebVc(pageUrl: pageUrl)
                     }
                 }else {
+                    if securityair == "-2" {
+                        SecureUserManager.logout()
+                        self.popLoginVc()
+                    }
                     ToastManager.showOnWindow(model.northature ?? "")
                 }
             }
