@@ -33,10 +33,6 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(hexString: "#3F6EFF")
         
-        if let navigationController = self.navigationController {
-            SchemeURLHandler.shared.configure(navigationController: navigationController)
-        }
-        
         viewModel.$homeModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -91,6 +87,11 @@ class HomeViewController: BaseViewController {
             clickProduct(productID: productID)
         }
         
+        minView.tapMentBlock = { [weak self] pageUrl in
+            guard let self = self else { return }
+            self.goWebVc(pageUrl: h5_url + pageUrl)
+        }
+        
         self.minView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             getHomeInfo()
@@ -109,7 +110,7 @@ class HomeViewController: BaseViewController {
                 if ["0", "00"].contains(securityair) {
                     let pageUrl = model.fatherarium?.botanitor ?? ""
                     if pageUrl.hasPrefix(Scheme_URL) {
-                        SchemeURLHandler.shared.handleURL(pageUrl)
+                        SchemeURLHandler.shared.handleURL(pageUrl, from: self)
                     }else {
                         self.goWebVc(pageUrl: pageUrl)
                     }
@@ -131,7 +132,7 @@ class HomeViewController: BaseViewController {
         maxView.tapBannerBlock = { [weak self] pageUrl in
             guard let self else { return }
             if pageUrl.hasPrefix(Scheme_URL) {
-                SchemeURLHandler.shared.handleURL(pageUrl)
+                SchemeURLHandler.shared.handleURL(pageUrl, from: self)
             }else {
                 self.goWebVc(pageUrl: pageUrl)
             }

@@ -184,7 +184,7 @@ class H5ViewController: BaseViewController {
             }
             
             if pageUrl.hasPrefix(Scheme_URL) {
-                SchemeURLHandler.shared.handleURL(pageUrl)
+                SchemeURLHandler.shared.handleURL(pageUrl, from: self)
             }else {
                 self.pageUrl = pageUrl
                 self.loadWebView()

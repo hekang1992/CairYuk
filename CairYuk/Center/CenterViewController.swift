@@ -84,14 +84,10 @@ class CenterViewController: BaseViewController {
             getCenterInfo()
         })
         
-        if let navigationController = self.navigationController {
-            SchemeURLHandler.shared.configure(navigationController: navigationController)
-        }
-        
         centerView.tapBlock = { [weak self] pageUrl in
             guard let self = self else { return }
             if pageUrl.hasPrefix(Scheme_URL) {
-                SchemeURLHandler.shared.handleURL(pageUrl)
+                SchemeURLHandler.shared.handleURL(pageUrl, from: self)
             }else {
                 self.goWebVc(pageUrl: pageUrl)
             }

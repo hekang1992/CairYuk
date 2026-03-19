@@ -22,6 +22,8 @@ class HomeMinView: UIView {
     private let disposeBag = DisposeBag()
     
     var tapBlock: ((String) -> Void)?
+    
+    var tapMentBlock: ((String) -> Void)?
 
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -166,6 +168,10 @@ class HomeMinView: UIView {
                 make.size.equalTo(CGSize(width: 343.pix(), height: 120.pix()))
                 make.bottom.equalToSuperview().offset(-20.pix())
             }
+            
+            policyBtn.rx.tap.bind(onNext: { [weak self] in
+                self?.tapMentBlock?("/pressurefication")
+            }).disposed(by: disposeBag)
             
         }else {
             scrollView.addSubview(threeImageView)

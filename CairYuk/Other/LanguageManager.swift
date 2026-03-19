@@ -9,7 +9,7 @@ import Foundation
 
 enum LanguageType: String {
     case indonesian = "39"
-    case english    = "40"
+    case english    = "22"
 }
 
 class LanguageManager {

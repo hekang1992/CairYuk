@@ -115,10 +115,6 @@ class OrderViewController: BaseViewController {
             self?.updateIndicatorPosition(animated: false)
         }
         
-        if let navigationController = self.navigationController {
-            SchemeURLHandler.shared.configure(navigationController: navigationController)
-        }
-        
         viewModel.$orderListModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -369,7 +365,7 @@ extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
         let model = self.listModelArray[indexPath.row]
         let pageUrl = model.fringhood ?? ""
         if pageUrl.hasPrefix(Scheme_URL) {
-            SchemeURLHandler.shared.handleURL(pageUrl)
+            SchemeURLHandler.shared.handleURL(pageUrl, from: self)
         }else {
             self.goWebVc(pageUrl: pageUrl)
         }

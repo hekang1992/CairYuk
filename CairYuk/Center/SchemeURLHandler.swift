@@ -15,12 +15,6 @@ class SchemeURLHandler {
     
     private init() {}
     
-    private weak var navigationController: UINavigationController?
-    
-    func configure(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
     private struct SchemeURL {
         let path: String
         let parameters: [String: String]
@@ -40,68 +34,68 @@ class SchemeURLHandler {
         return SchemeURL(path: path, parameters: parameters)
     }
     
-    func handleURL(_ urlString: String) {
+    func handleURL(_ urlString: String, from viewController: UIViewController) {
         guard let schemeURL = parseURL(urlString) else { return }
         
         DispatchQueue.main.async { [weak self] in
-            self?.navigateToPage(path: schemeURL.path, parameters: schemeURL.parameters)
+            self?.navigateToPage(path: schemeURL.path,
+                               parameters: schemeURL.parameters,
+                               from: viewController)
         }
     }
     
-    private func navigateToPage(path: String, parameters: [String: String]) {
-        guard navigationController != nil else {
-            return
-        }
-        
+    private func navigateToPage(path: String,
+                              parameters: [String: String],
+                              from viewController: UIViewController) {
         switch path {
         case "hangacity":
-            goToSettingPage(parameters: parameters)
+            goToSettingPage(parameters: parameters, from: viewController)
             
         case "legiatic":
-            goToHomePage(parameters: parameters)
+            goToHomePage(parameters: parameters, from: viewController)
             
         case "crevate":
-            goToLoginPage(parameters: parameters)
+            goToLoginPage(parameters: parameters, from: viewController)
             
         case "foli":
-            goToOrderListPage(parameters: parameters)
+            goToOrderListPage(parameters: parameters, from: viewController)
             
         case "majororium":
-            goToProductDetailPage(parameters: parameters)
+            goToProductDetailPage(parameters: parameters, from: viewController)
             
         case "amphial":
-            goToCustomerServicePage(parameters: parameters)
+            goToCustomerServicePage(parameters: parameters, from: viewController)
             
         default:
             break
         }
     }
     
-    func goToSettingPage(parameters: [String: String]) {
+    func goToSettingPage(parameters: [String: String], from viewController: UIViewController) {
         let settingVc = SettingsViewController()
-        navigationController?.pushViewController(settingVc, animated: true)
+        viewController.navigationController?.pushViewController(settingVc, animated: true)
     }
     
-    func goToHomePage(parameters: [String: String]) {
+    func goToHomePage(parameters: [String: String], from viewController: UIViewController) {
         self.switchToMainTabBar()
     }
     
-    func goToLoginPage(parameters: [String: String]) {
+    func goToLoginPage(parameters: [String: String], from viewController: UIViewController) {
         SecureUserManager.logout()
         self.switchToMainTabBar()
     }
     
-    func goToOrderListPage(parameters: [String: String]) {
+    func goToOrderListPage(parameters: [String: String], from viewController: UIViewController) {
         
     }
     
-    func goToProductDetailPage(parameters: [String: String]) {
+    func goToProductDetailPage(parameters: [String: String], from viewController: UIViewController) {
         let productVc = ProductViewController()
         productVc.productID = parameters["dentacity"] ?? ""
-        navigationController?.pushViewController(productVc, animated: true)
+        viewController.navigationController?.pushViewController(productVc, animated: true)
     }
     
-    func goToCustomerServicePage(parameters: [String: String]) {
+    func goToCustomerServicePage(parameters: [String: String], from viewController: UIViewController) {
         
     }
 }
@@ -118,5 +112,4 @@ extension SchemeURLHandler {
             window.rootViewController = tabBarController
         }
     }
-    
 }

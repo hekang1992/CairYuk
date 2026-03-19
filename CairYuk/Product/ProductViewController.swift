@@ -187,7 +187,7 @@ class ProductViewController: BaseViewController {
             if ["0", "00"].contains(securityair) {
                 let pageUrl = model.fatherarium?.botanitor ?? ""
                 if pageUrl.hasPrefix(Scheme_URL) {
-                    SchemeURLHandler.shared.handleURL(pageUrl)
+                    SchemeURLHandler.shared.handleURL(pageUrl, from: self)
                 }else {
                     self.goWebVc(pageUrl: pageUrl)
                 }
