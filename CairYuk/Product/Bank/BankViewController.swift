@@ -63,7 +63,7 @@ class BankViewController: BaseViewController {
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
-        headImageView.image = UIImage(named: "pribk_icon_image")
+        headImageView.image = UIImage(named: "pribk_icon_image".localized)
         return headImageView
     }()
     

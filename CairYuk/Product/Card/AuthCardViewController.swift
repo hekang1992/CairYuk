@@ -71,7 +71,7 @@ class AuthCardViewController: BaseViewController {
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
-        headImageView.image = UIImage(named: "in_one_icon_image")
+        headImageView.image = UIImage(named: "in_one_icon_image".localized)
         headImageView.contentMode = .scaleAspectFit
         return headImageView
     }()

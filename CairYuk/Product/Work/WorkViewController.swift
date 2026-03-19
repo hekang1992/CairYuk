@@ -63,7 +63,7 @@ class WorkViewController: BaseViewController {
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
-        headImageView.image = UIImage(named: "priw_icon_image")
+        headImageView.image = UIImage(named: "priw_icon_image".localized)
         return headImageView
     }()
     

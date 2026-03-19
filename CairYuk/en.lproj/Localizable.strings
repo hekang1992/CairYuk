@@ -59,3 +59,8 @@
 "Location permission is required for identity verification. Please grant access in Settings." = "Location permission is required for identity verification. Please grant access in Settings.";
 "To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings." = "To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings.";
 "Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings." = "Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings.";
+
+"in_one_icon_image" = "ind_one_icon_image";
+"pri_icon_image" = "prid_icon_image";
+"priw_icon_image" = "pridw_icon_image";
+"pribk_icon_image" = "pribk_icon_imadge";

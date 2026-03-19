@@ -59,3 +59,8 @@
 "Location permission is required for identity verification. Please grant access in Settings." = "Izin lokasi diperlukan untuk verifikasi identitas. Silakan berikan akses di Pengaturan.";
 "To verify your identity information, we need to access your contact list. This security measure helps prevent fraud and speeds up your loan application process. Please grant access in Settings." = "Untuk memverifikasi informasi identitas Anda, kami perlu mengakses daftar kontak Anda. Langkah keamanan ini membantu mencegah penipuan dan mempercepat proses aplikasi pinjaman Anda. Silakan berikan akses di Pengaturan.";
 "Camera permission is needed to capture your ID card and securely collect your identity information. Please grant access in Settings." = "Izin kamera diperlukan untuk mengambil foto kartu identitas Anda dan mengumpulkan informasi identitas Anda dengan aman. Silakan berikan akses di Pengaturan.";
+
+"in_one_icon_image" = "in_one_icon_image";
+"pri_icon_image" = "pri_icon_image";
+"priw_icon_image" = "priw_icon_image";
+"pribk_icon_image" = "pribk_icon_image";
